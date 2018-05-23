@@ -166,6 +166,8 @@ Class Transaction extends MY_Controller
         {
             $info->_status = 'cancel';//hủy bỏ
         }
+        
+        $info->_url_active_transaction = admin_url('transaction/active_transaction/'.$info->id);
         //lấy danh sách đơn hàng  của giao dịch này
         $this->load->model('order_model');
         $input = array();
@@ -205,7 +207,7 @@ Class Transaction extends MY_Controller
                 $row->_can_cancel = false;//không thể kích hoạt
             }
             //link hủy bỏ đơn hàng
-            $row->_url_cancel = admin_url('transaction/cancel/'.$row->id);
+            $row->_url_cancel = admin_url('transaction/cancel_transaction/'.$row->id);
             $row->_url_active = admin_url('transaction/active/'.$row->id);//link kích hoạt đơn hàng
         }
     
@@ -218,57 +220,54 @@ Class Transaction extends MY_Controller
     /**
      * Xac nhan giao dich
      */
-    function active()
-    {
-        $this->load->model('order_model');
+   
+    
+    function active_transaction() {
+        $this->load->model('transaction_model');
         //lay id cua đơn hàng ma ta muon kích hoạt
         $id = $this->uri->rsegment('3');
         //lay thong tin cua giao dịch
-        $info = $this->order_model->get_info($id);
+        $info = $this->transaction_model->get_info($id);
         if(!$info)
         {
-            $this->session->set_flashdata('message', 'Không tồn tại đơn hàng này');
+            $this->session->set_flashdata('message', 'Không tồn tại giao dịch này');
             redirect(admin_url('transaction'));
         }
     
         //Cập nhật trạng thái giao hàng
         $data = array();
         $data['status'] = 1;//đã gửi hàng
+        $this->transaction_model->update($id, $data);
+        $this->load->model('order_model');
         $this->order_model->update($id, $data);
-    
-        //tru di so luong san pham da chuyen cho khach
-        //va cong so luong san pham da ban
-        $this->load->model('product_model');
-        //lay thong san pham trong cai don hang nay
-        $product = $this->product_model->get_info($info->product_id);
-        $data = array();
-        $data['buyed'] = $product->buyed + $info->qty; //cap nhat so luong da mua
-        $this->product_model->update($product->id, $data);
-        	
+        
         //gui thong bao
-        $this->session->set_flashdata('message', 'Đã cập nhật trạng thái đơn hàng thành công');
-        redirect(admin_url('order'));
+        $this->session->set_flashdata('message', 'Đã hoàn tất giao dịch!');
+        redirect(admin_url('transaction'));
     }
     
     /**
      * Huy bo giao dich
      */
-    function cancel()
+    
+    
+    function cancel_transaction()
     {
+        $this->load->model('transaction_model');
         $this->load->model('order_model');
         //lay id cua đơn hàng ma ta muon hủy
         $id = $this->uri->rsegment('3');
         //lay thong tin cua giao dịch
-        $info = $this->order_model->get_info($id);
+        $info = $this->transaction_model->get_info($id);
         if(!$info)
         {
-            $this->session->set_flashdata('message', 'Không tồn tại đơn hàng này');
-            redirect(admin_url('order'));
+            $this->session->set_flashdata('message', 'Không tồn tại giao dịch này');
+            redirect(admin_url('transaction'));
         }
     
         $data = array();
         $data['status'] = 2;//Hủy giao dịch
-        $this->transaction_model->update($info->transaction_id, $data);
+        $this->transaction_model->update($info->id, $data);
     
         //Cập nhật trạng thái hủy đơn hàng
         $data = array();
@@ -276,8 +275,8 @@ Class Transaction extends MY_Controller
         $this->order_model->update($id, $data);
     
         //gui thong bao
-        $this->session->set_flashdata('message', 'Đã hủy đơn hàng thành công');
-        redirect(admin_url('order'));
+        $this->session->set_flashdata('message', 'Đã hủy giao dịch!');
+        redirect(admin_url('transaction'));
     }
     
     /*

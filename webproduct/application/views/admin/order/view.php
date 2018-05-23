@@ -110,20 +110,23 @@
                         </li>
                         <li><span><?php echo lang('price'); ?>:</span><?php echo $row->_price; ?></li>
                         <li><span><?php echo lang('quantity'); ?>:</span><?php echo $row->qty; ?></li>
-                        <li class='status'><span><?php echo lang('status'); ?>:</span><font class="<?php echo $row->_status; ?>"><?php echo lang('tran_status_' . $info->_status); ?></font></li>
+                        <li class='status'><span><?php echo lang('status'); ?>:</span><font class="<?php echo $row->_status; ?>"><?php echo lang('order_status_' . $row->_status); ?></font></li>
                         <li><span><?php echo lang('into_money'); ?>:</span> <font class="red f15"><?php echo $row->_amount; ?></font></li>
+
                     </ul>
 
                     <div class='action'>
-                        <?php if ($info->_status != 'completed'): ?>
-                            <a href="<?php echo $info->_url_active_transaction; ?>" class="button blueB mr5">
-                                <span>Hoàn tất giao dịch</span>
-                            </a>
-                        <?php else: ?>
-                            <a href="<?php echo $row->_url_cancel; ?>"  class="button redB mr5">
-                                <span>Hủy bỏ giao dịch</span>
+                        <?php if ($row->_can_active): ?>
+                            <a href="<?php echo $row->_url_active; ?>" class="button blueB mr5">
+                                <span><?php echo lang('active').' gửi hàng'; ?></span>
                             </a>
                         <?php endif; ?>
+
+                        <?php if ($row->_can_cancel): ?>
+                            <a href="<?php echo $row->_url_cancel; ?>"  class="button redB mr5"><span>
+                                    <?php echo lang('cancel'); ?></span></a>
+                        <?php endif; ?>
+
                     </div>
                 </div>
             </div>

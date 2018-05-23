@@ -1,4 +1,4 @@
-<div class="sliderhome7"  id="sliderhome7" style="margin-bottom: 40px;">
+<div class="sliderhome7"  id="sliderhome7" style="margin-bottom: 30px;">
     <div class="wrap-item">
         <?php foreach ($slide_list as $row): ?>
             <div class="item" style="width: 100%">
