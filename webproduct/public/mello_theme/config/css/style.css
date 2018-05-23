@@ -1,0 +1,149 @@
+.catalog-sub {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    z-index: 111;
+    width: 100%;
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 5px 0 0 #ccc;
+    background-color: #54575F;
+}
+
+.catalog-sub li {
+    padding-left: 0 !important;
+}
+
+.catalog-sub li:hover a{
+    color: #42f49b !important;
+}
+
+.catalog-main-li:hover .catalog-sub {
+    display: inline-block;
+}
+
+.catalog-sub li::before {
+    display: none !important;
+}
+
+.catalog-sub li::after {
+    display: none;   
+}
+
+.catalog-main li {
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+
+.catalog-main a {
+    border-bottom: none !important;
+}
+
+.catalog-main-li:last-child {
+    border-bottom: 1px solid #ccc !important;
+}
+
+.home07 .price-box .regular-price .price {
+    font-size: 110.42% !important;
+}
+.home07 #box-content .block-layout.block-tab .title > a {
+    width: 30% !important;
+}
+
+#gototop {
+    border: 1px solid #ccc !important;
+    cursor: pointer !important;
+}
+
+.home07 #box-content .block-layout.block-tab .title ul {
+    width: 70% !important;
+}
+
+.btn-view-all a {
+    line-height: 40px;
+    width: 100%;
+    color: #fff;
+    text-transform: capitalize;
+}
+
+.btn-view-all:before {
+    position: absolute;
+    content: "\f105";
+    font-size: 30px;
+    top: 0;
+    right: 15px;
+    font-family: FontAwesome;
+    color: #fff;
+}
+
+.btn-view-all {
+    margin-top: 20px;
+    background: #4e5159;
+    float: right;
+    padding-left: 20px;
+    padding-right: 40px;
+    position: relative;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.slick-slide {
+    height: auto !important;
+}
+
+#sliderhome7 .slick-arrow {
+    display: none;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 35%;
+    border: none;
+    font-size: 26px;
+    background: none;
+}
+
+.home07 #box-content .box-vertical-menu .title .subtitle {
+    font-size: 100%;
+}
+
+.carousel-prev-button {
+    left: 0;
+}
+
+.carousel-next-button {
+    right: 0;
+}
+
+#bestseller .panel-collapse {
+    display: none;
+}
+
+#bestseller .active~.panel-collapse {
+    display: block !important;
+    z-index: 99999;
+}
+
+.ui-autocomplete {
+    top: 10% !important;
+    left: 60% !important;   
+}
+
+.home07 .box-header-02 .box-cart .cart-mini .block-content {
+    width: 330px;   
+}
+
+.pagination a {
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.pagination strong {
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    padding: 5px;
+    background-color: #42f49b;
+    color: #fff;
+}
