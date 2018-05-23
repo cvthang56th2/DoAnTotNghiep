@@ -39,7 +39,7 @@
                     </style>
                     <div class="box-center"> 
                         <div>
-                            <h2>Lịch sử giao dịch</h2>
+                            <h2><i class="fas fa-history"  style="color: #F7A922; font-size: 30px;"></i> Lịch sử giao dịch</h2>
                             <hr />
                         </div>
                         <div class="box-content-center product">

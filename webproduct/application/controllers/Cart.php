@@ -37,6 +37,8 @@ Class Cart extends MY_Controller
         $data['price'] = $price;
         $this->cart->insert($data);
         
+        $this->session->set_flashdata('message_type', 'success');
+        $this->session->set_flashdata('message', 'Thêm vào giỏ hành thành công!');
         //chuyen sang trang danh sach san pham trong gio hang
         redirect(base_url('cart'));
     }
@@ -75,6 +77,8 @@ Class Cart extends MY_Controller
             $this->cart->update($data);
         }
         
+        $this->session->set_flashdata('message_type', 'success');
+        $this->session->set_flashdata('message', 'Cập nhật giỏ hành thành công!');
         //chuyen sang trang danh sach san pham trong gio hang
         redirect(base_url('cart'));
     }
@@ -107,6 +111,8 @@ Class Cart extends MY_Controller
             $this->cart->destroy();
         }
         
+        $this->session->set_flashdata('message_type', 'success');
+        $this->session->set_flashdata('message', 'Xóa thành công!');
         //chuyen sang trang danh sach san pham trong gio hang
         redirect(base_url('cart'));
     }

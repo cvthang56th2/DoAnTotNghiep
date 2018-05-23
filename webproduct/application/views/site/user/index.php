@@ -39,11 +39,11 @@
                     </style>
                     <div class="box-center"> 
                         <div>
-                            <h2>Thông tin thành viên</h2>
+                            <h2><i class="fas fa-info-circle" style="color: #0092ef; font-size: 30px;"></i> Thông tin thành viên</h2>
                             <hr />
                         </div>
                         <div class="box-content-center product">
-                            <table style="width: 100%">
+                            <table style="width: 100%" class="table table-hover">
                                 <tr>
                                     <td><strong>Họ tên</strong></td>
                                     <td><?php echo $user->name ?></td>

@@ -8,10 +8,11 @@
                     <style>table#cart_ccontents td{padding:10px;border:1px solid #ccc}</style>
 
                     <div class="box-center"><!-- The box-center product-->
-                        <div class="tittle-box-center">
+                        <div class="tittle-box-center" style="display: flex; flex-wrap: wrap;">
+                            <img width="10%" src="<?php echo public_url('site/images/' . 'cart_1.png'); ?>" />
                             <h2>Thông tin giỏ hàng (Có <?php echo $total_items ?> sản phẩm)</h2>
-                            <hr />
                         </div>
+                        <hr />
                         <div class="box-content-center product"><!-- The box-content-center -->
                             <?php if ($total_items > 0): ?>
                                 <form action="<?php echo base_url('cart/update') ?>" method="post">

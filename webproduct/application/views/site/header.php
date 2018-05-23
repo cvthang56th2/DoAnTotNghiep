@@ -325,7 +325,7 @@
                                                 <?php foreach ($carts as $i => $row): ?>
                                                     <?php $total_amount = $total_amount + $row['subtotal']; ?>
                                                     <li class="item row">
-                                                        <a href="#" title="<?php echo $row['name']; ?>" class="product-image" style="width: 40%">
+                                                        <a href="<?php echo base_url('product/view/' . $row['id']) ?>" title="<?php echo $row['name']; ?>" class="product-image" style="width: 40%">
                                                             <img width="100%" src="<?php echo base_url('upload/product/' . $row['image_link']) ?>" alt="<?php echo $row['name']; ?>">
                                                         </a>
                                                         <a href="<?php echo base_url('cart/del/' . $row['id']) ?>" class="btn-remove">Remove This Item</a>
