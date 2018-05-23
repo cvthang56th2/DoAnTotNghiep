@@ -29,6 +29,11 @@
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                 <strong>Success!</strong> <?php echo $message ?>
                             </div>
+                        <?php elseif ($message_type == 'danger'): ?>
+                            <div class="alert alert-danger alert-dismissible">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong>Danger!</strong> <?php echo $message ?>
+                            </div>
                         <?php endif; ?>
                     <?php endif; ?>
                     <?php $this->load->view($temp, $this->data); ?>

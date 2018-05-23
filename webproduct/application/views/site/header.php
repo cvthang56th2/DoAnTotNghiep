@@ -32,6 +32,7 @@
                                         <div class="content">
                                             <ul class="left">
                                                 <li><a href="<?php echo site_url('user') ?>" class="top-link-myaccount">Thông tin tài khoản</a></li>
+                                                <li><a href="<?php echo site_url('user/order_history') ?>" class="top-link-myaccount">Lịch sử giao dịch</a></li>
                                                 <li><a href="<?php echo site_url('order/checkout') ?>" class="top-link-checkout">Thanh toán</a></li>
                                                 <li><a href="<?php echo site_url('user/logout') ?>" class="top-link-login">Thoát</a></li>
                                             </ul>

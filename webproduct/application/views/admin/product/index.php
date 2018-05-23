@@ -63,6 +63,7 @@
                     <td style="width:60px;">Mã số</td>
                     <td>Tên</td>
                     <td>Giá</td>
+                    <td>Số lượng còn lại</td>
                     <td>Đã bán</td>
                     <td style="width:75px;">Ngày tạo</td>
                     <td style="width:120px;">Hành động</td>
@@ -118,7 +119,11 @@
                             <?php endif; ?>   				
                         </td>
                         
-                         <td class="textC"><?php echo $row->buyed; ?></td>
+                        <td class="textC">
+                            <?php echo $row->available_quantity; ?>
+                        </td>
+
+                        <td class="textC"><?php echo $row->buyed; ?></td>
 
                         <td class="textC"><?php echo get_date($row->created) ?></td>
 

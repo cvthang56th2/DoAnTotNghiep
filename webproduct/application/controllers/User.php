@@ -51,12 +51,22 @@ Class User extends MY_Controller {
                 $password = $this->input->post('password');
                 $password = md5($password);
 
+                //lay ten file anh minh hoa duoc update len
+                $this->load->library('upload_library');
+                $upload_path = './upload/user';
+                $upload_data = $this->upload_library->upload($upload_path, 'image');
+                $image_link = '';
+                if (isset($upload_data['file_name'])) {
+                    $image_link = $upload_data['file_name'];
+                }
+
                 $data = array(
                     'name' => $this->input->post('name'),
                     'email' => $this->input->post('email'),
                     'phone' => $this->input->post('phone'),
                     'address' => $this->input->post('address'),
                     'password' => $password,
+                    'image_link' => $image_link,
                     'created' => now(),
                 );
                 if ($this->user_model->create($data)) {
@@ -97,7 +107,7 @@ Class User extends MY_Controller {
                 $user = $this->_get_user_info();
                 //gắn session id của thành viên đã đăng nhập
                 $this->session->set_userdata('user_id_login', $user->id);
-
+                $this->session->set_flashdata('message_type', 'success');
                 $this->session->set_flashdata('message', 'Đăng nhập thành công');
                 redirect();
             }
@@ -117,7 +127,8 @@ Class User extends MY_Controller {
         if ($user) {
             return true;
         }
-        $this->form_validation->set_message(__FUNCTION__, 'Không đăng nhập thành công');
+        $this->session->set_flashdata('message_type', 'danger');
+        $this->form_validation->set_message(__FUNCTION__, 'Đăng nhập không thành công');
         return false;
     }
 
@@ -170,12 +181,25 @@ Class User extends MY_Controller {
 
             //nhập liệu chính xác
             if ($this->form_validation->run()) {
+                //lay ten file anh minh hoa duoc update len
+                $this->load->library('upload_library');
+                $upload_path = './upload/user';
+                $upload_data = $this->upload_library->upload($upload_path, 'image');
+                $image_link = '';
+                if (isset($upload_data['file_name'])) {
+                    $image_link = $upload_data['file_name'];
+                }
                 //them vao csdl
                 $data = array(
                     'name' => $this->input->post('name'),
                     'phone' => $this->input->post('phone'),
                     'address' => $this->input->post('address'),
                 );
+
+                if ($image_link != '') {
+                    $data['image_link'] = $image_link;
+                }
+
                 if ($password) {
                     $data['password'] = md5($password);
                 }

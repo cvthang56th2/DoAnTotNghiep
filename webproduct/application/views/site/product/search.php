@@ -1,43 +1,73 @@
+<div class="content">
+    <div class="breadcrumbs">    
+        <div class="container">
+            <div class="row">
+                <ul>
+                    <li class="home">
+                        <a href="<?php echo base_url(''); ?>" title="Go to Home Page">Trang chủ</a>
+                        <span>|</span>
+                    </li>
+                    <li class="category3">
+                        <strong>Tìm kiếm</strong>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="row">
+                <?php $this->load->view('site/left_catalog'); ?>
+                <div id="main" class="col-lg-9 col-md-9 col-sm-8 col-xs-12 col-main">
+                    <div class="tittle-box-center">
+                        <h2>Kết quả tìm kiếm với từ khóa "<?php echo $key ?>" (Có <?php echo count($list); ?> sản phẩm)</h2>
+                        <hr />
+                    </div>
+                    <div class="wrap-banner-cate">
+                        <a class="cate-img" href="#"><img src="<?php echo public_url(); ?>/mello_theme/images/banner-2.png" alt=""></a>
+                    </div>
+                    <div class="page-title category-title">
+                        <h1></h1>
+                    </div>
+                    <div id="catalog-listing">
+                        <div class="category-products page-product-list">
+                            <div class="toolbar-top">
+                                <div class="toolbar">
 
-<div class="box-center"><!-- The box-center product-->
-             <div class="tittle-box-center">
-		        <h2>Kết quả tìm kiếm với từ khóa "<?php echo $key?>"</h2>
-		      </div>
-		      <div class="box-content-center product"><!-- The box-content-center -->
-		            <?php foreach ($list as $row):?>
-		            <div class="product_item">
-                       <h3>
-                         <a title="<?php echo $row->name?>" href="<?php echo base_url('product/view/'.$row->id)?>">
-                              <?php echo $row->name?>	                    
-                          </a>
-	                   </h3>
-                       <div class="product_img">
-                             <a title="<?php echo $row->name?>" href="<?php echo base_url('product/view/'.$row->id)?>">
-                                <img alt="<?php echo $row->name?>" src="<?php echo base_url('upload/product/'.$row->image_link)?>">
-                            </a>
-                       </div>
-          
-                       <p class="price">
-                              <?php if($row->discount > 0):?>
-                              <?php $price_new = $row->price - $row->discount;?>
-                              <?php echo number_format($price_new)?> đ <span class="price_old"><?php echo number_format($row->price)?> đ</span>
-				              <?php else:?>
-				                <?php echo number_format($row->price)?> đ
-				              <?php endif;?>
-		                 </p>
-		                 
-                        <center>
-                           <div class='raty' style='margin:10px 0px' id='<?php echo $row->id?>' data-score='<?php echo  ($row->rate_count > 0) ? $row->rate_total/$row->rate_count : 0?>'></div>
-                        </center>
-                        
-                       <div class="action">
-                           <p style="float:left;margin-left:10px">Lượt xem: <b><?php echo $row->view?></b></p>
-	                       <a title="Chi tiết" href="<?php echo base_url('product/view/'.$row->id)?>" class="button">Chi tiết</a>
-	                       <div class="clear"></div>
-                       </div>
-                   </div>
-                   <?php endforeach;?>
-		            <div class="clear"></div>
-		      </div><!-- End box-content-center -->
-		    
+
+                                </div>
+                            </div>
+                            <ul class="products-grid row">
+                                <?php foreach ($list as $row): ?>
+                                    <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12 item">
+                                        <div class="item-wrap">
+                                            <div class="item-image">
+                                                <a class="product-image" href="<?php echo base_url('product/view/' . $row->id) ?>" title="<?php echo $row->name; ?>">
+                                                    <img width="100%" class="first_image img-responsive" src="<?php echo base_url('upload/product/' . $row->image_link) ?>" alt="<?php echo $row->name; ?>"> 
+                                                </a>
+
+                                            </div>
+                                            <div class="pro-info">
+                                                <div class="pro-inner">
+                                                    <div class="product-name"><a href="<?php echo base_url('product/view/' . $row->id) ?>"><?php echo $row->name; ?></a></div>
+                                                    <div class="pro-content">
+                                                        <center>
+                                                            <div class='raty' style='margin:10px 0px' id='<?php echo $row->id ?>' data-score='<?php echo ($row->rate_count > 0) ? $row->rate_total / $row->rate_count : 0 ?>'></div>
+                                                        </center>
+                                                    </div>
+                                                    <p style="text-align: center;">Lượt mua: <b><?php echo $row->buyed ?></b></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end item wrap -->
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>		
 </div>

@@ -62,9 +62,7 @@
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
-                            <div class="pagination">
-                                <?php echo $this->pagination->create_links() ?>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>
