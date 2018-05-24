@@ -3,61 +3,64 @@
     <div class="container">
         <div class="row">
             <div class="row">
-
-
                 <div class="box-center col-lg-9 col-md-9 col-sm-12 col-xs-12">
                     <div class="block-layout" style="margin-top: 0"><!-- The box-center news-->
                         <div class="box-content-center news"><!-- The box-content-center -->
 
-                            <div class="tittle-box-center">
-                                <h1>Liên hệ</h1>
-                                <hr />
+                            <div class="tittle-box-center" style="display: flex; flex-wrap: wrap;">
+                                <img width="20%" src="<?php echo public_url('site/images/' . 'contact.png'); ?>" />
+                                <h2>Liên hệ</h2>
                             </div>
+                            <hr />
                             <div class="box-content-center contact"><!-- The box-content-center -->
-                                <form class="t-form form_action" method="POST" action="">
-                                    <div class="form-group">
-                                        <label for="param_email" class="form-label">Email:<span class="req">*</span></label>
-                                        <input type="text" class="form-control" id="email" name="email" value="<?php echo set_value('email') ?>">
-                                        <div class="error" id="email_error"><?php echo form_error('email') ?></div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="param_name" class="form-label">Họ và tên:<span class="req">*</span></label>
-                                            <input type="text" class="form-control" id="name" name="name" value="<?php echo set_value('name') ?>">
-                                            <div class="error" id="name_error"><?php echo form_error('name') ?></div>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="param_phone" class="form-label">Số điện thoại:<span class="req">*</span></label>
-                                            <input type="text" class="form-control" id="phone" name="phone" value="<?php echo set_value('phone') ?>">
-                                            <div class="error" id="phone_error"><?php echo form_error('phone') ?></div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="param_address" class="form-label">Địa chỉ:<span class="req">*</span></label>
-                                        <textarea  class="form-control" id="address" name="address"><?php echo set_value('address') ?></textarea>
-                                        <div class="error" id="address_error"><?php echo form_error('address') ?></div>
-                                    </div>
+                                <div style="display: flex; justify-content: center;">
+                                    <div style="width: 80%;border: 1px solid #ccc; border-radius: 10px; padding: 20px;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                        <form class="t-form form_action" method="POST" action="">
+                                            <div class="form-group">
+                                                <label for="param_email" class="form-label">Email:<span class="req">*</span></label>
+                                                <input type="text" class="form-control" id="email" name="email" value="<?php echo set_value('email') ?>">
+                                                <div class="error" id="email_error"><?php echo form_error('email') ?></div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="param_name" class="form-label">Họ và tên:<span class="req">*</span></label>
+                                                    <input type="text" class="form-control" id="name" name="name" value="<?php echo set_value('name') ?>">
+                                                    <div class="error" id="name_error"><?php echo form_error('name') ?></div>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="param_phone" class="form-label">Số điện thoại:<span class="req">*</span></label>
+                                                    <input type="text" class="form-control" id="phone" name="phone" value="<?php echo set_value('phone') ?>">
+                                                    <div class="error" id="phone_error"><?php echo form_error('phone') ?></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="param_address" class="form-label">Địa chỉ:<span class="req">*</span></label>
+                                                <textarea  class="form-control" id="address" name="address"><?php echo set_value('address') ?></textarea>
+                                                <div class="error" id="address_error"><?php echo form_error('address') ?></div>
+                                            </div>
 
 
-                                    <div class="form-group">
-                                        <label for="param_title" class="form-label">Tiêu đề liên hệ:<span class="req">*</span></label>
-                                        <input type="text" class="form-control" id="title" name="title" value="<?php echo set_value('title') ?>">
-                                        <div class="error" id="title_error"><?php echo form_error('title') ?></div>
-                                    </div>
+                                            <div class="form-group">
+                                                <label for="param_title" class="form-label">Tiêu đề liên hệ:<span class="req">*</span></label>
+                                                <input type="text" class="form-control" id="title" name="title" value="<?php echo set_value('title') ?>">
+                                                <div class="error" id="title_error"><?php echo form_error('title') ?></div>
+                                            </div>
 
-                                    <div class="form-group">
-                                        <label for="param_address" class="form-label">Nội dung liên hệ:<span class="req">*</span></label>
-                                        <textarea  class="form-control" id="content" name="content"><?php echo set_value('content') ?></textarea>
-                                        <div class="error" id="content_error"><?php echo form_error('content') ?></div>
-                                    </div>
+                                            <div class="form-group">
+                                                <label for="param_address" class="form-label">Nội dung liên hệ:<span class="req">*</span></label>
+                                                <textarea  class="form-control" id="content" name="content"><?php echo set_value('content') ?></textarea>
+                                                <div class="error" id="content_error"><?php echo form_error('content') ?></div>
+                                            </div>
 
 
-                                    <div class="form-group">
-                                        <label class="form-label">&nbsp;</label>
-                                        <input type="submit" class="btn-primary" value="Liên hệ" name='submit'>
-                                        <div class="load"></div>
+                                            <div class="form-group">
+                                                <label class="form-label">&nbsp;</label>
+                                                <input type="submit" class="btn-primary" value="Liên hệ" name='submit'>
+                                                <div class="load"></div>
+                                            </div>
+                                        </form>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>	

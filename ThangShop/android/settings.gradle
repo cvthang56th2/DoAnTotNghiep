@@ -1,0 +1,3 @@
+rootProject.name = 'ThangShop'
+
+include ':app'

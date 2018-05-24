@@ -9,10 +9,10 @@
     });
 </script>
 
-<div id="box-header navbar navbar-fixed-top">
+<div id="box-header">
     <div class="header-container">
         <div class="header">
-            <div class="box-header-01 fixed">
+            <div class="box-header-01">
                 <div class="container">
                     <div class="row">
                         <div class="row">

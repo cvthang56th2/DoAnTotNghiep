@@ -190,6 +190,10 @@ table thead th {
     flex-wrap: wrap;
 }
 
+#upsell_pro.products-grid {
+    display: block;
+}
+
 .products-grid .item .item-wrap .item-image::before {
     display: none;
 }
