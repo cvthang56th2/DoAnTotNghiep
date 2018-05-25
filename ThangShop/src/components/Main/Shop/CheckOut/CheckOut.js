@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TextInput, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import backList from '../../../../media/appIcon/backList.png';
+
 export default class SignIn extends Component {
     constructor(props) {
         super(props);
@@ -11,47 +13,87 @@ export default class SignIn extends Component {
         };
     }
 
+    async onSendOrder() {
+        try {
+            const token = await getToken();
+            const arrayDetail = this.props.cartArray.map(e => ({
+                id: e.product.id,
+                quantity: e.quantity
+            }));
+            const kq = await sendOrder(token, arrayDetail);
+            if (kq === 'THEM_THANH_CONG') {
+                Alert.alert(
+                    'Notice',
+                    'Send order Successfully',
+                    [
+                        { text: 'OK' }
+                    ],
+                    { cancelable: false }
+                );
+                this.removeAllProduct();
+            } else {
+                console.log('THEM THAT BAI', kq);
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }
+    goBack() {
+        const { navigator } = this.props;
+        navigator.pop();
+    }
 
     render() {
-        const { inputStyle, bigButton, buttonText, wrapper } = styles;
+        const { inputStyle, bigButton, buttonText, wrapper, header, backStyle } = styles;
         const { email, address, name, phone } = this.state;
         return (
             <View style={wrapper}>
-                <View style={{ alignItems: 'center', marginBottom: 20 }}>
-                    <Text style={{ color: '#fff', fontSize: 20}}>CHECK OUT</Text>
-                </View>
-                <TextInput
-                    style={inputStyle}
-                    placeholder="Enter your name"
-                    value={name}
-                    onChangeText={text => this.setState({ name: text })}
-                    underlineColorAndroid="transparent"
-                />
-                <TextInput
-                    style={inputStyle}
-                    placeholder="Enter your email"
-                    value={email}
-                    onChangeText={text => this.setState({ email: text })}
-                    underlineColorAndroid="transparent"
-                />
-                <TextInput
-                    style={inputStyle}
-                    placeholder="Enter your address"
-                    value={address}
-                    onChangeText={text => this.setState({ address: text })}
-                    underlineColorAndroid="transparent"
-                />
-                <TextInput
-                    style={inputStyle}
-                    placeholder="Enter your phone number"
-                    value={phone}
-                    onChangeText={text => this.setState({ phone: text })}
-                    secureTextEntry
-                    underlineColorAndroid="transparent"
-                />
-                <TouchableOpacity style={bigButton}>
-                    <Text style={buttonText}>SEND ORDER NOW</Text>
+                <TouchableOpacity onPress={this.goBack.bind(this)}>
+                    <View style={{ flexDirection: 'row' }}>
+
+                        <Image source={backList} style={backStyle} />
+                        <Text style={{ color: '#fff', fontSize: 20 }}>BACK TO CART</Text>
+                    </View>
+
                 </TouchableOpacity>
+                <View>
+
+                    <View style={{ alignItems: 'center', marginBottom: 20 }}>
+                        <Text style={{ color: '#fff', fontSize: 20 }}>CHECK OUT</Text>
+                    </View>
+                    <TextInput
+                        style={inputStyle}
+                        placeholder="Enter your name"
+                        value={name}
+                        onChangeText={text => this.setState({ name: text })}
+                        underlineColorAndroid="transparent"
+                    />
+                    <TextInput
+                        style={inputStyle}
+                        placeholder="Enter your email"
+                        value={email}
+                        onChangeText={text => this.setState({ email: text })}
+                        underlineColorAndroid="transparent"
+                    />
+                    <TextInput
+                        style={inputStyle}
+                        placeholder="Enter your address"
+                        value={address}
+                        onChangeText={text => this.setState({ address: text })}
+                        underlineColorAndroid="transparent"
+                    />
+                    <TextInput
+                        style={inputStyle}
+                        placeholder="Enter your phone number"
+                        value={phone}
+                        onChangeText={text => this.setState({ phone: text })}
+                        secureTextEntry
+                        underlineColorAndroid="transparent"
+                    />
+                    <TouchableOpacity style={bigButton}>
+                        <Text style={buttonText}>SEND ORDER NOW</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }
@@ -59,10 +101,8 @@ export default class SignIn extends Component {
 
 const styles = StyleSheet.create({
     wrapper: {
-        flex: 1,
         backgroundColor: '#3EBA77',
-        padding: 20,
-        justifyContent: 'center'
+        height: '100%'
     },
     inputStyle: {
         height: 50,
@@ -83,5 +123,16 @@ const styles = StyleSheet.create({
         fontFamily: 'Avenir',
         color: '#fff',
         fontWeight: '400'
-    }
+    },
+    backStyle: {
+        width: 30,
+        height: 30
+    },
+    header: {
+        height: 50,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: 5
+    },
 });

@@ -33,7 +33,7 @@ export default class Header extends Component {
                     <TouchableOpacity onPress={this.props.onOpen}>
                         <Image source={icMenu} style={iconStyle} />
                     </TouchableOpacity>
-                    <Text style={titleStyle}>Wearing a Dress</Text>
+                    <Text style={titleStyle}>Thắng Shop</Text>
                     <Image source={icLogo} style={iconStyle} />
                 </View>
                 <TextInput 

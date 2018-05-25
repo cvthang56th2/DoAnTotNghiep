@@ -1,7 +1,7 @@
 const sendOrder = (token, arrayDetail) => {
     const data = { token, arrayDetail };
     console.log(data);
-    return fetch('http://192.168.26.117/api/cart.php',
+    return fetch('http://192.168.26.116/api/cart.php',
     {   
         method: 'POST',
         headers: {

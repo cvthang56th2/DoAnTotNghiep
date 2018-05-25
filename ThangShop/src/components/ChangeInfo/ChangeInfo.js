@@ -14,7 +14,9 @@ export default class ChangeInfo extends Component {
         this.state = {
             txtName: name,
             txtAddress: address,
-            txtPhone: phone
+            txtPhone: phone,
+            txtPassword: '',
+            txtRePassword: ''
         };
     }
     goBackToMain() {
@@ -84,6 +86,25 @@ export default class ChangeInfo extends Component {
                         onChangeText={text => this.setState({ ...this.state, txtPhone: text })}
                         underlineColorAndroid="transparent"
                     />
+
+                     {/* <TextInput
+                        style={textInput}
+                        placeholder="Điền mật nếu muốn thay đổi"
+                        autoCapitalize="none"
+                        value={txtPhone}
+                        onChangeText={text => this.setState({ ...this.state, txtPassword: text })}
+                        underlineColorAndroid="transparent"
+                    />
+
+                     <TextInput
+                        style={textInput}
+                        placeholder="Điền lại mật khẩu"
+                        autoCapitalize="none"
+                        value={txtPhone}
+                        onChangeText={text => this.setState({ ...this.state, txtRePassword: text })}
+                        underlineColorAndroid="transparent"
+                    /> */}
+
                     <TouchableOpacity style={signInContainer} onPress={this.change.bind(this)}>
                         <Text style={signInTextStyle}>CHANGE YOUR INFOMATION</Text>
                     </TouchableOpacity>

@@ -7,6 +7,12 @@ import ChangeInfo from './ChangeInfo/ChangeInfo';
 import Main from './Main/Main';
 import OrderHistory from './OrderHistory/OrderHistory';
 import refreshToken from '../api/refreshToken';
+// RN >= 0.52
+import {YellowBox} from 'react-native';
+YellowBox.ignoreWarnings(['Warning: ReactNative.createElement']);
+
+// RN < 0.52
+console.disableYellowBox = true;
 
 StatusBar.setHidden(true);
 

@@ -9,7 +9,9 @@ export default class SignUp extends Component {
             name: '',
             email: '',
             password: '',
-            rePassword: ''
+            rePassword: '',
+            address: '',
+            phone: ''
         };
     }
 
@@ -40,8 +42,8 @@ export default class SignUp extends Component {
     }
 
     registerUser() {
-        const { name, email, password } = this.state;
-        register(email, name, password)
+        const { name, email, password, address, phone } = this.state;
+        register(email, name, password, address, phone)
         .then(res => {
             if (res === 'THANH_CONG') return this.onSuccess();
             this.onFail();
@@ -64,6 +66,21 @@ export default class SignUp extends Component {
                     placeholder="Enter your email" 
                     value={this.state.email}
                     onChangeText={text => this.setState({ email: text })}
+                    underlineColorAndroid="transparent" 
+                />
+                <TextInput 
+                    style={inputStyle} 
+                    placeholder="Enter your address" 
+                    value={this.state.address}
+                    onChangeText={text => this.setState({ address: text })}
+                    underlineColorAndroid="transparent" 
+                />
+                
+                <TextInput 
+                    style={inputStyle} 
+                    placeholder="Enter your phone" 
+                    value={this.state.phone}
+                    onChangeText={text => this.setState({ phone: text })}
                     underlineColorAndroid="transparent" 
                 />
                 <TextInput 

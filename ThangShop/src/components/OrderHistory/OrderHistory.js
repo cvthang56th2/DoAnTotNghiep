@@ -44,15 +44,15 @@ export default class OrderHistory extends Component {
                                 </View>
                                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ color: '#9A9A9A', fontWeight: 'bold' }}>OrderTime:</Text>
-                                    <Text style={{ color: '#C21C70' }}>{e.date_order}</Text>
+                                    <Text style={{ color: '#C21C70' }}>{e.created}</Text>
                                 </View>
                                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ color: '#9A9A9A', fontWeight: 'bold' }}>Status:</Text>
-                                    <Text style={{ color: '#2ABB9C' }}>{e.status ? 'Completed' : 'Pending'}</Text>
+                                    <Text style={{ color: '#2ABB9C' }}>{e.status == 1? 'Thành công' : e.status==0? 'Đang xử lý' : 'Thất bại'}</Text>
                                 </View>
                                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{ color: '#9A9A9A', fontWeight: 'bold' }}>Total:</Text>
-                                    <Text style={{ color: '#C21C70', fontWeight: 'bold' }}>{e.total}$</Text>
+                                    <Text style={{ color: '#C21C70', fontWeight: 'bold' }}>{e.amount} đ</Text>
                                 </View>
                             </View>
                         )) }

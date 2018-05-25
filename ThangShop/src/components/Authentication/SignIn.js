@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TextInput, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import signIn from '../../api/signIn';
 import global from '../global';
 
@@ -22,7 +22,16 @@ export default class SignIn extends Component {
                 this.props.goBackToMain();
                 saveToken(res.token);
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                Alert.alert(
+                    'Đăng nhập lỗi!',
+                    'Vui lòng kiểm tra lại thông tin đăng nhập',
+                    [
+                        { text: 'OK' }
+                    ],
+                    { cancelable: false }
+                );
+            });
     }
 
     render() {

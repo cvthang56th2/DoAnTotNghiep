@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import { 
-    View, Text, StyleSheet, Image, Dimensions, ScrollView, TouchableOpacity 
+import {
+    View, Text, StyleSheet, Image, Dimensions, ScrollView, TouchableOpacity
 } from 'react-native';
+import HTML from 'react-native-render-html';
+
 import global from '../../../global';
 
 const back = require('../../../../media/appIcon/back.png');
 const cart = require('../../../../media/appIcon/cartfull.png');
 
-const url = 'http://192.168.26.117/api/images/product/';
+const url = 'http://192.168.26.116/DoAnTotNghiep/webproduct/upload/product/';
 
 export default class ProductDetail extends Component {
     goBack() {
@@ -26,7 +28,16 @@ export default class ProductDetail extends Component {
             textSmoke, textHighlight, textMain, titleContainer,
             descContainer, productImageStyle, descStyle, txtMaterial, txtColor
         } = styles;
-        const { name, price, color, material, description, images } = this.props.product;
+        const { name, price, content, image_link, image_list } = this.props.product;
+        var imageList;
+        if (image_list == "")
+            imageList = [];
+        else imageList = JSON.parse(image_list);
+        const imageListJSX = (
+            imageList.map(e => (
+                <Image source={{ uri: `${url}${e}` }} style={productImageStyle} />
+            ))
+        );
         return (
             <View style={wrapper}>
                 <View style={cardStyle}>
@@ -40,8 +51,10 @@ export default class ProductDetail extends Component {
                     </View>
                     <View style={imageContainer}>
                         <ScrollView style={{ flexDirection: 'row', padding: 10, height: swiperHeight }} horizontal >
-                            <Image source={{ uri: `${url}${images[0]}` }} style={productImageStyle} />
-                            <Image source={{ uri: `${url}${images[1]}` }} style={productImageStyle} />
+                            <Image source={{ uri: `${url}${image_link}` }} style={productImageStyle} />
+                            {
+                                imageList ? imageListJSX : null
+                            }
                         </ScrollView>
                     </View>
                     <View style={footer}>
@@ -49,18 +62,12 @@ export default class ProductDetail extends Component {
                             <Text style={textMain}>
                                 <Text style={textBlack}>{name.toUpperCase()}</Text>
                                 <Text style={textHighlight}> / </Text>
-                                <Text style={textSmoke}>{price}$</Text>
+                                <Text style={textSmoke}>{price} đ</Text>
                             </Text>
                         </View>
                         <View style={descContainer}>
-                            <Text style={descStyle}>{description}</Text>
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 15 }}>
-                                <Text style={txtMaterial}>Material {material}</Text>
-                                <View style={{ flexDirection: 'row' }} >
-                                    <Text style={txtColor}>Color {color}</Text>
-                                    <View style={{ height: 15, width: 15, backgroundColor: color.toLowerCase(), borderRadius: 15, marginLeft: 10, borderWidth: 1, borderColor: '#C21C70' }} />
-                                </View>
-                            </View>
+                            <HTML html={content ? content : "Chưa có bài viết"} style={descStyle}></HTML>
+
                         </View>
                     </View>
                 </View>

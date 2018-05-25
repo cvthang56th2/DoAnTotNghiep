@@ -7,6 +7,8 @@ import global from '../global';
 import profileIcon from '../../media/temp/profile.png';
 import saveToken from '../../api/saveToken';
 
+const url = 'http://192.168.26.116/DoAnTotNghiep/webproduct/upload/user/';
+
 class Menu extends Component {
     constructor(props) {
         super(props);
@@ -66,9 +68,12 @@ class Menu extends Component {
             </View>
         );
         const mainJSX = this.state.user ? loginJSX : logoutJSX;
+        
         return (
             <View style={container}>
-                <Image source={profileIcon} style={profile} />
+                {
+                    user ? <Image source={{ uri: `${url}${user.image_link}` }} style={profile} /> : <Image source={profileIcon} style={profile} />
+                }
                 { mainJSX }
             </View>
         );

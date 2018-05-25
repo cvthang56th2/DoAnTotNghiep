@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import global from '../../../global';
 
-const url = 'http://192.168.26.117/api/images/product/';
+const url = 'http://192.168.26.116/DoAnTotNghiep/webproduct/upload/product/';
 
 function toTitleCase(str) {
     return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
@@ -42,23 +42,11 @@ class SearchView extends Component {
                     dataSource={this.state.listProduct}
                     renderRow={productItem => (
                         <View style={product}>
-                            <Image source={{ uri: `${url}${productItem.images[0]}` }} style={productImage} />
+                            <Image source={{ uri: `${url}${productItem.image_link}` }} style={productImage} />
                             <View style={mainRight}>
                                 <Text style={txtName}>{toTitleCase(productItem.name)}</Text>
-                                <Text style={txtPrice}>{productItem.price}$</Text>
-                                <Text style={txtMaterial}>Material {productItem.material}</Text>
-                                <View style={{ flexDirection: 'row' }} >
-                                    <Text style={txtColor}>Color {productItem.color}</Text>
-                                    <View
-                                        style={{
-                                            height: 15,
-                                            width: 15,
-                                            backgroundColor: 'white',
-                                            borderRadius: 15,
-                                            marginLeft: 10
-                                        }}
-                                    />
-                                </View>
+                                <Text style={txtPrice}>{productItem.price} đ</Text>
+
                                 <TouchableOpacity style={showDetailContainer} onPress={() => this.gotoDetail(productItem)}>
                                     <Text style={txtShowDetail}>SHOW DETAILS</Text>
                                 </TouchableOpacity>

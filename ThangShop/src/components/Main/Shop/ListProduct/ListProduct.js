@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import {
     View, TouchableOpacity,
     Text, StyleSheet, ListView,
-    Image, RefreshControl
+    Image, RefreshControl,
+    Dimensions
 } from 'react-native';
 import getListProduct from '../../../../api/getListProduct';
 
 import backList from '../../../../media/appIcon/backList.png';
 
-const url = 'http://192.168.26.117/api/images/product/';
+const url = 'http://192.168.26.116/DoAnTotNghiep/webproduct/upload/product/';
 function toTitleCase(str) {
     return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 }
@@ -20,19 +21,19 @@ export default class ListProduct extends Component {
         this.state = {
             listProducts: ds,
             refreshing: false,
-            page: 1
+            page: 0
         };
         this.arr = [];
     }
 
     componentDidMount() {
         const idType = this.props.category.id;
-        getListProduct(idType, 1)
-        .then(arrProduct => {
-            this.arr = arrProduct;
-            this.setState({ listProducts: this.state.listProducts.cloneWithRows(this.arr) });
-        })
-        .catch(err => console.log(err));
+        getListProduct(idType, 0)
+            .then(arrProduct => {
+                this.arr = arrProduct;
+                this.setState({ listProducts: this.state.listProducts.cloneWithRows(this.arr) });
+            })
+            .catch(err => console.log(err));
     }
 
     goBack() {
@@ -50,7 +51,7 @@ export default class ListProduct extends Component {
             container, header, wrapper, backStyle, titleStyle,
             productContainer, productImage, productInfo, lastRowInfo,
             txtName, txtPrice, txtMaterial, txtColor, txtShowDetail
-         } = styles;
+        } = styles;
         const { category } = this.props;
         return (
             <View style={container}>
@@ -62,42 +63,37 @@ export default class ListProduct extends Component {
                         <Text style={titleStyle}>{category.name}</Text>
                         <View style={{ width: 30 }} />
                     </View>
-                    <ListView 
+                    <ListView
                         removeClippedSubviews={false}
                         dataSource={this.state.listProducts}
                         renderRow={product => (
                             <View style={productContainer}>
-                                <Image style={productImage} source={{ uri: `${url}${product.images[0]}` }} />
+                                <Image style={productImage} source={{ uri: `${url}${product.image_link}` }} />
                                 <View style={productInfo}>
-                                    <Text style={txtName}>{toTitleCase(product.name)}</Text>
-                                    <Text style={txtPrice}>{product.price}$</Text>
-                                    <Text style={txtMaterial}>Material {product.material}</Text>
-                                    <View style={lastRowInfo}>
-                                        <Text style={txtColor}>Colo {product.color}</Text>
-                                        <View style={{ backgroundColor: product.color.toLowerCase(), height: 16, width: 16, borderRadius: 8 }} />
-                                        <TouchableOpacity onPress={() => this.gotoDetail(product)}>
-                                            <Text style={txtShowDetail}>SHOW DETAILS</Text>
-                                        </TouchableOpacity>
-                                    </View>
+                                    <TouchableOpacity onPress={() => this.gotoDetail(product)}>
+                                        <Text style={txtName}>{toTitleCase(product.name)}</Text>
+                                    </TouchableOpacity>
+                                    <Text style={txtPrice}>{product.price} đ</Text>
                                 </View>
                             </View>
                         )}
                         refreshControl={
-                            <RefreshControl 
+                            <RefreshControl
                                 refreshing={this.state.refreshing}
                                 onRefresh={() => {
                                     this.setState({ refreshing: true });
                                     const newPage = this.state.page + 1;
                                     const idType = this.props.category.id;
                                     getListProduct(idType, newPage)
-                                    .then(arrProduct => {
-                                        this.arr = arrProduct.concat(this.arr);
-                                        this.setState({ 
-                                            listProducts: this.state.listProducts.cloneWithRows(this.arr),
-                                            refreshing: false 
-                                        });
-                                    })
-                                    .catch(err => console.log(err));
+                                        .then(arrProduct => {
+                                            this.arr = arrProduct.concat(this.arr);
+                                            this.setState({
+                                                page: newPage,
+                                                listProducts: this.state.listProducts.cloneWithRows(this.arr),
+                                                refreshing: false
+                                            });
+                                        })
+                                        .catch(err => console.log(err));
                                 }}
                             />
                         }
@@ -107,38 +103,15 @@ export default class ListProduct extends Component {
         );
     }
 }
+const { width } = Dimensions.get('window');
+const imageWidth = width / 4;
+const imageHeight = (imageWidth * 452) / 361;
 
-/*
-    <ScrollView style={wrapper}>
-        <View style={header}>
-            <TouchableOpacity onPress={this.goBack.bind(this)}>
-                <Image source={backList} style={backStyle} />
-            </TouchableOpacity>
-            <Text style={titleStyle}>{category.name}</Text>
-            <View style={{ width: 30 }} />
-        </View>
-        <View style={productContainer}>
-            <Image style={productImage} source={sp1} />
-            <View style={productInfo}>
-                <Text style={txtName}>Lace Sleeve Si</Text>
-                <Text style={txtPrice}>117$</Text>
-                <Text style={txtMaterial}>Material silk</Text>
-                <View style={lastRowInfo}>
-                    <Text style={txtColor}>Colo RoyalBlue</Text>
-                    <View style={{ backgroundColor: 'cyan', height: 16, width: 16, borderRadius: 8 }} />
-                    <TouchableOpacity>
-                        <Text style={txtShowDetail}>SHOW DETAILS</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
-        </View>
-    </ScrollView>
-*/
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#DBDBD8'
+        backgroundColor: '#DBDBD8',
     },
     header: {
         height: 50,
@@ -153,7 +126,9 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 3 },
         shadowOpacity: 0.2,
         margin: 10,
-        paddingHorizontal: 10
+        paddingHorizontal: 10,
+        height: '100%',
+        paddingBottom: 10
     },
     backStyle: {
         width: 30,
@@ -161,12 +136,16 @@ const styles = StyleSheet.create({
     },
     productContainer: {
         flexDirection: 'row',
-        paddingVertical: 15,
-        borderTopColor: '#F0F0F0',
-        borderBottomColor: '#FFF',
-        borderLeftColor: '#FFF',
-        borderRightColor: '#FFF',
-        borderWidth: 1
+        margin: 10,
+        padding: 10,
+        backgroundColor: '#FFFFFF',
+        borderRadius: 2,
+        shadowColor: '#3B5458',
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.2,
+        borderWidth: 0.7,
+        borderColor: '#fda',
+        borderRadius: 4
     },
     titleStyle: {
         fontFamily: 'Avenir',
@@ -174,8 +153,10 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     productImage: {
-        width: 90,
-        height: (90 * 452) / 361
+        width: imageWidth,
+        height: imageHeight,
+        flex: 1,
+        resizeMode: 'center'
     },
     productInfo: {
         justifyContent: 'space-between',

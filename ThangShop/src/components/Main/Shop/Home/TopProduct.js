@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { 
-    View, Text, Image, StyleSheet, Dimensions, TouchableOpacity, ListView 
+import {
+    View, Text, Image, StyleSheet, Dimensions, TouchableOpacity, ListView
 } from 'react-native';
 
-const url = 'http://192.168.26.117/api/images/product/';
+const url = 'http://192.168.26.116/DoAnTotNghiep/webproduct/upload/product/';
 
 export default class TopProduct extends Component {
     gotoDetail(product) {
@@ -11,27 +11,35 @@ export default class TopProduct extends Component {
         navigator.push({ name: 'PRODUCT_DETAIL', product });
     }
     render() {
-        const { 
-            container, titleContainer, title, 
+        const {
+            container, titleContainer, title,
             body, productContainer, productImage,
-            produceName, producePrice 
+            produceName, producePrice
         } = styles;
         const { topProducts } = this.props;
         return (
             <View style={container}>
                 <View style={titleContainer}>
-                    <Text style={title}>TOP PRODUCT</Text>
+                    <Text style={title}>Sản phẩm bán chạy</Text>
                 </View>
-                
-                <ListView 
+
+                <ListView
                     contentContainerStyle={body}
                     enableEmptySections
                     dataSource={new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }).cloneWithRows(topProducts)}
                     renderRow={product => (
                         <TouchableOpacity style={productContainer} onPress={() => this.gotoDetail(product)}>
-                            <Image source={{ uri: `${url}${product.images[0]}` }} style={productImage} />
+                            <View style={{ display: 'flex', alignItems: 'center' }}>
+                                <View style={{
+                                    padding: 10,
+                                    borderColor: '#2E272B',
+                                    borderWidth: 0.5
+                                }}>
+                                    <Image source={{ uri: `${url}${product.image_link}` }} style={productImage} />
+                                </View>
+                            </View>
                             <Text style={produceName}>{product.name.toUpperCase()}</Text>
-                            <Text style={producePrice}>{product.price}$</Text>
+                            <Text style={producePrice}>{product.price} đ</Text>
                         </TouchableOpacity>
                     )}
                     renderSeparator={(sectionId, rowId) => {
@@ -45,8 +53,8 @@ export default class TopProduct extends Component {
 }
 
 const { width } = Dimensions.get('window');
-const produtWidth = (width - 60) / 2;
-const productImageHeight = (produtWidth / 361) * 452; 
+const imageWidth = width / 4;
+const imageHeight = (imageWidth * 300) / 300;
 
 const styles = StyleSheet.create({
     container: {
@@ -75,17 +83,18 @@ const styles = StyleSheet.create({
         paddingBottom: 10
     },
     productContainer: {
-        width: produtWidth,
+        width: '48%',
         shadowColor: '#2E272B',
         shadowOffset: { width: 0, height: 3 },
         shadowOpacity: 0.2,
         borderWidth: 0.7,
         borderColor: '#fda',
-        borderRadius: 4
+        borderRadius: 4,
+        padding: 10
     },
     productImage: {
-        width: produtWidth,
-        height: productImageHeight
+        width: imageWidth,
+        height: imageHeight
     },
     produceName: {
         marginVertical: 5,
@@ -101,18 +110,3 @@ const styles = StyleSheet.create({
         color: '#662F90'
     }
 });
-
-
-// https://github.com/vanpho93/LiveCodeReactNative
-
-/* 
-    <View style={body}>
-        {this.props.topProducts.map(e => (
-                <TouchableOpacity style={productContainer} onPress={() => this.gotoDetail(e)} key={e.id}>
-                <Image source={{ uri: `${url}${e.images[0]}` }} style={productImage} />
-                <Text style={produceName}>{e.name.toUpperCase()}</Text>
-                <Text style={producePrice}>{e.price}$</Text>
-            </TouchableOpacity>
-        ))}
-    </View>
-*/

@@ -11,7 +11,7 @@ function toTitleCase(str) {
     return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 }
 
-const url = 'http://192.168.26.117/api/images/product/';
+const url = 'http://192.168.26.116/DoAnTotNghiep/webproduct/upload/product/';
 
 class CartView extends Component {
     incrQuantity(id) {
@@ -30,10 +30,10 @@ class CartView extends Component {
         const { navigator } = this.props;
         navigator.push({ name: 'PRODUCT_DETAIL', product });
     }
-    // gotoCheckOut() {
-    //     const { navigator } = this.props;
-    //     navigator.push({ name: 'CHECK_OUT'});
-    // }
+    gotoCheckOut() {
+        const { navigator } = this.props;
+        navigator.push({ name: 'CHECK_OUT'});
+    }
     async onSendOrder() {
         try {
             const token = await getToken();
@@ -60,12 +60,24 @@ class CartView extends Component {
         }
     }
 
+    // onCheckOut() {
+    //     Alert.alert(
+    //         'Notice',
+    //         'Are you sure?',
+    //         [
+    //             { text: 'YES', onPress: () => this.onSendOrder() },
+    //             { text: 'NO' }
+    //         ],
+    //         { cancelable: false }
+    //     );
+    // }
+
     onCheckOut() {
         Alert.alert(
             'Notice',
             'Are you sure?',
             [
-                { text: 'YES', onPress: () => this.onSendOrder() },
+                { text: 'YES', onPress: () => this.gotoCheckOut() },
                 { text: 'NO' }
             ],
             { cancelable: false }
@@ -88,7 +100,7 @@ class CartView extends Component {
                     dataSource={new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }).cloneWithRows(cartArray)}
                     renderRow={cartItem => (
                         <View style={productStyle}>
-                            <Image source={{ uri: `${url}${cartItem.product.images[0]}` }} style={productImage} />
+                            <Image source={{ uri: `${url}${cartItem.product.image_link}` }} style={productImage} />
                             <View style={[mainRight]}>
                                 <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
                                     <Text style={txtName}>{toTitleCase(cartItem.product.name)}</Text>
@@ -97,7 +109,7 @@ class CartView extends Component {
                                     </TouchableOpacity>
                                 </View>
                                 <View>
-                                    <Text style={txtPrice}>{cartItem.product.price}$</Text>
+                                    <Text style={txtPrice}>{cartItem.product.price} đ</Text>
                                 </View>
                                 <View style={productController}>
                                     <View style={numberOfProduct}>
@@ -131,7 +143,7 @@ class CartView extends Component {
                         this.onCheckOut();
                 }
                 }>
-                    <Text style={checkoutTitle}>TOTAL {total}$ CHECKOUT NOW</Text>
+                    <Text style={checkoutTitle}>TOTAL {total} đ CHECKOUT NOW</Text>
                 </TouchableOpacity>
             </View>
         );
