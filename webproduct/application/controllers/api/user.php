@@ -76,12 +76,17 @@ Class User extends MY_Controller {
                 $name = $obj['name'];
                 $phone = $obj['phone'];
                 $address = $obj['address'];
+                $password = $obj['password'];
 
                 $data = array(
                     'name' => $name,
                     'phone' => $phone,
                     'address' => $address
                 );
+
+                if ($password != '') {
+                    $data['password'] = md5($password);
+                }
 
                 $where = array('email' => $email);
                 

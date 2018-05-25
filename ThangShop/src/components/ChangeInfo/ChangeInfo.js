@@ -36,9 +36,9 @@ export default class ChangeInfo extends Component {
     }
 
     change() {
-        const { txtName, txtAddress, txtPhone } = this.state;
+        const { txtName, txtAddress, txtPhone, txtPassword } = this.state;
         getToken()
-            .then(token => changeInfoAPI(token, txtName, txtPhone, txtAddress))
+            .then(token => changeInfoAPI(token, txtName, txtPhone, txtAddress, txtPassword))
             .then(user => {
                 this.alertSuccess()
                 global.onSignIn(user)
@@ -87,11 +87,10 @@ export default class ChangeInfo extends Component {
                         underlineColorAndroid="transparent"
                     />
 
-                     {/* <TextInput
+                     <TextInput
                         style={textInput}
                         placeholder="Điền mật nếu muốn thay đổi"
                         autoCapitalize="none"
-                        value={txtPhone}
                         onChangeText={text => this.setState({ ...this.state, txtPassword: text })}
                         underlineColorAndroid="transparent"
                     />
@@ -100,10 +99,9 @@ export default class ChangeInfo extends Component {
                         style={textInput}
                         placeholder="Điền lại mật khẩu"
                         autoCapitalize="none"
-                        value={txtPhone}
                         onChangeText={text => this.setState({ ...this.state, txtRePassword: text })}
                         underlineColorAndroid="transparent"
-                    /> */}
+                    />
 
                     <TouchableOpacity style={signInContainer} onPress={this.change.bind(this)}>
                         <Text style={signInTextStyle}>CHANGE YOUR INFOMATION</Text>

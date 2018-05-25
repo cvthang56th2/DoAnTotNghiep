@@ -34,43 +34,6 @@ class CartView extends Component {
         const { navigator } = this.props;
         navigator.push({ name: 'CHECK_OUT'});
     }
-    async onSendOrder() {
-        try {
-            const token = await getToken();
-            const arrayDetail = this.props.cartArray.map(e => ({
-                id: e.product.id,
-                quantity: e.quantity
-            }));
-            const kq = await sendOrder(token, arrayDetail);
-            if (kq === 'THEM_THANH_CONG') {
-                Alert.alert(
-                    'Notice',
-                    'Send order Successfully',
-                    [
-                        { text: 'OK' }
-                    ],
-                    { cancelable: false }
-                );
-                this.removeAllProduct();
-            } else {
-                console.log('THEM THAT BAI', kq);
-            }
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
-    // onCheckOut() {
-    //     Alert.alert(
-    //         'Notice',
-    //         'Are you sure?',
-    //         [
-    //             { text: 'YES', onPress: () => this.onSendOrder() },
-    //             { text: 'NO' }
-    //         ],
-    //         { cancelable: false }
-    //     );
-    // }
 
     onCheckOut() {
         Alert.alert(

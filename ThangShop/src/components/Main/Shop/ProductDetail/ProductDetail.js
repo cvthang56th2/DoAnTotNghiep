@@ -77,7 +77,7 @@ export default class ProductDetail extends Component {
 }
 
 const { width } = Dimensions.get('window');
-const swiperWidth = (width / 1.8) - 30;
+const swiperWidth = (width / 2);
 const swiperHeight = (swiperWidth * 452) / 361;
 
 const styles = StyleSheet.create({

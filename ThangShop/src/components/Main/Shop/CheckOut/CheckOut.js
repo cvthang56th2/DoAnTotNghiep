@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { View, TextInput, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import backList from '../../../../media/appIcon/backList.png';
+import global from '../../../global';
+import getToken from '../../../../api/getToken';
+import checkLogin from '../../../../api/checkLogin';
 
 export default class SignIn extends Component {
     constructor(props) {
@@ -9,7 +12,8 @@ export default class SignIn extends Component {
             name: '',
             email: '',
             address: '',
-            phone: ''
+            phone: '',
+            user: global.user
         };
     }
 
@@ -45,7 +49,11 @@ export default class SignIn extends Component {
 
     render() {
         const { inputStyle, bigButton, buttonText, wrapper, header, backStyle } = styles;
-        const { email, address, name, phone } = this.state;
+        const { email, address, name, phone, user } = this.state;
+        const { cartArray } = this.props;
+        const arrTotal = cartArray.map(e => e.product.price * e.quantity);
+        const total = arrTotal.length ? arrTotal.reduce((a, b) => a + b) : 0;
+        console.log(total);
         return (
             <View style={wrapper}>
                 <TouchableOpacity onPress={this.goBack.bind(this)}>
@@ -64,32 +72,34 @@ export default class SignIn extends Component {
                     <TextInput
                         style={inputStyle}
                         placeholder="Enter your name"
-                        value={name}
+                        value={user ? user.name : ''}
                         onChangeText={text => this.setState({ name: text })}
                         underlineColorAndroid="transparent"
                     />
                     <TextInput
                         style={inputStyle}
                         placeholder="Enter your email"
-                        value={email}
+                        value={user ? user.email : ''}
                         onChangeText={text => this.setState({ email: text })}
                         underlineColorAndroid="transparent"
                     />
                     <TextInput
                         style={inputStyle}
                         placeholder="Enter your address"
-                        value={address}
+                        value={user ? user.address : ''}
                         onChangeText={text => this.setState({ address: text })}
                         underlineColorAndroid="transparent"
                     />
                     <TextInput
                         style={inputStyle}
                         placeholder="Enter your phone number"
-                        value={phone}
+                        value={user ? user.phone : ''}
                         onChangeText={text => this.setState({ phone: text })}
-                        secureTextEntry
                         underlineColorAndroid="transparent"
                     />
+                    <View>
+                        <Text>Tổng hóa đơn: {total} đ</Text>
+                    </View>
                     <TouchableOpacity style={bigButton}>
                         <Text style={buttonText}>SEND ORDER NOW</Text>
                     </TouchableOpacity>

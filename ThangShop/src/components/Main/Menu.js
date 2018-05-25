@@ -17,10 +17,12 @@ class Menu extends Component {
     }
     onSignIn(user) {
         this.setState({ user });
+        global.user = this.state.user;
     }
 
     onSignOut() {
         this.setState({ user: null });
+        global.user = null;
         saveToken('');
     }
 

@@ -30,7 +30,7 @@ class Shop extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: 'home',
+            selectedTab: 'cart',
             types: [],
             topProducts: [],
             cartArray: [],
