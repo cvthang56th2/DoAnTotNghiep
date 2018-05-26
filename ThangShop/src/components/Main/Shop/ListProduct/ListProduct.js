@@ -50,7 +50,7 @@ export default class ListProduct extends Component {
         const {
             container, header, wrapper, backStyle, titleStyle,
             productContainer, productImage, productInfo, lastRowInfo,
-            txtName, txtPrice, txtMaterial, txtColor, txtShowDetail
+            txtName, txtPrice, txtMaterial, txtColor, txtShowDetail, txtOldPrice
         } = styles;
         const { category } = this.props;
         return (
@@ -73,7 +73,15 @@ export default class ListProduct extends Component {
                                     <TouchableOpacity onPress={() => this.gotoDetail(product)}>
                                         <Text style={txtName}>{toTitleCase(product.name)}</Text>
                                     </TouchableOpacity>
-                                    <Text style={txtPrice}>{product.price} đ</Text>
+                                    {
+                                        product.discount == 0 ?
+                                            <Text style={txtPrice}>{product.price} đ</Text> : (
+                                                <View>
+                                                    <Text style={txtPrice}>{product.price - product.discount} đ</Text>
+                                                    <Text style={txtOldPrice}>{product.price} đ</Text>
+                                                </View>
+                                            )
+                                    }
                                 </View>
                             </View>
                         )}
@@ -177,6 +185,10 @@ const styles = StyleSheet.create({
     txtPrice: {
         fontFamily: 'Avenir',
         color: '#B10D65',
+    },
+    txtOldPrice: {
+        textDecorationLine: 'line-through',
+        textDecorationStyle: 'solid'
     },
     txtMaterial: {
         fontFamily: 'Avenir'

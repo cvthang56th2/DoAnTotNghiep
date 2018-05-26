@@ -32,29 +32,26 @@ class CartView extends Component {
     }
     gotoCheckOut() {
         const { navigator } = this.props;
-        navigator.push({ name: 'CHECK_OUT'});
+        navigator.push({ name: 'CHECK_OUT' });
     }
 
     onCheckOut() {
-        Alert.alert(
-            'Notice',
-            'Are you sure?',
-            [
-                { text: 'YES', onPress: () => this.gotoCheckOut() },
-                { text: 'NO' }
-            ],
-            { cancelable: false }
-        );
+        this.gotoCheckOut();
     }
 
     render() {
         const { main, checkoutButton, checkoutTitle, wrapper,
             productStyle, mainRight, productController,
             txtName, txtPrice, productImage, numberOfProduct,
-            txtShowDetail, showDetailContainer } = styles;
+            txtShowDetail, showDetailContainer, txtOldPrice } = styles;
         const { cartArray } = this.props;
-        const arrTotal = cartArray.map(e => e.product.price * e.quantity);
-        const total = arrTotal.length ? arrTotal.reduce((a, b) => a + b) : 0;
+        var total = 0;
+        cartArray.map(e => {
+            if (e.product.discount == 0)
+                total += (e.product.price * e.quantity);
+            else
+                total += ((e.product.price - e.product.discount) * e.quantity);
+        });
         return (
             <View style={wrapper}>
                 <ListView
@@ -66,13 +63,23 @@ class CartView extends Component {
                             <Image source={{ uri: `${url}${cartItem.product.image_link}` }} style={productImage} />
                             <View style={[mainRight]}>
                                 <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-                                    <Text style={txtName}>{toTitleCase(cartItem.product.name)}</Text>
+                                    <TouchableOpacity style={showDetailContainer} onPress={() => this.gotoDetail(cartItem.product)}>
+                                        <Text style={txtName}>{toTitleCase(cartItem.product.name)}</Text>
+                                    </TouchableOpacity>
                                     <TouchableOpacity onPress={() => this.removeProduct(cartItem.product.id)}>
                                         <Text style={{ fontFamily: 'Avenir', color: '#969696' }}>X</Text>
                                     </TouchableOpacity>
                                 </View>
                                 <View>
-                                    <Text style={txtPrice}>{cartItem.product.price} đ</Text>
+                                    {
+                                        cartItem.product.discount == 0 ? <Text style={txtPrice}>{cartItem.product.price} đ</Text> : (
+                                            <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+                                                <Text style={txtPrice}>{cartItem.product.price - cartItem.product.discount} đ</Text>
+                                                <Text> | </Text>
+                                                <Text style={txtOldPrice}>{cartItem.product.price} đ</Text>
+                                            </View>
+                                        )
+                                    }
                                 </View>
                                 <View style={productController}>
                                     <View style={numberOfProduct}>
@@ -93,7 +100,7 @@ class CartView extends Component {
                     )}
                 />
                 <TouchableOpacity style={checkoutButton} onPress={() => {
-                    if ( total === 0) {
+                    if (total === 0) {
                         Alert.alert(
                             'Notice',
                             'Send order Failed: No product',
@@ -181,6 +188,10 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '400',
         fontFamily: 'Avenir'
+    },
+    txtOldPrice: {
+        textDecorationLine: 'line-through',
+        textDecorationStyle: 'solid'
     },
     txtShowDetail: {
         color: '#C21C70',

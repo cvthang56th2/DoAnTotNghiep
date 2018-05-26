@@ -14,7 +14,7 @@ export default class TopProduct extends Component {
         const {
             container, titleContainer, title,
             body, productContainer, productImage,
-            produceName, producePrice
+            produceName, producePrice, produceOldPrice
         } = styles;
         const { topProducts } = this.props;
         return (
@@ -39,7 +39,15 @@ export default class TopProduct extends Component {
                                 </View>
                             </View>
                             <Text style={produceName}>{product.name.toUpperCase()}</Text>
-                            <Text style={producePrice}>{product.price} đ</Text>
+                            {
+                                product.discount == 0 ? 
+                                <Text style={producePrice}>{product.price} đ</Text>: (
+                                    <View>
+                                        <Text style={producePrice}>{product.price - product.discount} đ</Text>
+                                        <Text style={produceOldPrice}>{product.price} đ</Text>
+                                    </View>
+                                )
+                            }
                         </TouchableOpacity>
                     )}
                     renderSeparator={(sectionId, rowId) => {
@@ -108,5 +116,9 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         fontFamily: 'Avenir',
         color: '#662F90'
+    },
+    produceOldPrice: {
+        textDecorationLine: 'line-through',
+        textDecorationStyle: 'solid'
     }
 });

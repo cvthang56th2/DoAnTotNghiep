@@ -26,7 +26,8 @@ export default class ProductDetail extends Component {
             footer, backStyle,
             imageContainer, cartStyle, textBlack,
             textSmoke, textHighlight, textMain, titleContainer,
-            descContainer, productImageStyle, descStyle, txtMaterial, txtColor
+            descContainer, productImageStyle, descStyle, txtMaterial, txtColor,
+            addToCartBtn, backBtn
         } = styles;
         const { name, price, content, image_link, image_list } = this.props.product;
         var imageList;
@@ -42,10 +43,11 @@ export default class ProductDetail extends Component {
             <View style={wrapper}>
                 <View style={cardStyle}>
                     <View style={header}>
-                        <TouchableOpacity onPress={this.goBack.bind(this)}>
+                        <TouchableOpacity onPress={this.goBack.bind(this)} style={backBtn}>
                             <Image style={backStyle} source={back} />
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={this.addThisProductToCart.bind(this)}>
+                        <TouchableOpacity onPress={this.addThisProductToCart.bind(this)} style={addToCartBtn}>
+                            <Text style={{ fontSize: 14, color: '#34B089' }}>Thêm vào giỏ hàng</Text>
                             <Image style={cartStyle} source={cart} />
                         </TouchableOpacity>
                     </View>
@@ -178,5 +180,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: '400',
         fontFamily: 'Avenir'
-    }
+    },
+    addToCartBtn: { flexDirection: 'row', alignItems: 'center', borderWidth: 2, borderColor: '#34B089', borderRadius: 10, padding: 5 },
+    backBtn: { borderWidth: 2, borderColor: '#34B089', borderRadius: 10, padding: 2, alignItems:'center', display:'flex' }
 });

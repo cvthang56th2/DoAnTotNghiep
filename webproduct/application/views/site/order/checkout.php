@@ -7,7 +7,7 @@
 
                     <div class="box-center"><!-- The box-center product-->
                         <div style="display: flex; flex-wrap: wrap;">
-                            <img width="20%" src="<?php echo public_url('site/images/' . 'payment.png'); ?>" />
+                            <img width="20%" height="70px" src="<?php echo public_url('site/images/' . 'payment.png'); ?>" />
                             <h2>Thông tin nhận hàng của thành viên</h2>
                         </div>
                         <hr />

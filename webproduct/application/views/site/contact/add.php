@@ -8,7 +8,7 @@
                         <div class="box-content-center news"><!-- The box-content-center -->
 
                             <div class="tittle-box-center" style="display: flex; flex-wrap: wrap;">
-                                <img width="20%" src="<?php echo public_url('site/images/' . 'contact.png'); ?>" />
+                                <img width="20%" height="70px" src="<?php echo public_url('site/images/' . 'contact.png'); ?>" />
                                 <h2>Liên hệ</h2>
                             </div>
                             <hr />

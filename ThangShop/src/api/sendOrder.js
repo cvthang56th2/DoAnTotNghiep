@@ -1,7 +1,6 @@
-const sendOrder = (token, arrayDetail) => {
-    const data = { token, arrayDetail };
-    console.log(data);
-    return fetch('http://192.168.26.116/api/cart.php',
+const sendOrder = (token, arrayDetail, name, email, address, phone) => {
+    const data = { token, arrayDetail, name, email, address, phone };
+    return fetch('http://192.168.26.116/DoAnTotNghiep/webproduct/api/order',
     {   
         method: 'POST',
         headers: {

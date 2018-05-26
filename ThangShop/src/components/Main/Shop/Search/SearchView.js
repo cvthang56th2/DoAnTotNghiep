@@ -33,7 +33,7 @@ class SearchView extends Component {
         const {
             product, mainRight, txtMaterial, txtColor,
             txtName, txtPrice, productImage,
-            txtShowDetail, showDetailContainer, wrapper
+            txtShowDetail, showDetailContainer, wrapper, txtOldPrice
         } = styles;
         return (
             <View style={wrapper}>
@@ -44,10 +44,20 @@ class SearchView extends Component {
                         <View style={product}>
                             <Image source={{ uri: `${url}${productItem.image_link}` }} style={productImage} />
                             <View style={mainRight}>
-                                <Text style={txtName}>{toTitleCase(productItem.name)}</Text>
-                                <Text style={txtPrice}>{productItem.price} đ</Text>
-
-                                <TouchableOpacity style={showDetailContainer} onPress={() => this.gotoDetail(productItem)}>
+                                <TouchableOpacity onPress={() => this.gotoDetail(productItem)}>
+                                    <Text style={txtName}>{toTitleCase(productItem.name)}</Text>
+                                </TouchableOpacity>
+                                {
+                                    productItem.discount == 0 ?
+                                        <Text style={txtPrice}>{productItem.price} đ</Text> : (
+                                            <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                                                <Text style={txtPrice}>{productItem.price - productItem.discount} đ</Text>
+                                                <Text> | </Text>
+                                                <Text style={txtOldPrice}>{productItem.price} đ</Text>
+                                            </View>
+                                        )
+                                }
+                                <TouchableOpacity onPress={() => this.gotoDetail(productItem)}>
                                     <Text style={txtShowDetail}>SHOW DETAILS</Text>
                                 </TouchableOpacity>
                             </View>
@@ -112,6 +122,10 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: '400',
         fontFamily: 'Avenir'
+    },
+    txtOldPrice: {
+        textDecorationLine: 'line-through',
+        textDecorationStyle: 'solid'
     },
     txtColor: {
         paddingLeft: 20,

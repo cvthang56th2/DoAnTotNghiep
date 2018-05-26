@@ -30,7 +30,7 @@ class Shop extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: 'cart',
+            selectedTab: 'home',
             types: [],
             topProducts: [],
             cartArray: [],
@@ -42,6 +42,7 @@ class Shop extends Component {
         global.decrQuantity = this.decrQuantity.bind(this);
         global.removeProduct = this.removeProduct.bind(this);
         global.gotoSearch = this.gotoSearch.bind(this);
+        global.gotoHome = this.gotoHome.bind(this);
         global.gotoCatalog = this.gotoCatalog.bind(this);
         global.removeAllProduct = this.removeAllProduct.bind(this);
     }
@@ -58,6 +59,10 @@ class Shop extends Component {
 
     gotoSearch() {
         this.setState({ selectedTab: 'search' });
+    }
+
+    gotoHome() {
+        this.setState({ selectedTab: 'home' });
     }
 
     gotoCatalog() {

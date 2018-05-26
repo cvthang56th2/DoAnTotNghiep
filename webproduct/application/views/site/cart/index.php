@@ -9,7 +9,7 @@
 
                     <div class="box-center"><!-- The box-center product-->
                         <div class="tittle-box-center" style="display: flex; flex-wrap: wrap;">
-                            <img width="10%" src="<?php echo public_url('site/images/' . 'cart_1.png'); ?>" />
+                            <img width="10%" height="70px" src="<?php echo public_url('site/images/' . 'cart_1.png'); ?>" />
                             <h2>Thông tin giỏ hàng (Có <?php echo $total_items ?> sản phẩm)</h2>
                         </div>
                         <hr />

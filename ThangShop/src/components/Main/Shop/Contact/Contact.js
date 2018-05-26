@@ -15,7 +15,7 @@ class Contact extends Component {
         return (
             <View style={wrapper}>
                 <View style={mapContainer}>
-                    {/* <MapView
+                    <MapView
                         style={{ width: width - 20, height: 250 }}
                         initialRegion={{
                             latitude: 37.78825,
@@ -29,7 +29,7 @@ class Contact extends Component {
                             title="Khoa Pham"
                             description="React Native Khoa pham training"
                         />
-                    </MapView> */}
+                    </MapView>
                 </View>
                 <View style={infoContainer}>
                     <View style={[rowInfoContainer, { borderBottomWidth: 0 }]}>
