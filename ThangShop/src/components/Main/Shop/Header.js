@@ -3,7 +3,7 @@ import {
     View, Text, TouchableOpacity, Image, Dimensions, TextInput, StyleSheet 
 } from 'react-native';
 import global from '../../global';
-import icLogo from '../../../media/appIcon/ic_logo.png';
+import icLogo from '../../../media/appIcon/YoloBlack.png';
 import icMenu from '../../../media/appIcon/ic_menu.png';
 import search from '../../../api/searchProduct';
 
@@ -33,8 +33,8 @@ export default class Header extends Component {
                     <TouchableOpacity onPress={this.props.onOpen}>
                         <Image source={icMenu} style={iconStyle} />
                     </TouchableOpacity>
-                    <Text style={titleStyle}>Thắng Shop</Text>
-                    <Image source={icLogo} style={iconStyle} />
+                    <Text style={titleStyle}>Yolo Shop</Text>
+                    <Image source={icLogo} style={{width: 40, height: 40}} />
                 </View>
                 <TextInput 
                     style={textInput}
@@ -55,14 +55,15 @@ const styles = StyleSheet.create({
         height: height / 8, 
         backgroundColor: '#34B089', 
         padding: 10, 
-        justifyContent: 'space-around' 
+        justifyContent: 'space-around',
     },
-    row1: { flexDirection: 'row', justifyContent: 'space-between' },
+    row1: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
     textInput: { 
         height: height / 23, 
         backgroundColor: '#FFF', 
         paddingLeft: 10,
-        paddingVertical: 0 
+        paddingVertical: 0,
+        marginTop: 10
     },
     titleStyle: { color: '#FFF', fontFamily: 'Avenir', fontSize: 20 },
     iconStyle: { width: 25, height: 25 }

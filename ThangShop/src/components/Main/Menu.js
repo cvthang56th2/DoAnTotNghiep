@@ -6,6 +6,7 @@ import {
 import global from '../global';
 import profileIcon from '../../media/temp/profile.png';
 import saveToken from '../../api/saveToken';
+import icLogo from '../../media/appIcon/YoloBlack.png'
 
 const url = 'http://192.168.26.116/DoAnTotNghiep/webproduct/upload/user/';
 
@@ -39,8 +40,8 @@ class Menu extends Component {
         navigator.push({ name: 'ORDER_HISTORY' });
     }
     render() {
-        const { 
-            container, profile, btnStyle, btnText, 
+        const {
+            container, profile, btnStyle, btnText,
             btnSignInStyle, btnTextSignIn, loginContainer,
             username
         } = styles;
@@ -50,6 +51,9 @@ class Menu extends Component {
                 <TouchableOpacity style={btnStyle} onPress={this.gotoAuthentication.bind(this)}>
                     <Text style={btnText}>Sign In</Text>
                 </TouchableOpacity>
+                <View style={{ display: 'flex', alignItems: 'center', marginTop: 30 }}>
+                    <Image source={icLogo} style={{ width: 100, height: 100 }} />
+                </View>
             </View>
         );
         const loginJSX = (
@@ -70,13 +74,13 @@ class Menu extends Component {
             </View>
         );
         const mainJSX = this.state.user ? loginJSX : logoutJSX;
-        
+
         return (
             <View style={container}>
                 {
                     user ? <Image source={{ uri: `${url}${user.image_link}` }} style={profile} /> : <Image source={profileIcon} style={profile} />
                 }
-                { mainJSX }
+                {mainJSX}
             </View>
         );
     }
@@ -106,7 +110,7 @@ const styles = StyleSheet.create({
     },
     btnText: {
         color: '#34B089',
-        fontFamily: 'Avenir', 
+        fontFamily: 'Avenir',
         fontSize: 20
     },
     btnSignInStyle: {
@@ -123,13 +127,13 @@ const styles = StyleSheet.create({
         fontSize: 15
     },
     loginContainer: {
-        flex: 1, 
-        justifyContent: 'space-between', 
+        flex: 1,
+        justifyContent: 'space-between',
         alignItems: 'center'
     },
     username: {
-        color: '#fff', 
-        fontFamily: 'Avenir', 
+        color: '#fff',
+        fontFamily: 'Avenir',
         fontSize: 15
     }
 });

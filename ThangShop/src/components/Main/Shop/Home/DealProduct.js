@@ -38,16 +38,19 @@ export default class DealProduct extends Component {
                                     <Image source={{ uri: `${url}${product.image_link}` }} style={productImage} />
                                 </View>
                             </View>
-                            <Text style={produceName}>{product.name.toUpperCase()}</Text>
-                            {
-                                product.discount == 0 ? 
-                                <Text style={producePrice}>{product.price} đ</Text>: (
-                                    <View>
-                                        <Text style={producePrice}>{product.price - product.discount} đ</Text>
-                                        <Text style={produceOldPrice}>{product.price} đ</Text>
-                                    </View>
-                                )
-                            }
+                            <View style={{ display: 'flex', alignItems: 'center' }}>
+
+                                <Text style={produceName}>{product.name.toUpperCase()}</Text>
+                                {
+                                    product.discount == 0 ?
+                                        <Text style={producePrice}>{product.price} đ</Text> : (
+                                            <View>
+                                                <Text style={producePrice}>{product.price - product.discount} đ</Text>
+                                                <Text style={produceOldPrice}>{product.price} đ</Text>
+                                            </View>
+                                        )
+                                }
+                            </View>
                         </TouchableOpacity>
                     )}
                     renderSeparator={(sectionId, rowId) => {

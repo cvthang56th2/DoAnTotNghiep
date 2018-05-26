@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 
 import icBack from '../../media/appIcon/back_white.png';
-import icLogo from '../../media/appIcon/ic_logo.png';
+import icLogo from '../../media/appIcon/YoloBlack.png';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 
@@ -46,8 +46,8 @@ export default class Authentication extends Component {
                     <TouchableOpacity onPress={this.goBackToMain.bind(this)}>
                         <Image source={icBack} style={iconStyle} />
                     </TouchableOpacity>
-                    <Text style={titleStyle}>Thắng Shop</Text>
-                    <Image source={icLogo} style={iconStyle} />
+                    <Text style={titleStyle}>Yolo Shop</Text>
+                    <Image source={icLogo} style={{width: 50, height: 50}} />
                 </View>
                 {mainJSX}
                 <View style={controlStyle}>

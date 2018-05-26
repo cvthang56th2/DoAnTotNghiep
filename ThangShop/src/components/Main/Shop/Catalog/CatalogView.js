@@ -61,7 +61,7 @@ class Catalog extends Component {
 
 const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
-    wrapper: { flex: 1, backgroundColor: '#F6F6F6', padding: 20 },
+    wrapper: { flex: 1, backgroundColor: '#fff', padding: 20 },
     sectionHeader: {
         paddingTop: 2,
         paddingLeft: 10,
