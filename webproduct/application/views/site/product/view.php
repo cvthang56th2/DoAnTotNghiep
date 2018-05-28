@@ -268,7 +268,7 @@
                                                 <span class="value">In stock</span>
                                             </p>
                                             <div class="price-info">
-                                                <div class="price-box">
+                                                <div class="price-box" style="text-align:left">
                                                     <?php if ($product->discount > 0): ?>
                                                         <?php $price_new = $product->price - $product->discount; ?>
                                                         <span class="regular-price">

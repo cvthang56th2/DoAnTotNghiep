@@ -49,62 +49,80 @@ export default class ChangeInfo extends Component {
     render() {
         const {
             wrapper, header, headerTitle, backIconStyle, body,
-            signInContainer, signInTextStyle, textInput
+            signInContainer, signInTextStyle, textInput,
+            label, inputContainer
         } = styles;
         const { txtName, txtAddress, txtPhone } = this.state;
         return (
             <View style={wrapper}>
                 <View style={header}>
                     <View />
-                    <Text style={headerTitle}>User Infomation</Text>
+                    <Text style={headerTitle}>Thông tin người dùng</Text>
                     <TouchableOpacity onPress={this.goBackToMain.bind(this)}>
                         <Image source={backSpecial} style={backIconStyle} />
                     </TouchableOpacity>
                 </View>
                 <View style={body}>
-                    <TextInput
-                        style={textInput}
-                        placeholder="Enter your name"
-                        autoCapitalize="none"
-                        value={txtName}
-                        onChangeText={text => this.setState({ ...this.state, txtName: text })}
-                        underlineColorAndroid="transparent"
-                    />
-                    <TextInput
-                        style={textInput}
-                        placeholder="Enter your address"
-                        autoCapitalize="none"
-                        value={txtAddress}
-                        onChangeText={text => this.setState({ ...this.state, txtAddress: text })}
-                        underlineColorAndroid="transparent"
-                    />
-                    <TextInput
-                        style={textInput}
-                        placeholder="Enter your phone number"
-                        autoCapitalize="none"
-                        value={txtPhone}
-                        onChangeText={text => this.setState({ ...this.state, txtPhone: text })}
-                        underlineColorAndroid="transparent"
-                    />
+                    <View style={inputContainer}>
+                        <Text style={label}>Họ tên: </Text>
+                        <TextInput
+                            style={textInput}
+                            placeholder="Nhập họ tên..."
+                            autoCapitalize="none"
+                            value={txtName}
+                            onChangeText={text => this.setState({ ...this.state, txtName: text })}
+                            underlineColorAndroid="transparent"
+                        />
+                    </View>
 
-                     <TextInput
-                        style={textInput}
-                        placeholder="Điền mật nếu muốn thay đổi"
-                        autoCapitalize="none"
-                        onChangeText={text => this.setState({ ...this.state, txtPassword: text })}
-                        underlineColorAndroid="transparent"
-                    />
+                    <View style={inputContainer}>
+                        <Text style={label}>Địa chỉ: </Text>
+                        <TextInput
+                            style={textInput}
+                            placeholder="Nhập địa chỉ..."
+                            autoCapitalize="none"
+                            value={txtAddress}
+                            onChangeText={text => this.setState({ ...this.state, txtAddress: text })}
+                            underlineColorAndroid="transparent"
+                        />
+                    </View>
 
-                     <TextInput
-                        style={textInput}
-                        placeholder="Điền lại mật khẩu"
-                        autoCapitalize="none"
-                        onChangeText={text => this.setState({ ...this.state, txtRePassword: text })}
-                        underlineColorAndroid="transparent"
-                    />
+                    <View style={inputContainer}>
+                        <Text style={label}>Số điện thoại: </Text>
+                        <TextInput
+                            style={textInput}
+                            placeholder="Nhập số điện thoại..."
+                            autoCapitalize="none"
+                            value={txtPhone}
+                            onChangeText={text => this.setState({ ...this.state, txtPhone: text })}
+                            underlineColorAndroid="transparent"
+                        />
+                    </View>
+
+                    <View style={inputContainer}>
+                        <Text style={label}>Mật khẩu: </Text>
+                        <TextInput
+                            style={textInput}
+                            placeholder="Điền mật nếu muốn thay đổi"
+                            autoCapitalize="none"
+                            onChangeText={text => this.setState({ ...this.state, txtPassword: text })}
+                            underlineColorAndroid="transparent"
+                        />
+                    </View>
+
+                    <View style={inputContainer}>
+                        <Text style={label}>Nhập lại mật khẩu: </Text>
+                        <TextInput
+                            style={textInput}
+                            placeholder="Điền lại mật khẩu"
+                            autoCapitalize="none"
+                            onChangeText={text => this.setState({ ...this.state, txtRePassword: text })}
+                            underlineColorAndroid="transparent"
+                        />
+                    </View>
 
                     <TouchableOpacity style={signInContainer} onPress={this.change.bind(this)}>
-                        <Text style={signInTextStyle}>CHANGE YOUR INFOMATION</Text>
+                        <Text style={signInTextStyle}>CẬP NHẬT THÔNG TIN</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -117,7 +135,7 @@ const styles = StyleSheet.create({
     header: { flex: 1, backgroundColor: '#2ABB9C', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row', paddingHorizontal: 10 },// eslint-disable-line
     headerTitle: { fontFamily: 'Avenir', color: '#fff', fontSize: 20 },
     backIconStyle: { width: 30, height: 30 },
-    body: { flex: 10, backgroundColor: '#F6F6F6', justifyContent: 'center' },
+    body: { flex: 10, backgroundColor: '#F6F6F6', justifyContent: 'center', paddingRight: 40, paddingLeft: 20 },
     textInput: {
         height: 45,
         marginHorizontal: 20,
@@ -127,7 +145,8 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         marginBottom: 20,
         borderColor: '#2ABB9C',
-        borderWidth: 1
+        borderWidth: 1,
+        width: '80%'
     },
     signInTextStyle: {
         color: '#FFF', fontFamily: 'Avenir', fontWeight: '600', paddingHorizontal: 20
@@ -144,5 +163,9 @@ const styles = StyleSheet.create({
     signInStyle: {
         flex: 3,
         marginTop: 50
-    }
+    },
+    label: {
+        width: '20%'
+    },
+    inputContainer: { display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }
 });

@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import global from '../../../global';
 
-const url = 'http://192.168.26.116/DoAnTotNghiep/webproduct/upload/product/';
+const url = 'http://10.130.50.43/DoAnTotNghiep/webproduct/upload/product/';
 
 function toTitleCase(str) {
     return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
@@ -23,6 +23,10 @@ class SearchView extends Component {
 
     setSearchArray(arrProduct) {
         this.setState({ listProduct: this.state.listProduct.cloneWithRows(arrProduct) });
+    }
+
+    addThisProductToCart(product) {
+        global.addProductToCart(product);
     }
 
     gotoDetail(product) {
@@ -57,9 +61,14 @@ class SearchView extends Component {
                                             </View>
                                         )
                                 }
-                                <TouchableOpacity onPress={() => this.gotoDetail(productItem)}>
-                                    <Text style={txtShowDetail}>SHOW DETAILS</Text>
-                                </TouchableOpacity>
+                                <View style={{ display: 'flex', flexDirection: 'row', justifyContent:'space-around' }}>
+                                    <TouchableOpacity onPress={() => this.gotoDetail(productItem)}>
+                                        <Text style={txtShowDetail}>Xem chi tiết</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity onPress={() => this.addThisProductToCart(productItem)}>
+                                        <Text style={txtShowDetail}>Thêm vào giỏ hàng</Text>
+                                    </TouchableOpacity>
+                                </View>
                             </View>
                         </View>
                     )}
@@ -88,7 +97,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 3 },
         shadowOpacity: 0.2,
         borderWidth: 0.7,
-        borderColor: '#fda',
+        borderColor: '#b7fc99',
         borderRadius: 4
     },
     productImage: {
@@ -111,15 +120,14 @@ const styles = StyleSheet.create({
     },
     txtName: {
         paddingLeft: 20,
-        color: '#A7A7A7',
-        fontSize: 20,
+        color: '#752ab7',
+        fontSize: 15,
         fontWeight: '400',
         fontFamily: 'Avenir'
     },
     txtPrice: {
         paddingLeft: 20,
         color: '#C21C70',
-        fontSize: 15,
         fontWeight: '400',
         fontFamily: 'Avenir'
     },
@@ -147,6 +155,11 @@ const styles = StyleSheet.create({
         fontWeight: '400',
         fontFamily: 'Avenir',
         textAlign: 'right',
+        borderWidth: 1,
+        borderColor: '#c21c70',
+        borderRadius: 5,
+        padding: 5,
+        textAlign: 'center',
     },
     showDetailContainer: {
         flexDirection: 'row',

@@ -38,15 +38,18 @@ const styles = StyleSheet.create({
         padding: 10,
         paddingTop: 0,
         borderWidth: 0.7,
-        borderColor: '#fda',
+        borderColor: '#b7fc99',
         borderRadius: 4
     },
     textStyle: {
         fontSize: 20,
-        color: '#AFAEAF'
+        color: '#2d66d8',
+        fontWeight: 'bold',
+        borderBottomColor: '#ccc',
+        borderBottomWidth: 1,
     },
     imageStyle: {
-        height: imageHeight, 
+        height: imageHeight,
         width: imageWidth
     }
 });

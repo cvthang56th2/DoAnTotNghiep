@@ -35,8 +35,8 @@ class Catalog extends Component {
         return (
             <View style={wrapper}>
 
-                <View style={{ display: 'flex', alignItems: 'center' }}>
-                    <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Danh mục sản phẩm</Text>
+                <View style={{ display: 'flex', alignItems: 'center', paddingBottom: 10 }}>
+                    <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#2d66d8' }}>Danh mục sản phẩm</Text>
                 </View>
                 <SectionList style={{ borderTopColor: '#d6d7da', borderTopWidth: 1 }}
                     sections={sections}
@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
     sectionHeaderText: {
         fontSize: 18,
         fontWeight: 'bold',
+        color: '#B10D65'
     },
     item: {
         padding: 10,

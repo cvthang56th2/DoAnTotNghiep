@@ -1,6 +1,6 @@
 const sendOrder = (token, arrayDetail, name, email, address, phone) => {
     const data = { token, arrayDetail, name, email, address, phone };
-    return fetch('http://192.168.26.116/DoAnTotNghiep/webproduct/api/order',
+    return fetch('http://10.130.50.43/DoAnTotNghiep/webproduct/api/order',
     {   
         method: 'POST',
         headers: {

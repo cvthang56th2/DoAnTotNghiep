@@ -5,11 +5,12 @@ import {
     Image, RefreshControl,
     Dimensions
 } from 'react-native';
+import global from "../../../global";
 import getListProduct from '../../../../api/getListProduct';
 
 import backList from '../../../../media/appIcon/backList.png';
 
-const url = 'http://192.168.26.116/DoAnTotNghiep/webproduct/upload/product/';
+const url = 'http://10.130.50.43/DoAnTotNghiep/webproduct/upload/product/';
 function toTitleCase(str) {
     return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 }
@@ -24,6 +25,10 @@ export default class ListProduct extends Component {
             page: 0
         };
         this.arr = [];
+    }
+
+    addThisProductToCart(product) {
+        global.addProductToCart(product);
     }
 
     componentDidMount() {
@@ -50,7 +55,8 @@ export default class ListProduct extends Component {
         const {
             container, header, wrapper, backStyle, titleStyle,
             productContainer, productImage, productInfo, lastRowInfo,
-            txtName, txtPrice, txtMaterial, txtColor, txtShowDetail, txtOldPrice
+            txtName, txtPrice, txtMaterial, txtColor, txtShowDetail, txtOldPrice,
+            showDetailContainer
         } = styles;
         const { category } = this.props;
         return (
@@ -75,13 +81,32 @@ export default class ListProduct extends Component {
                                     </TouchableOpacity>
                                     {
                                         product.discount == 0 ?
-                                            <Text style={txtPrice}>{product.price} đ</Text> : (
-                                                <View>
-                                                    <Text style={txtPrice}>{product.price - product.discount} đ</Text>
-                                                    <Text style={txtOldPrice}>{product.price} đ</Text>
+                                            <Text style={txtPrice}>{
+                                                parseFloat(product.price).toFixed(0).replace(/./g, function (c, i, a) {
+                                                    return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+                                                })
+                                            } đ</Text> : (
+                                                <View style={{ display: 'flex', alignItems: 'center' }}>
+                                                    <Text style={txtPrice}>{
+
+                                                        parseFloat(product.price - product.discount).toFixed(0).replace(/./g, function (c, i, a) {
+                                                            return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+                                                        })
+                                                    } đ</Text>
+                                                    <Text style={txtOldPrice}>{
+                                                        parseFloat(product.price).toFixed(0).replace(/./g, function (c, i, a) {
+                                                            return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+                                                        })
+                                                    } đ</Text>
                                                 </View>
                                             )
                                     }
+                                    <TouchableOpacity onPress={() => this.gotoDetail(product)}>
+                                        <Text style={txtShowDetail}>Xem chi tiết</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity onPress={() => this.addThisProductToCart(product)}>
+                                        <Text style={txtShowDetail}>Thêm vào giỏ hàng</Text>
+                                    </TouchableOpacity>
                                 </View>
                             </View>
                         )}
@@ -152,7 +177,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 3 },
         shadowOpacity: 0.2,
         borderWidth: 0.7,
-        borderColor: '#fda',
+        borderColor: '#b7fc99',
         borderRadius: 4
     },
     titleStyle: {
@@ -178,11 +203,12 @@ const styles = StyleSheet.create({
     },
     txtName: {
         fontFamily: 'Avenir',
-        color: '#BCBCBC',
-        fontSize: 20,
-        fontWeight: '400'
+        fontWeight: '400',
+        color: '#752ab7',
+        fontSize: 15
     },
     txtPrice: {
+        marginTop: 5,
         fontFamily: 'Avenir',
         color: '#B10D65',
     },
@@ -197,8 +223,14 @@ const styles = StyleSheet.create({
         fontFamily: 'Avenir'
     },
     txtShowDetail: {
+        marginTop: 5,
         fontFamily: 'Avenir',
         color: '#B10D65',
-        fontSize: 11
-    }
+        fontSize: 11,
+        borderWidth: 1,
+        borderColor: '#c21c70',
+        borderRadius: 5,
+        padding: 5,
+        textAlign: 'center',
+    },
 });

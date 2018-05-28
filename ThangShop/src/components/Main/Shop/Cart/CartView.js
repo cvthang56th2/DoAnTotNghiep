@@ -11,7 +11,7 @@ function toTitleCase(str) {
     return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 }
 
-const url = 'http://192.168.26.116/DoAnTotNghiep/webproduct/upload/product/';
+const url = 'http://10.130.50.43/DoAnTotNghiep/webproduct/upload/product/';
 
 class CartView extends Component {
     incrQuantity(id) {
@@ -67,7 +67,7 @@ class CartView extends Component {
                                         <Text style={txtName}>{toTitleCase(cartItem.product.name)}</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity onPress={() => this.removeProduct(cartItem.product.id)}>
-                                        <Text style={{ fontFamily: 'Avenir', color: '#969696' }}>X</Text>
+                                        <Text style={{ fontFamily: 'Avenir', color: '#969696', borderWidth: 1, borderColor: '#969696', borderRadius: 10, paddingRight: 1, paddingLeft: 4 }}>X</Text>
                                     </TouchableOpacity>
                                 </View>
                                 <View>
@@ -92,7 +92,7 @@ class CartView extends Component {
                                         </TouchableOpacity>
                                     </View>
                                     <TouchableOpacity style={showDetailContainer} onPress={() => this.gotoDetail(cartItem.product)}>
-                                        <Text style={txtShowDetail}>SHOW DETAILS</Text>
+                                        <Text style={txtShowDetail}>Xem chi tiết</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>
@@ -113,7 +113,7 @@ class CartView extends Component {
                         this.onCheckOut();
                 }
                 }>
-                    <Text style={checkoutTitle}>TOTAL {total} đ CHECKOUT NOW</Text>
+                    <Text style={checkoutTitle}>TỔNG: {total} đ - THANH TOÁN NGAY</Text>
                 </TouchableOpacity>
             </View>
         );
@@ -153,6 +153,8 @@ const styles = StyleSheet.create({
         padding: 10,
         backgroundColor: '#FFFFFF',
         borderRadius: 2,
+        borderWidth: 0.7,
+        borderColor: '#b7fc99',
         shadowColor: '#3B5458',
         shadowOffset: { width: 0, height: 3 },
         shadowOpacity: 0.2
@@ -178,14 +180,14 @@ const styles = StyleSheet.create({
     txtName: {
         paddingLeft: 20,
         color: '#A7A7A7',
-        fontSize: 20,
         fontWeight: '400',
-        fontFamily: 'Avenir'
+        color: '#752ab7',
+        fontFamily: 'Avenir',
+        fontSize: 15        
     },
     txtPrice: {
         paddingLeft: 20,
         color: '#C21C70',
-        fontSize: 20,
         fontWeight: '400',
         fontFamily: 'Avenir'
     },
@@ -199,6 +201,10 @@ const styles = StyleSheet.create({
         fontWeight: '400',
         fontFamily: 'Avenir',
         textAlign: 'right',
+        borderWidth: 1,
+        borderColor: '#c21c70',
+        borderRadius: 5,
+        padding: 5
     },
     showDetailContainer: {
         flex: 1,

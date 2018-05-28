@@ -30,7 +30,7 @@ export default class Header extends Component {
         return (
             <View style={wrapper}>
                 <View style={row1}>
-                    <TouchableOpacity onPress={this.props.onOpen}>
+                    <TouchableOpacity onPress={this.props.onOpen} style={{borderWidth: 1, borderColor: "#fff", paddingRight: 2, paddingLeft: 2, borderRadius: 5}}>
                         <Image source={icMenu} style={iconStyle} />
                     </TouchableOpacity>
                     <Text style={titleStyle}>Yolo Shop</Text>
@@ -38,7 +38,7 @@ export default class Header extends Component {
                 </View>
                 <TextInput 
                     style={textInput}
-                    placeholder="What do you want to buy?"
+                    placeholder="Tìm kiếm sản phẩm..."
                     underlineColorAndroid="transparent"
                     value={this.state.txtSearch}
                     onChangeText={text => this.setState({ txtSearch: text })}

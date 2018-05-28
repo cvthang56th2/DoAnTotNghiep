@@ -1,5 +1,5 @@
 const signIn = (email, password) => (
-    fetch('http://192.168.26.116/DoAnTotNghiep/webproduct/api/user/login',
+    fetch('http://10.130.50.43/DoAnTotNghiep/webproduct/api/user/login',
     {   
         method: 'POST',
         headers: {

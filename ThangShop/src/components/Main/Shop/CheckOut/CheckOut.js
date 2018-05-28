@@ -83,7 +83,7 @@ export default class SignIn extends Component {
                     </View>
 
                 </TouchableOpacity>
-                <View style={{ backgroundColor: '#fff', display: 'flex', justifyContent: 'space-around', height: '95%' }}>
+                <View style={{ backgroundColor: '#fff', display: 'flex', justifyContent: 'space-around' }}>
                     <View style={{ alignItems: 'center', marginBottom: 20 }}>
                         <Text style={{ fontSize: 20 }}>Thanh toán</Text>
                     </View>
@@ -131,8 +131,8 @@ export default class SignIn extends Component {
                         />
                     </View>
 
-                    <View>
-                        <Text>Tổng hóa đơn: {total} đ</Text>
+                    <View style={{paddingLeft: 10}}>
+                        <Text>Tổng hóa đơn: <Text style={{color: '#B10D65', fontSize: 15, fontWeight:'bold'}}>{total} đ</Text></Text>
                     </View>
                     <TouchableOpacity style={bigButton} onPress={() => {
                         Alert.alert(
@@ -146,7 +146,8 @@ export default class SignIn extends Component {
                         );
                     }}>
                         <Text style={buttonText} >
-                            SEND ORDER NOW</Text>
+                            Thanh toán ngay
+                            </Text>
                     </TouchableOpacity>
                 </View >
             </View >
@@ -172,7 +173,7 @@ const styles = StyleSheet.create({
     bigButton: {
         height: 50,
         margin: 10,
-        marginTop: 0,
+        marginTop: 10,
         backgroundColor: '#2ABB9C',
         borderRadius: 2,
         alignItems: 'center',

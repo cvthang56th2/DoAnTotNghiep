@@ -14,9 +14,9 @@ export default class OrderHistory extends Component {
 
     componentDidMount() {
         getToken()
-        .then(token => getOrderHistory(token))
-        .then(arrOrder => this.setState({ arrOrder }))
-        .catch(err => console.log(err));
+            .then(token => getOrderHistory(token))
+            .then(arrOrder => this.setState({ arrOrder }))
+            .catch(err => console.log(err));
     }
 
     goBackToMain() {
@@ -29,33 +29,37 @@ export default class OrderHistory extends Component {
             <View style={wrapper}>
                 <View style={header}>
                     <View />
-                    <Text style={headerTitle}>Order History</Text>
+                    <Text style={headerTitle}>Lịch sử giao dịch</Text>
                     <TouchableOpacity onPress={this.goBackToMain.bind(this)}>
                         <Image source={backSpecial} style={backIconStyle} />
                     </TouchableOpacity>
                 </View>
                 <View style={body}>
                     <ScrollView>
-                        { this.state.arrOrder.map(e => (
+                        {this.state.arrOrder.map(e => (
                             <View style={orderRow} key={e.id}>
                                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                    <Text style={{ color: '#9A9A9A', fontWeight: 'bold' }}>Order id:</Text>
+                                    <Text style={{ color: '#9A9A9A', fontWeight: 'bold' }}>Mã giao dịch:</Text>
                                     <Text style={{ color: '#2ABB9C' }}>ORD{e.id}</Text>
                                 </View>
                                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                    <Text style={{ color: '#9A9A9A', fontWeight: 'bold' }}>OrderTime:</Text>
+                                    <Text style={{ color: '#9A9A9A', fontWeight: 'bold' }}>Thời gian:</Text>
                                     <Text style={{ color: '#C21C70' }}>{e.created}</Text>
                                 </View>
                                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                    <Text style={{ color: '#9A9A9A', fontWeight: 'bold' }}>Status:</Text>
-                                    <Text style={{ color: '#2ABB9C' }}>{e.status == 1? 'Thành công' : e.status==0? 'Đang xử lý' : 'Thất bại'}</Text>
+                                    <Text style={{ color: '#9A9A9A', fontWeight: 'bold' }}>Trạng thái:</Text>
+                                    <Text style={{ color: '#2ABB9C' }}>{e.status == 1 ? 'Thành công' : e.status == 0 ? 'Đang xử lý' : 'Thất bại'}</Text>
                                 </View>
                                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                    <Text style={{ color: '#9A9A9A', fontWeight: 'bold' }}>Total:</Text>
-                                    <Text style={{ color: '#C21C70', fontWeight: 'bold' }}>{e.amount} đ</Text>
+                                    <Text style={{ color: '#9A9A9A', fontWeight: 'bold' }}>Tổng tiền thanh toán:</Text>
+                                    <Text style={{ color: '#C21C70', fontWeight: 'bold' }}>{
+                                        parseFloat(e.amount).toFixed(0).replace(/./g, function (c, i, a) {
+                                            return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+                                        })
+                                        } đ</Text>
                                 </View>
                             </View>
-                        )) }
+                        ))}
                     </ScrollView>
                 </View>
             </View>

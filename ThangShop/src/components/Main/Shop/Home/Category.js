@@ -4,7 +4,7 @@ import Swiper from 'react-native-swiper';
 import global from '../../../global';
 
 const { width } = Dimensions.get('window');
-const url = 'http://192.168.26.116/DoAnTotNghiep/webproduct/upload/slide/';
+const url = 'http://10.130.50.43/DoAnTotNghiep/webproduct/upload/slide/';
 
 export default class Category extends Component {
     gotoListProduct(category) {
@@ -28,7 +28,8 @@ export default class Category extends Component {
         return (
             <View style={wrapper}>
                 <TouchableOpacity onPress={() => global.gotoCatalog()} >
-                    <View style={{ justifyContent: 'center', height: 50 }}>
+                    <View style={{ justifyContent: 'center', height: 50,  borderBottomColor: '#ccc',
+                            borderBottomWidth: 1, }}>
                         <Text style={textStyle} >Danh mục sản phẩm</Text>
                     </View>
                 </TouchableOpacity>
@@ -55,12 +56,15 @@ const styles = StyleSheet.create({
         padding: 10,
         paddingTop: 0,
         borderWidth: 0.7,
-        borderColor: '#fda',
+        borderColor: '#b7fc99',
         borderRadius: 4
     },
     textStyle: {
         fontSize: 20,
-        color: '#AFAEAF'
+        color: '#2d66d8',
+        fontWeight: 'bold',
+        borderBottomColor: '#ccc',
+        borderBottomWidth: 1,
     },
     imageStyle: {
         height: imageHeight,
@@ -71,7 +75,7 @@ const styles = StyleSheet.create({
     cateTitle: {
         fontSize: 25,
         fontFamily: 'Avenir',
-        color: '#f44141',
+        color: '#df0fff',
         fontWeight: 'bold',
         textShadowColor: '#262422',
         textShadowOffset: { width: 5, height: 5 }

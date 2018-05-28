@@ -3,7 +3,7 @@ import {
     View, Text, Image, StyleSheet, Dimensions, TouchableOpacity, ListView
 } from 'react-native';
 
-const url = 'http://192.168.26.116/DoAnTotNghiep/webproduct/upload/product/';
+const url = 'http://10.130.50.43/DoAnTotNghiep/webproduct/upload/product/';
 
 export default class TopProduct extends Component {
     gotoDetail(product) {
@@ -42,10 +42,22 @@ export default class TopProduct extends Component {
                                 <Text style={produceName}>{product.name.toUpperCase()}</Text>
                                 {
                                     product.discount == 0 ?
-                                        <Text style={producePrice}>{product.price} đ</Text> : (
-                                            <View>
-                                                <Text style={producePrice}>{product.price - product.discount} đ</Text>
-                                                <Text style={produceOldPrice}>{product.price} đ</Text>
+                                        <Text style={producePrice}>{
+                                            parseFloat(product.price).toFixed(0).replace(/./g, function (c, i, a) {
+                                                return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+                                            })
+                                        } đ</Text> : (
+                                            <View style={{ display: 'flex', alignItems: 'center' }}>
+                                                <Text style={producePrice}>{
+                                                    parseFloat(product.price - product.discount).toFixed(0).replace(/./g, function (c, i, a) {
+                                                        return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+                                                    })
+                                                } đ</Text>
+                                                <Text style={produceOldPrice}>{
+                                                    parseFloat(product.price).toFixed(0).replace(/./g, function (c, i, a) {
+                                                        return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+                                                    })
+                                                } đ</Text>
                                             </View>
                                         )
                                 }
@@ -74,7 +86,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 3 },
         shadowOpacity: 0.2,
         borderWidth: 0.7,
-        borderColor: '#fda',
+        borderColor: '#b7fc99',
         borderRadius: 4
     },
     titleContainer: {
@@ -83,34 +95,38 @@ const styles = StyleSheet.create({
         paddingLeft: 10
     },
     title: {
-        color: '#D3D3CF',
-        fontSize: 20
+        color: '#2d66d8',
+        fontWeight: 'bold',
+        fontSize: 20,
+        borderBottomColor: '#ccc',
+        borderBottomWidth: 1,
     },
     body: {
         flexDirection: 'row',
         justifyContent: 'space-around',
         flexWrap: 'wrap',
-        paddingBottom: 10
+        padding: 10
     },
     productContainer: {
-        width: '48%',
+        width: '45%',
         shadowColor: '#2E272B',
         shadowOffset: { width: 0, height: 3 },
         shadowOpacity: 0.2,
         borderWidth: 0.7,
-        borderColor: '#fda',
+        borderColor: '#26a876',
         borderRadius: 4,
         padding: 10
     },
     productImage: {
         width: imageWidth,
-        height: imageHeight
+        height: imageHeight,
+        resizeMode: 'center'
     },
     produceName: {
         marginVertical: 5,
         paddingLeft: 10,
         fontFamily: 'Avenir',
-        color: '#D3D3CF',
+        color: '#752ab7',
         fontWeight: '500'
     },
     producePrice: {

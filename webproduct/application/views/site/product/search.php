@@ -50,6 +50,21 @@
                                             <div class="pro-info">
                                                 <div class="pro-inner">
                                                     <div class="product-name"><a href="<?php echo base_url('product/view/' . $row->id) ?>"><?php echo $row->name; ?></a></div>
+                                                    <div class="price-box">
+                                                        <?php if ($row->discount > 0): ?>
+                                                            <?php $price_new = $row->price - $row->discount; ?>
+                                                            <span class="regular-price">
+                                                                <span class="price"><?php echo number_format($price_new) ?> đ</span>
+                                                            </span>
+                                                            <p class="special-price">
+                                                                <span class="price"><?php echo number_format($row->price) ?> đ</span>
+                                                            </p>
+                                                        <?php else: ?>
+                                                            <span class="regular-price">
+                                                                <span class="price"><?php echo number_format($row->price) ?> đ</span>
+                                                            </span>
+                                                        <?php endif; ?>
+                                                    </div>
                                                     <div class="pro-content">
                                                         <center>
                                                             <div class='raty' style='margin:10px 0px' id='<?php echo $row->id ?>' data-score='<?php echo ($row->rate_count > 0) ? $row->rate_total / $row->rate_count : 0 ?>'></div>

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { View, TextInput, Text, TouchableOpacity, StyleSheet, Alert, Image } from 'react-native';
 import signIn from '../../api/signIn';
 import global from '../global';
+import login from '../../media/temp/login.png';
 
 import saveToken from '../../api/saveToken';
 
@@ -35,27 +36,36 @@ export default class SignIn extends Component {
     }
 
     render() {
-        const { inputStyle, bigButton, buttonText } = styles;
+        const { inputStyle, bigButton, buttonText, label, inputContainer } = styles;
         const { email, password } = this.state;
         return (
-            <View>
-                <TextInput
-                    style={inputStyle}
-                    placeholder="Enter your email"
-                    value={email}
-                    onChangeText={text => this.setState({ email: text })}
-                    underlineColorAndroid="transparent" 
-                />
-                <TextInput
-                    style={inputStyle}
-                    placeholder="Enter your password"
-                    value={password}
-                    onChangeText={text => this.setState({ password: text })}
-                    secureTextEntry
-                    underlineColorAndroid="transparent" 
-                />
+            <View style={{ display: 'flex', justifyContent: 'space-around', height: '60%' }}>
+                <View style={{ display: 'flex', alignItems: 'center', marginBottom: 20 }}>
+                    <Image source={login} style={{ width: 100, height: 100 }} />
+                </View>
+                <View style={inputContainer}>
+                    <Text style={label}>Email: </Text>
+                    <TextInput
+                        style={inputStyle}
+                        placeholder="Nhập email của bạn..."
+                        value={email}
+                        onChangeText={text => this.setState({ email: text })}
+                        underlineColorAndroid="transparent"
+                    />
+                </View>
+                <View style={inputContainer}>
+                    <Text style={label}>Mật khẩu: </Text>
+                    <TextInput
+                        style={inputStyle}
+                        placeholder="Nhập mật khẩu ..."
+                        value={password}
+                        onChangeText={text => this.setState({ password: text })}
+                        secureTextEntry
+                        underlineColorAndroid="transparent"
+                    />
+                </View>
                 <TouchableOpacity style={bigButton} onPress={this.onSignIn.bind(this)}>
-                    <Text style={buttonText}>SIGN IN NOW</Text>
+                    <Text style={buttonText}>ĐĂNG NHẬP NGAY</Text>
                 </TouchableOpacity>
             </View>
         );
@@ -64,11 +74,12 @@ export default class SignIn extends Component {
 
 const styles = StyleSheet.create({
     inputStyle: {
-        height: 50,
+        height: 40,
         backgroundColor: '#fff',
         marginBottom: 10,
         borderRadius: 20,
-        paddingLeft: 30
+        paddingLeft: 30,
+        width: '80%'
     },
     bigButton: {
         height: 50,
@@ -82,5 +93,10 @@ const styles = StyleSheet.create({
         fontFamily: 'Avenir',
         color: '#fff',
         fontWeight: '400'
-    }
+    },
+    label: {
+        color: '#fff',
+        width: '20%'
+    },
+    inputContainer: { display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }
 });

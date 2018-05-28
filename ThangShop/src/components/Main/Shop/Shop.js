@@ -135,7 +135,7 @@ class Shop extends Component {
                 <TabNavigator>
                     <TabNavigator.Item
                         selected={selectedTab === 'home'}
-                        title="Home"
+                        title="Trang chủ"
                         onPress={() => this.setState({ selectedTab: 'home' })}
                         renderIcon={() => <Image source={homeIcon} style={iconStyle} />}
                         renderSelectedIcon={() => <Image source={homeIconS} style={iconStyle} />}
@@ -146,7 +146,7 @@ class Shop extends Component {
 
                     <TabNavigator.Item
                         selected={selectedTab === 'catalog'}
-                        title="Catalog"
+                        title="Danh mục"
                         onPress={() => this.setState({ selectedTab: 'catalog' })}
                         renderIcon={() => <Image source={catalogIcon} style={iconStyle} />}
                         renderSelectedIcon={() => <Image source={catalogIconS} style={iconStyle} />}
@@ -158,7 +158,7 @@ class Shop extends Component {
 
                     <TabNavigator.Item
                         selected={selectedTab === 'search'}
-                        title="Search"
+                        title="Tìm kiếm"
                         onPress={() => this.setState({ selectedTab: 'search' })}
                         renderIcon={() => <Image source={searchIcon} style={iconStyle} />}
                         renderSelectedIcon={() => <Image source={searchIconS} style={iconStyle} />}
@@ -169,7 +169,7 @@ class Shop extends Component {
 
                     <TabNavigator.Item
                         selected={selectedTab === 'cart'}
-                        title="Cart"
+                        title="Giỏ hàng"
                         onPress={() => this.setState({ selectedTab: 'cart' })}
                         renderIcon={() => <Image source={cartIcon} style={iconStyle} />}
                         renderSelectedIcon={() => <Image source={cartIconS} style={iconStyle} />}
@@ -181,7 +181,7 @@ class Shop extends Component {
 
                     <TabNavigator.Item
                         selected={selectedTab === 'contact'}
-                        title="Contact"
+                        title="Liên hệ"
                         onPress={() => this.setState({ selectedTab: 'contact' })}
                         renderIcon={() => <Image source={contactIcon} style={iconStyle} />}
                         renderSelectedIcon={() => <Image source={contactIconS} style={iconStyle} />}

@@ -1,5 +1,5 @@
 const getOrderHistory = (token) => (
-    fetch('http://192.168.26.116/DoAnTotNghiep/webproduct/api/user/order_history',
+    fetch('http://10.130.50.43/DoAnTotNghiep/webproduct/api/user/order_history',
     {   
         method: 'POST',
         headers: {

@@ -3,7 +3,7 @@ import { View, Text, ImageBackground, StyleSheet, Dimensions, TouchableOpacity }
 import Swiper from 'react-native-swiper';
 
 const { width } = Dimensions.get('window');
-const url = 'http://192.168.26.116/DoAnTotNghiep/webproduct/upload/slide/';
+const url = 'http://10.130.50.43/DoAnTotNghiep/webproduct/upload/slide/';
 
 export default class Slide extends Component {
 

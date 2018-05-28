@@ -9,7 +9,7 @@ import global from '../../../global';
 const back = require('../../../../media/appIcon/back.png');
 const cart = require('../../../../media/appIcon/cartfull.png');
 
-const url = 'http://192.168.26.116/DoAnTotNghiep/webproduct/upload/product/';
+const url = 'http://10.130.50.43/DoAnTotNghiep/webproduct/upload/product/';
 
 export default class ProductDetail extends Component {
     goBack() {
@@ -40,7 +40,7 @@ export default class ProductDetail extends Component {
             ))
         );
         return (
-            <View style={wrapper}>
+            <ScrollView style={wrapper}>
                 <View style={cardStyle}>
                     <View style={header}>
                         <TouchableOpacity onPress={this.goBack.bind(this)} style={backBtn}>
@@ -52,7 +52,7 @@ export default class ProductDetail extends Component {
                         </TouchableOpacity>
                     </View>
                     <View style={imageContainer}>
-                        <ScrollView style={{ flexDirection: 'row', padding: 10, height: swiperHeight }} horizontal >
+                        <ScrollView style={{ flexDirection: 'row', padding: 10 }} horizontal >
                             <Image source={{ uri: `${url}${image_link}` }} style={productImageStyle} />
                             {
                                 imageList ? imageListJSX : null
@@ -73,7 +73,7 @@ export default class ProductDetail extends Component {
                         </View>
                     </View>
                 </View>
-            </View>
+            </ScrollView>
         );
     }
 }
@@ -109,10 +109,7 @@ const styles = StyleSheet.create({
         width: 25,
         height: 25
     },
-    productStyle: {
-        width: width / 2,
-        height: width / 2
-    },
+
     footer: {
         flex: 6
     },
@@ -120,11 +117,12 @@ const styles = StyleSheet.create({
         flex: 6,
         alignItems: 'center',
         flexDirection: 'row',
-        marginHorizontal: 10
     },
     textMain: {
         paddingLeft: 20,
-        marginVertical: 10
+        marginVertical: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ccc'
     },
     textBlack: {
         fontFamily: 'Avenir',
@@ -162,7 +160,8 @@ const styles = StyleSheet.create({
     productImageStyle: {
         width: swiperWidth,
         height: swiperHeight,
-        marginHorizontal: 5
+        marginHorizontal: 5,
+        resizeMode: 'center'
     },
     mainRight: {
         justifyContent: 'space-between',

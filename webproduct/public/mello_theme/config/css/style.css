@@ -197,3 +197,7 @@ table thead th {
 .products-grid .item .item-wrap .item-image::before {
     display: none;
 }
+
+.price-box {
+    text-align: center;
+}

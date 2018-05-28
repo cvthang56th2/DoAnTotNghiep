@@ -8,7 +8,7 @@ import profileIcon from '../../media/temp/profile.png';
 import saveToken from '../../api/saveToken';
 import icLogo from '../../media/appIcon/YoloBlack.png'
 
-const url = 'http://192.168.26.116/DoAnTotNghiep/webproduct/upload/user/';
+const url = 'http://10.130.50.43/DoAnTotNghiep/webproduct/upload/user/';
 
 class Menu extends Component {
     constructor(props) {
@@ -49,7 +49,7 @@ class Menu extends Component {
         const logoutJSX = (
             <View style={{ flex: 1 }}>
                 <TouchableOpacity style={btnStyle} onPress={this.gotoAuthentication.bind(this)}>
-                    <Text style={btnText}>Sign In</Text>
+                    <Text style={btnText}>ĐĂNG NHẬP</Text>
                 </TouchableOpacity>
                 <View style={{ display: 'flex', alignItems: 'center', marginTop: 30 }}>
                     <Image source={icLogo} style={{ width: 100, height: 100 }} />
@@ -61,13 +61,13 @@ class Menu extends Component {
                 <Text style={username}>{user ? user.name : ''}</Text>
                 <View>
                     <TouchableOpacity style={btnSignInStyle} onPress={this.gotoOrderHistory.bind(this)}>
-                        <Text style={btnTextSignIn}>Order History</Text>
+                        <Text style={btnTextSignIn}>Lịch sử giao dich</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={btnSignInStyle} onPress={this.gotoChangeInfo.bind(this)}>
-                        <Text style={btnTextSignIn}>Change Info</Text>
+                        <Text style={btnTextSignIn}>Thay đổi thông tin</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={btnSignInStyle} onPress={this.onSignOut.bind(this)}>
-                        <Text style={btnTextSignIn}>Sign out</Text>
+                        <Text style={btnTextSignIn}>Thoát</Text>
                     </TouchableOpacity>
                 </View>
                 <View />
@@ -111,7 +111,6 @@ const styles = StyleSheet.create({
     btnText: {
         color: '#34B089',
         fontFamily: 'Avenir',
-        fontSize: 20
     },
     btnSignInStyle: {
         height: 50,
