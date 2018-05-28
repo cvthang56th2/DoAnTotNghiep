@@ -19,7 +19,7 @@
             <div class="row">
                 <div id="box-left" class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                     <div class="wrap-user-img" style="display: flex; justify-content: center;">
-                        <img src="<?php if ($user->image_link != NULL) echo base_url('upload/user/' . $user->image_link); else echo base_url('upload/user/'.'user_unknown.png'); ?>" width="50%">
+                        <img src="<?php if ($user->image_link != NULL) echo base_url('upload/user/' . $user->image_link); else echo base_url('upload/user/'.'user_unknown.png'); ?>" width="50%" height="120">
                     </div>
                     <div class="user-name" style="text-align: center; font-size: 20px;"><?php echo $user->name ?></div>
                     <ul>

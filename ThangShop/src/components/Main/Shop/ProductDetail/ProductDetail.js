@@ -29,7 +29,7 @@ export default class ProductDetail extends Component {
             descContainer, productImageStyle, descStyle, txtMaterial, txtColor,
             addToCartBtn, backBtn
         } = styles;
-        const { name, price, content, image_link, image_list } = this.props.product;
+        const { name, discount, price, content, image_link, image_list } = this.props.product;
         var imageList;
         if (image_list == "")
             imageList = [];
@@ -64,10 +64,26 @@ export default class ProductDetail extends Component {
                             <Text style={textMain}>
                                 <Text style={textBlack}>{name.toUpperCase()}</Text>
                                 <Text style={textHighlight}> / </Text>
-                                <Text style={textSmoke}>{price} đ</Text>
+                                <Text style={textSmoke}>{
+                                    discount ?
+                                        parseFloat(price - discount).toFixed(0).replace(/./g, function (c, i, a) {
+                                            return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+                                        })
+                                        : parseFloat(price).toFixed(0).replace(/./g, function (c, i, a) {
+                                            return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+                                        })
+                                } đ</Text>
                             </Text>
+                            {
+                                discount ? <Text style={{textAlign:'center'}}>Giá cũ: <Text style={{color: "red", textDecorationLine: 'line-through'}}>{
+                                    parseFloat(price).toFixed(0).replace(/./g, function (c, i, a) {
+                                        return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+                                    })
+                                } đ</Text></Text> : <Text></Text>
+                            }
                         </View>
                         <View style={descContainer}>
+                            <Text style={{borderBottomColor: "#ccc", borderBottomWidth: 1, paddingBottom: 5, marginBottom: 5}}>Bài viết về <Text style={{fontWeight:'bold'}}>{name}</Text></Text>
                             <HTML html={content ? content : "Chưa có bài viết"} style={descStyle}></HTML>
 
                         </View>
@@ -148,7 +164,6 @@ const styles = StyleSheet.create({
     },
     descContainer: {
         margin: 10,
-        paddingTop: 10,
         paddingHorizontal: 10
     },
     descStyle: {
@@ -181,5 +196,5 @@ const styles = StyleSheet.create({
         fontFamily: 'Avenir'
     },
     addToCartBtn: { flexDirection: 'row', alignItems: 'center', borderWidth: 2, borderColor: '#34B089', borderRadius: 10, padding: 5 },
-    backBtn: { borderWidth: 2, borderColor: '#34B089', borderRadius: 10, padding: 2, alignItems:'center', display:'flex' }
+    backBtn: { borderWidth: 2, borderColor: '#34B089', borderRadius: 10, padding: 2, alignItems: 'center', display: 'flex' }
 });
