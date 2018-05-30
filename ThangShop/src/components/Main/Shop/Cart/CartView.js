@@ -11,7 +11,7 @@ function toTitleCase(str) {
     return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 }
 
-const url = 'http://10.130.50.43/DoAnTotNghiep/webproduct/upload/product/';
+const url = 'http://127.0.0.1/DoAnTotNghiep/webproduct/upload/product/';
 
 class CartView extends Component {
     incrQuantity(id) {

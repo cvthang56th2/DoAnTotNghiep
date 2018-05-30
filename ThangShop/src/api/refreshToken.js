@@ -2,7 +2,7 @@ import saveToken from './saveToken';
 import getToken from './getToken';
 
 const getNewToken = (token) => (
-    fetch('http://10.130.50.43/DoAnTotNghiep/webproduct/api/user/refresh_token',
+    fetch('http://127.0.0.1/DoAnTotNghiep/webproduct/api/user/refresh_token',
     {   
         method: 'POST',
         headers: {

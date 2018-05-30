@@ -1,5 +1,5 @@
 const changeInfo = (token, name, phone, address, password) => (
-    fetch('http://10.130.50.43/DoAnTotNghiep/webproduct/api/user/change_info',
+    fetch('http://127.0.0.1/DoAnTotNghiep/webproduct/api/user/change_info',
     {   
         method: 'POST',
         headers: {

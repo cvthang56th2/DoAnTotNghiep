@@ -8,7 +8,7 @@ import profileIcon from '../../media/temp/profile.png';
 import saveToken from '../../api/saveToken';
 import icLogo from '../../media/appIcon/YoloBlack.png'
 
-const url = 'http://10.130.50.43/DoAnTotNghiep/webproduct/upload/user/';
+const url = 'http://127.0.0.1/DoAnTotNghiep/webproduct/upload/user/';
 
 class Menu extends Component {
     constructor(props) {
