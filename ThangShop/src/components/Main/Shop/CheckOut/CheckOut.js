@@ -29,8 +29,8 @@ export default class SignIn extends Component {
             const kq = await sendOrder(token, arrayDetail, name, email, address, phone);
             if (kq === 'THEM_THANH_CONG') {
                 Alert.alert(
-                    'Notice',
-                    'Send order Successfully',
+                    'Thông báo',
+                    'Gửi đơn hàng thành công',
                     [
                         { text: 'OK' }
                     ],
@@ -149,11 +149,11 @@ export default class SignIn extends Component {
                     </View>
                     <TouchableOpacity style={bigButton} onPress={() => {
                         Alert.alert(
-                            'Notice',
-                            'Are you sure?',
+                            'Thông báo',
+                            'Bạn có chắc muốn thanh toán không?',
                             [
-                                { text: 'YES', onPress: () => this.onSendOrder() },
-                                { text: 'NO' }
+                                { text: 'Có', onPress: () => this.onSendOrder() },
+                                { text: 'Không' }
                             ],
                             { cancelable: false }
                         );

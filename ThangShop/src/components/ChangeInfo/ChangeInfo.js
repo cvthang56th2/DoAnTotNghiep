@@ -26,8 +26,8 @@ export default class ChangeInfo extends Component {
 
     alertSuccess() {
         Alert.alert(
-            'Notice',
-            'Update info successfully',
+            'Thông báo',
+            'Cập nhật thông tin thành công!',
             [
                 { text: 'OK', onPress: this.goBackToMain.bind(this) }
             ],
