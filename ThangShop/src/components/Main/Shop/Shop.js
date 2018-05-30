@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { View, Image, StyleSheet, Alert } from 'react-native';
+import {
+    View, Image, StyleSheet, Alert, BackHandler,
+    ToastAndroid,
+} from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import Header from './Header';
 import Home from './Home/Home';
@@ -55,6 +58,7 @@ class Shop extends Component {
             });
         getCart()
             .then(cartArray => this.setState({ cartArray }));
+        BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
     }
 
     gotoSearch() {
@@ -125,6 +129,21 @@ class Shop extends Component {
         const { open } = this.props;
         open();
     }
+
+    handleBackButton() {
+        Alert.alert(
+            'Chú ý:',
+            'Bạn muốn thoát chương trình?',
+            [
+                { text: 'Có', onPress: () => BackHandler.exitApp() },
+                { text: 'Không' }
+            ],
+            { cancelable: false }
+        );
+        return true;
+    }
+
+
 
     render() {
         const { iconStyle } = styles;

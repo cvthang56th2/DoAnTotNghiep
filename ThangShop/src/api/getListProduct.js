@@ -1,9 +1,9 @@
 const getListProduct = (idType, page) => {
     let url;
     if (idType == null) {
-        url = `http://127.0.0.1/DoAnTotNghiep/webproduct/api/product/index/${page}`;
+        url = `http://10.130.50.43/DoAnTotNghiep/webproduct/api/product/index/${page}`;
     } else {
-        url = `http://127.0.0.1/DoAnTotNghiep/webproduct/api/product/catalog/${idType}/${page}`;
+        url = `http://10.130.50.43/DoAnTotNghiep/webproduct/api/product/catalog/${idType}/${page}`;
     }
     
     return fetch(url)

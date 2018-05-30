@@ -10,10 +10,10 @@ export default class SignIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: global.user.name,
-            email: global.user.email,
-            address: global.user.address,
-            phone: global.user.phone,
+            name: '',
+            email: '',
+            address: '',
+            phone: '',
         };
     }
 
@@ -57,9 +57,22 @@ export default class SignIn extends Component {
         navigator.pop();
     }
 
+    componentDidMount() {
+        const { user } = global;
+        if (user) {
+            this.setState({
+                name: global.user.name,
+                email: global.user.email,
+                address: global.user.address,
+                phone: global.user.phone,
+            })
+        }
+    }
+
     render() {
         const { inputStyle, bigButton, buttonText,
-            wrapper, header, backStyle, wrapInput
+            wrapper, header, backStyle, wrapInput,
+            label
         } = styles;
         const { email, address, name, phone } = this.state;
         const { user } = global;
@@ -88,7 +101,7 @@ export default class SignIn extends Component {
                         <Text style={{ fontSize: 20 }}>Thanh toán</Text>
                     </View>
                     <View style={wrapInput}>
-                        <Text>Tên (*): </Text>
+                        <Text style={label}>Tên (*): </Text>
                         <TextInput
                             style={inputStyle}
                             placeholder="Enter your name"
@@ -99,7 +112,7 @@ export default class SignIn extends Component {
                     </View>
 
                     <View style={wrapInput}>
-                        <Text>Email: (*): </Text>
+                        <Text style={label}>Email: (*): </Text>
                         <TextInput
                             style={inputStyle}
                             placeholder="Enter your email"
@@ -110,7 +123,7 @@ export default class SignIn extends Component {
                     </View>
 
                     <View style={wrapInput}>
-                        <Text>Địa chỉ (*): </Text>
+                        <Text style={label}>Địa chỉ (*): </Text>
                         <TextInput
                             style={inputStyle}
                             placeholder="Enter your address"
@@ -121,7 +134,7 @@ export default class SignIn extends Component {
                     </View>
 
                     <View style={wrapInput}>
-                        <Text>Số điện thoại (*): </Text>
+                        <Text style={label}>Số điện thoại (*): </Text>
                         <TextInput
                             style={inputStyle}
                             placeholder="Enter your phone number"
@@ -131,8 +144,8 @@ export default class SignIn extends Component {
                         />
                     </View>
 
-                    <View style={{paddingLeft: 10}}>
-                        <Text>Tổng hóa đơn: <Text style={{color: '#B10D65', fontSize: 15, fontWeight:'bold'}}>{total} đ</Text></Text>
+                    <View style={{ paddingLeft: 10 }}>
+                        <Text>Tổng hóa đơn: <Text style={{ color: '#B10D65', fontSize: 15, fontWeight: 'bold' }}>{total} đ</Text></Text>
                     </View>
                     <TouchableOpacity style={bigButton} onPress={() => {
                         Alert.alert(
@@ -161,12 +174,12 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     inputStyle: {
-        height: 50,
+        height: 40,
         backgroundColor: '#fff',
         marginBottom: 10,
         borderRadius: 20,
         paddingLeft: 20,
-        width: "70%",
+        width: "80%",
         borderWidth: 1,
         borderColor: '#ccc'
     },
@@ -195,6 +208,9 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: 5
+    },
+    label: {
+        width: '20%'
     },
     wrapInput: {
         display: 'flex',

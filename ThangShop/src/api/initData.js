@@ -1,5 +1,5 @@
 const initData = () => (
-    fetch('http://127.0.0.1/DoAnTotNghiep/webproduct/api/home')// eslint-disable-line
+    fetch('http://10.130.50.43/DoAnTotNghiep/webproduct/api/home')// eslint-disable-line
     .then(res => res.json())
 );
 

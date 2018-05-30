@@ -8,7 +8,7 @@ import profileIcon from '../../media/temp/profile.png';
 import saveToken from '../../api/saveToken';
 import icLogo from '../../media/appIcon/YoloBlack.png'
 
-const url = 'http://127.0.0.1/DoAnTotNghiep/webproduct/upload/user/';
+const url = 'http://10.130.50.43/DoAnTotNghiep/webproduct/upload/user/';
 
 class Menu extends Component {
     constructor(props) {
@@ -49,7 +49,7 @@ class Menu extends Component {
         const logoutJSX = (
             <View style={{ flex: 1 }}>
                 <TouchableOpacity style={btnStyle} onPress={this.gotoAuthentication.bind(this)}>
-                    <Text style={btnText}>ĐĂNG NHẬP</Text>
+                    <Text style={btnText}>Đăng nhập</Text>
                 </TouchableOpacity>
                 <View style={{ display: 'flex', alignItems: 'center', marginTop: 30 }}>
                     <Image source={icLogo} style={{ width: 100, height: 100 }} />
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 5,
-        paddingHorizontal: 70
+        paddingHorizontal: 50
     },
     btnText: {
         color: '#34B089',

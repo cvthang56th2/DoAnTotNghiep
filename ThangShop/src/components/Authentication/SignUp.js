@@ -128,7 +128,7 @@ export default class SignUp extends Component {
 
 const styles = StyleSheet.create({
     inputStyle: {
-        height: 50,
+        height: 40,
         backgroundColor: '#fff',
         marginBottom: 10,
         borderRadius: 20,
@@ -150,6 +150,7 @@ const styles = StyleSheet.create({
     },
     label: {
         color: '#fff',
+        width: '20%'
     },
     inputContainer: { display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }
 });
