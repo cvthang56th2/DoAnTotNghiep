@@ -33,7 +33,7 @@
                                                         </center>
                                                     </div>
                                                     <p style="float:left;margin-left:10px">Lượt mua: <b><?php echo $row->buyed ?></b></p>
-                                                    <div class="wrap-cart"><a title="Add to cart" class="btn-cart" href="<?php echo base_url('cart/add/' . $row->id) ?>">add to cart</a></div>
+                                                    <div class="wrap-cart"><a title="Add to cart" class="btn-cart" href="<?php echo base_url('cart/add/' . $row->id) ?>"><i class="fas fa-cart-plus"></i> Thêm</a></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -143,7 +143,7 @@
                                                                     </center>
                                                                 </div>
                                                             </div>
-                                                            <div class="wrap-cart"><a title="Add to cart" class="btn-cart" href="<?php echo base_url('cart/add/' . $row->id) ?>">add to cart</a></div>
+                                                            <div class="wrap-cart"><a title="Add to cart" class="btn-cart" href="<?php echo base_url('cart/add/' . $row->id) ?>"><i class="fas fa-cart-plus"></i> Thêm</a></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -196,7 +196,7 @@
                                                                 </div>
                                                             </div>
                                                             <p style="text-align: center;padding-top: 80px;">Lượt mua: <b><?php echo $row->buyed ?></b></p>
-                                                            <div class="wrap-cart"><a title="Add to cart" class="btn-cart" href="<?php echo base_url('cart/add/' . $row->id) ?>">add to cart</a></div>
+                                                            <div class="wrap-cart"><a title="Add to cart" class="btn-cart" href="<?php echo base_url('cart/add/' . $row->id) ?>"><i class="fas fa-cart-plus"></i> Thêm</a></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -249,7 +249,7 @@
                                                                 </div>
                                                             </div>
                                                             <p style="text-align: center;padding-top: 80px;">Lượt mua: <b><?php echo $row->buyed ?></b></p>
-                                                            <div class="wrap-cart"><a title="Add to cart" class="btn-cart" href="<?php echo base_url('cart/add/' . $row->id) ?>">add to cart</a></div>
+                                                            <div class="wrap-cart"><a title="Add to cart" class="btn-cart" href="<?php echo base_url('cart/add/' . $row->id) ?>"><i class="fas fa-cart-plus"></i> Thêm</a></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -302,7 +302,7 @@
                                                                 </div>
                                                             </div>
                                                             <p style="text-align: center;padding-top: 80px;">Lượt mua: <b><?php echo $row->buyed ?></b></p>
-                                                            <div class="wrap-cart"><a title="Add to cart" class="btn-cart" href="<?php echo base_url('cart/add/' . $row->id) ?>">add to cart</a></div>
+                                                            <div class="wrap-cart"><a title="Add to cart" class="btn-cart" href="<?php echo base_url('cart/add/' . $row->id) ?>"><i class="fas fa-cart-plus"></i> Thêm</a></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -406,7 +406,7 @@
                                             </div>
                                         </div>
                                         <div style="text-align: center;margin-top: 50px;">
-                                            <a href="<?php echo base_url('cart/add/' . $row->id) ?>" class="btn-cart" title="Add to cart" style="color: white; padding: 5px 10px;background: #4e5159;">add to cart</a>
+                                            <a href="<?php echo base_url('cart/add/' . $row->id) ?>" class="btn-cart" title="Add to cart" style="color: white; padding: 5px 10px;background: #4e5159;"><i class="fas fa-cart-plus"></i> Thêm</a>
                                         </div>
                                     </div>
                                     <!--end item wrap -->
@@ -438,7 +438,7 @@
 
                                                     <div class="right">
 
-                                                        <a href="<?php echo base_url('cart/add/' . $row->id) ?>" class="btn-cart" title="Add to cart">add to cart</a>
+                                                        <a href="<?php echo base_url('cart/add/' . $row->id) ?>" class="btn-cart" title="Add to cart"><i class="fas fa-cart-plus"></i> Thêm</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -530,7 +530,7 @@
                     </div>
                     <div class="block wrap-bestseller" id="bestseller">
                         <div class="title">
-                            <span>best sellers</span> 
+                            <span>bán chạy nhất</span> 
                         </div>
                         <div class="panel-group" id="accordion">
                             <?php for ($i = 0; $i < count($product_buy); $i++): ?>
@@ -554,7 +554,7 @@
 
                                                             <div class="left">
 
-                                                                <a href="<?php echo base_url('cart/add/' . $product_buy[$i]->id) ?>" class="btn-cart" title="Add to cart">add to cart</a>
+                                                                <a href="<?php echo base_url('cart/add/' . $product_buy[$i]->id) ?>" class="btn-cart" title="Add to cart"><i class="fas fa-cart-plus"></i> Thêm</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -599,7 +599,7 @@
                         </div>
                         <div class="wrap-viewall">
                             <div class="view-all">
-                                <a href="#">Xem tất cả best seller</a>
+                                <a href="#">Xem tất cả </a>
                             </div>
                         </div>
                         <script type="text/javascript">

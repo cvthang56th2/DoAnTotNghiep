@@ -201,3 +201,28 @@ table thead th {
 .price-box {
     text-align: center;
 }
+
+#box-footer .block-title span {
+    font-size: 20px !important;
+    font-weight: bold;
+}
+
+#box-footer .block-title {
+    text-align: center;
+}
+
+#footer-social {
+   text-align: center;
+}
+
+#footer-social li {
+    display: inline; font-size: 45px; margin: 5px;
+}
+
+#footer-social li a {
+    color: #fff;
+}
+
+#footer-social li a:hover {
+    color: rgb(235, 156, 10);
+}

@@ -33,4 +33,5 @@
 <script type="text/javascript" src="<?php echo public_url() ?>/site/slick/slick.min.js"></script>
 <link rel="stylesheet" href="<?php echo public_url() ?>/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 <!--End raty -->
-<title>MELLO</title>
+<link rel="shortcut icon" type="image/x-icon" href="<?php echo public_url(); ?>site/images/YoloBlack.png" />
+<title>Yolo Shop | Technology for Life</title>

@@ -91,7 +91,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="logo">
-                            <a href="<?php echo base_url(''); ?>"><img src="<?php echo public_url(); ?>mello_theme/images/logo-07.png" alt=""></a>
+                            <a href="<?php echo base_url(''); ?>"><img src="<?php echo public_url(); ?>mello_theme/images/yoloLogo.png" alt=""></a>
                         </div>
                         <div id="mobile-nav">
                             <button class="btn-sidebar" type="button"><span>menu</span></button> 

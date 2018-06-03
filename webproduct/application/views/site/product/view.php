@@ -82,7 +82,7 @@
 
                                                     <div class="right">
 
-                                                        <a href="<?php echo base_url('cart/add/' . $row->id) ?>" class="btn-cart" title="Add to cart">add to cart</a>
+                                                        <a href="<?php echo base_url('cart/add/' . $row->id) ?>" class="btn-cart" title="Add to cart"><i class="fas fa-cart-plus"></i> Thêm</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -309,7 +309,7 @@
                                                 <div class="add-to-box add-to-cart">
                                                     <div class="add-to-cart">
                                                         <div class="add-to-cart-buttons">
-                                                            <a href="<?php echo base_url('cart/add/' . $product->id) ?>"><button type="button" title="Add to Cart" class="button btn-cart" ><span><span>Add to Cart</span></span></button></a>
+                                                            <a href="<?php echo base_url('cart/add/' . $product->id) ?>"><button type="button" title="Add to Cart" class="button btn-cart" ><span><span>Thêm vào giỏ hàng</span></span></button></a>
                                                         </div>
                                                     </div>
                                                     <!--<span class="or"></span>-->
