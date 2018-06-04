@@ -226,3 +226,19 @@ table thead th {
 #footer-social li a:hover {
     color: rgb(235, 156, 10);
 }
+
+.home07 #box-content .block-layout .content .item .item-wrap .pro-info .wrap-cart {
+    background: #4e5159;
+}
+
+.home07 #box-content .block-layout .content .item .item-wrap .pro-info .wrap-cart:hover {
+    background: #f37020;
+}
+
+.home07 #box-content .block-layout .content .item .item-wrap .pro-info .wrap-cart:hover a{
+    background: #f37020;
+}
+
+.home07 #box-content .block-layout .content .item .item-wrap .pro-info .wrap-cart a {
+    padding: 0 !important;
+}

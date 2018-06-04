@@ -319,13 +319,50 @@
                                                 <div class="add-to-box add-to-cart">
                                                     <div class="add-to-cart">
                                                         <div class="add-to-cart-buttons">
-                                                            <a href="<?php echo base_url('cart/add/' . $product->id) ?>">
+                                                            
                                                                 <button type="button" title="Add to Cart" class="button btn-cart">
                                                                     <span>
                                                                         <span>Thêm vào giỏ hàng</span>
                                                                     </span>
                                                                 </button>
-                                                            </a>
+                                                                <script>
+                                                                $('document').ready(function() {
+                                                                    $('.btn-cart').click(function() {
+                                                                        $.ajax({
+                                                                            url: "<?php echo base_url('cart/add_ajax/' . $product->id) ?>",
+                                                                        }).done(function(res) {
+                                                                            if (res === "DA_CO_TRONG_GIO_HANG") {
+                                                                                alert("Mặt hàng đã có trong giỏ hàng!");
+                                                                            } else if (res === "KHONG_DU") {
+                                                                                alert("Đã hết hàng!")
+                                                                            } else {
+                                                                                 var count_carts = parseInt($('#count_carts').html()) + 1;
+                                                                                $('#count_carts').html(count_carts)
+                                                                                var respon = JSON.parse(res);
+                                                                                var html = '<li class="item row">'
+                                                                                +'<a href="<?php echo base_url("product/view/") ?>'+respon.id+'" title="'+respon.name+'" class="product-image" style="width: 40%">'
+                                                            +'<img width="100%" src="<?php echo base_url("upload/product/"); ?>'+respon.image_link+'" alt="'+respon.name+'"></a>'
+                                                            + '<a href="<?php echo base_url("cart/del/") ?>'+respon.id+'" class="btn-remove">Remove This Item</a><div class="product-details"><p class="product-name">'
+                                                            +'<a title="'+respon.name+'" href="<?php echo base_url("product/view/") ?>'+respon.id+'">'+respon.name+'</a></p><span class="price"><span class="regular-price">'
+                                                                    +'<span class="price">'+respon.price+' đ</span></span></span><div class="qty-abc"><label>Số lượng: </label>'
+                                                                +'<input value="'+respon.qty+'" type="text" name="qty_'+respon.id+'"></div></div>'
+                                                                                +'</li>';
+
+                                                                                $('#cart-sidebar').append(html);
+                                                                                var total_carts = $('#total_carts').html();
+                                                                                var number = Number(total_carts.replace(/[^0-9\.-]+/g,""));
+                                                                                total_carts = number + respon.price*respon.qty;
+                                                                                total_carts = total_carts.toFixed(0).replace(/./g, function(c, i, a) {
+                                                                                    return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+                                                                                });
+                                                                                $('#total_carts').html(total_carts + " đ");
+                                                                                alert("Thêm vào giỏ hàng thành công!");
+                                                                            }
+                                                                        })
+                                                                    })
+                                                                })
+                                                                </script>
+                                                            
                                                         </div>
                                                     </div>
                                                     <!--<span class="or"></span>-->
@@ -400,13 +437,15 @@
                                         <label for="param_user_name" class="form-label">Họ và tên:
                                             <span class="req">*</span>
                                         </label>
-                                        <input type="text" class="form-control" id="user_name" name="user_name">
+                                        <input type="text" class="form-control" id="user_name" name="user_name" value="<?php if (isset($user_info)) echo $user_info->name; ?>">
+                		                <div class="clear error" name="user_name_error"><?php echo form_error('user_name')?></div>
                                     </div>
                                     <div class="form-group">
                                         <label for="param_content" class="form-label">Nội dung bình luận:
                                             <span class="req">*</span>
                                         </label>
                                         <textarea class="form-control" id="content" name="content"></textarea>
+                                        <div class="clear error" name="content_error"><?php echo form_error('content')?></div>
                                     </div>
 
 
@@ -428,6 +467,9 @@
                                         </div>
                                     </div>
                                     <?php endforeach;?>
+                                    <div class="pagination">
+                                        <?php echo $this->pagination->create_links() ?>
+                                    </div>
                                 </div>
                             </div>
                             <div id="upsell_pro" class="products-grid">

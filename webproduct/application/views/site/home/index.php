@@ -33,7 +33,7 @@
                                                         </center>
                                                     </div>
                                                     <p style="float:left;margin-left:10px">Lượt mua: <b><?php echo $row->buyed ?></b></p>
-                                                    <div class="wrap-cart"><a title="Add to cart" class="btn-cart" href="<?php echo base_url('cart/add/' . $row->id) ?>"><i class="fas fa-cart-plus"></i> Thêm</a></div>
+                                                    <div class="wrap-cart"><a title="Xem chi tiết" class="btn-cart" href="<?php echo base_url('product/view/' . $row->id) ?>">Chi tiết <i class="fas fa-info-circle"></i></a></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -143,7 +143,7 @@
                                                                     </center>
                                                                 </div>
                                                             </div>
-                                                            <div class="wrap-cart"><a title="Add to cart" class="btn-cart" href="<?php echo base_url('cart/add/' . $row->id) ?>"><i class="fas fa-cart-plus"></i> Thêm</a></div>
+                                                            <div class="wrap-cart"><a title="Xem chi tiết" class="btn-cart" href="<?php echo base_url('product/view/' . $row->id) ?>">Chi tiết <i class="fas fa-info-circle"></i></a></div>
                                                         </div>
                                                     </div>
                                                 </div>

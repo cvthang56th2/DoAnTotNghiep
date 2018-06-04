@@ -11,8 +11,11 @@ Class Cart extends MY_Controller
     /*
      * Phuoc thuc them san pham vao gio hang
      */
-    function add()
+
+    function add_ajax()
     {
+        $carts = $this->cart->contents();
+        
         //lay ra san pham muon them vao gio hang
         $id = $this->uri->rsegment(3);
         $product = $this->product_model->get_info($id);
@@ -22,12 +25,15 @@ Class Cart extends MY_Controller
         }
         if($product->available_quantity <= 0)
         {
-            $this->session->set_flashdata('message_type', 'warn');
-            $this->session->set_flashdata('message', 'Số lượng hàng tồn kho đã hết!');
-            redirect();
+            print_r("KHONG_DU");
             return;
         }
-        
+        foreach($carts as $cart) {
+            if ($cart['id'] == $product->id) {
+                print_r("DA_CO_TRONG_GIO_HANG");
+                return;
+            }
+        }
         //tong so san pham
         $qty = 1;
         $price = $product->price;
@@ -43,6 +49,58 @@ Class Cart extends MY_Controller
         $data['name'] = url_title($product->name);
         $data['image_link']  = $product->image_link;
         $data['price'] = $price;
+        print_r(json_encode($data));
+        $this->cart->insert($data);
+        
+        $this->session->set_flashdata('message_type', 'success');
+        $this->session->set_flashdata('message', 'Thêm vào giỏ hành thành công!');
+        //chuyen sang trang danh sach san pham trong gio hang
+    }
+
+    function add()
+    {
+        $carts = $this->cart->contents();
+        
+        //lay ra san pham muon them vao gio hang
+        $id = $this->uri->rsegment(3);
+        $product = $this->product_model->get_info($id);
+        if(!$product)
+        {
+            redirect();
+        }
+        if($product->available_quantity <= 0)
+        {
+            $this->session->set_flashdata('message_type', 'warn');
+            $this->session->set_flashdata('message', 'Số lượng '.$product->name.' tồn kho đã hết!');
+            redirect();
+            return;
+        }
+        foreach($carts as $cart) {
+            if ($cart['id'] == $product->id) {
+                $this->session->set_flashdata('message_type', 'warn');
+                $this->session->set_flashdata('message', 'Sản phẩm '.$product->name.' đã có trong giỏ hàng!');
+                redirect();
+                return;
+            }
+        }
+        //tong so san pham
+        $qty = 1;
+        $price = $product->price;
+        if($product->discount > 0)
+        {
+            $price = $product->price - $product->discount;
+        }
+        
+        //thong tin them vao gio hang
+        $data = array();
+        $data['id'] = $product->id;
+        $data['qty'] = $qty;
+        $data['name'] = url_title($product->name);
+        $data['image_link']  = $product->image_link;
+        $data['price'] = $price;
+        print_r(json_encode($data));
+        
+
         $this->cart->insert($data);
         
         $this->session->set_flashdata('message_type', 'success');

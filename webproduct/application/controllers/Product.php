@@ -169,7 +169,27 @@ Class Product extends MY_Controller {
 			$this->session->set_flashdata('message', 'Bình luận thành công');
         }
 
+
+        //load ra thu vien phan trang
+        $this->load->library('pagination');
+        $config = array();
+        $total_comment_input = array();
+        $total_comment_input['where'] = array('product_id'=> $id);
+        $total_comment = $this->comment_model->get_total($total_comment_input);
+        $config['total_rows'] = $total_comment; //tong tat ca cac san pham tren website
+        $config['base_url'] = base_url('product/view/' . $id); //link hien thi ra danh sach san pham
+        $config['per_page'] = 5; //so luong san pham hien thi tren 1 trang
+        $config['uri_segment'] = 4; //phan doan hien thi ra so trang tren url
+        $config['next_link'] = 'Trang kế tiếp';
+        $config['prev_link'] = 'Trang trước';
+        //khoi tao cac cau hinh phan trang
+        $this->pagination->initialize($config);
+
+        $segment = $this->uri->segment(4);
+        $segment = intval($segment);
+
         $input = array();
+        $input['limit'] = array($config['per_page'], $segment);
         $input['where'] = array('product_id' => $id);
         $list_comment = $this->comment_model->get_list($input);
         $this->data['list_comment'] = $list_comment;

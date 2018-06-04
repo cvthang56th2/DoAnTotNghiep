@@ -315,7 +315,7 @@
                             <div class="box-cart">
                                 <div class="cart-mini">
                                     <div class="title">
-                                        <span class="item"><?php echo count($carts) ?></span>
+                                        <span class="item" id="count_carts"><?php echo count($carts) ?></span>
                                     </div>
                                     <div class="block-content">
                                         <div class="inner">
@@ -340,31 +340,14 @@
                                                                 <label>Số lượng: </label>
                                                                 <input value="<?php echo $row['qty']; ?>" type="text" name="qty_<?php echo $row['id'] ?>">
                                                             </div>
-                                                            <script>
-    //                                                                $(document).ready(function () {
-    //                                                                    $('#cart-sidebar .qty-abc .qty-change-right').on('click', function (e) {
-    //                                                                        e.stopPropagation();
-    //                                                                        e.stopImmediatePropagation();
-    //                                                                        var inp = parseInt($(this).siblings('input').val()) + 1;
-    //                                                                        $(this).siblings('input').val(inp);
-    //                                                                    })
-    //                                                                    $('#cart-sidebar .qty-abc .qty-change-left').on('click', function (e) {
-    //                                                                        e.stopPropagation();
-    //                                                                        e.stopImmediatePropagation();
-    //                                                                        var inp = parseInt($(this).siblings('input').val());
-    //                                                                        if (inp == 1) return;
-    //                                                                        inp = inp - 1;
-    //                                                                        $(this).siblings('input').val(inp);
-    //                                                                    })
-    //                                                                })
-                                                            </script>
+                                                            
                                                         </div>
                                                     </li>
                                                 <?php endforeach; ?>
                                             </ol>
                                             <div class="summary">
                                                 <p class="subtotal">
-                                                    <span class="label">Tổng cộng:</span> <span class="price"><?php echo number_format($total_amount); ?> đ</span>                                                                        
+                                                    <span class="label">Tổng cộng:</span> <span class="price" id="total_carts"><?php echo number_format($total_amount); ?> đ</span>                                                                        
                                                 </p>
                                             </div>
                                             <div class="actions">
