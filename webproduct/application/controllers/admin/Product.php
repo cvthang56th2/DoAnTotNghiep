@@ -109,7 +109,8 @@ Class Product extends MY_Controller
             $this->form_validation->set_rules('name', 'Tên', 'required');
             $this->form_validation->set_rules('catalog', 'Thể loại', 'required');
             $this->form_validation->set_rules('price', 'Giá', 'required');
-            
+            $this->form_validation->set_rules('available_quantity', 'Giá', 'required');
+
             //nhập liệu chính xác
             if($this->form_validation->run())
             {
@@ -117,6 +118,7 @@ Class Product extends MY_Controller
                 $name        = $this->input->post('name');
                 $catalog_id  = $this->input->post('catalog');
                 $price       = $this->input->post('price');
+                $available_quantity       = $this->input->post('available_quantity');
                 $price       = str_replace(',', '', $price);
                 
 
@@ -152,6 +154,7 @@ Class Product extends MY_Controller
                     'meta_desc'  => $this->input->post('meta_desc'),
                     'meta_key'   => $this->input->post('meta_key'),
                     'content'    => $this->input->post('content'),
+                    'available_quantity' => $available_quantity,
                     'created'    => now(),
                 ); 
                 //them moi vao csdl
@@ -211,6 +214,7 @@ Class Product extends MY_Controller
             $this->form_validation->set_rules('name', 'Tên', 'required');
             $this->form_validation->set_rules('catalog', 'Thể loại', 'required');
             $this->form_validation->set_rules('price', 'Giá', 'required');
+            $this->form_validation->set_rules('available_quantity', 'Số lượng', 'required');
         
             //nhập liệu chính xác
             if($this->form_validation->run())
@@ -223,7 +227,8 @@ Class Product extends MY_Controller
                
                 $discount = $this->input->post('discount');
                 $discount = str_replace(',', '', $discount);
-                
+                $available_quantity       = $this->input->post('available_quantity');
+
                 //lay ten file anh minh hoa duoc update len
                 $this->load->library('upload_library');
                 $upload_path = './upload/product';
@@ -251,6 +256,7 @@ Class Product extends MY_Controller
                     'meta_desc'  => $this->input->post('meta_desc'),
                     'meta_key'   => $this->input->post('meta_key'),
                     'content'    => $this->input->post('content'),
+                    'available_quantity' => $available_quantity
                 );
                 if($image_link != '')
                 {

@@ -4,7 +4,8 @@ Class Cart extends MY_Controller
     function __construct()
     {
         parent::__construct();
-        
+        $this->load->model('product_model');
+
     }
     
     /*
@@ -13,13 +14,20 @@ Class Cart extends MY_Controller
     function add()
     {
         //lay ra san pham muon them vao gio hang
-        $this->load->model('product_model');
         $id = $this->uri->rsegment(3);
         $product = $this->product_model->get_info($id);
         if(!$product)
         {
             redirect();
         }
+        if($product->available_quantity <= 0)
+        {
+            $this->session->set_flashdata('message_type', 'warn');
+            $this->session->set_flashdata('message', 'Số lượng hàng tồn kho đã hết!');
+            redirect();
+            return;
+        }
+        
         //tong so san pham
         $qty = 1;
         $price = $product->price;
@@ -69,8 +77,16 @@ Class Cart extends MY_Controller
         $carts = $this->cart->contents();
         foreach ($carts as $key => $row)
         {
+            $product = $this->product_model->get_info($row['id']);
+            
             //tong so luong san pham
             $total_qty = $this->input->post('qty_'.$row['id']);
+            if ($product->available_quantity - $total_qty < 0) {
+                $this->session->set_flashdata('message_type', 'warn');
+                $this->session->set_flashdata('message', 'Số lượng tồn kho của <strong>'.$product->name.'</strong> không đủ!');
+                redirect(base_url('cart'));
+                return;
+            }
             $data = array();
             $data['rowid'] = $key;
             $data['qty'] = $total_qty;

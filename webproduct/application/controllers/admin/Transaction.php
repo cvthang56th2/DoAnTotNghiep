@@ -6,12 +6,14 @@ Class Transaction extends MY_Controller
         parent::__construct();
         //load ra file model
         $this->load->model('transaction_model');
-        
+        $this->load->model('order_model');
+
         // Tai cac file thanh phan
         $this->load->helper('language');
         $this->lang->load('admin/transaction');
         $this->lang->load('admin/common');
-        
+        $this->load->model('product_model');
+
     }
     
     /*
@@ -181,7 +183,7 @@ Class Transaction extends MY_Controller
         {
             //thông tin sản phẩm
             $product = $this->product_model->get_info($row->product_id);
-            $product->image = public_url('upload/product/'.$product->image_link);
+            $product->image = base_url('upload/product/'.$product->image_link);
             $product->_url_view = site_url('product/view/'.$product->id);
             	
             $row->_price = number_format($product->price);
@@ -224,30 +226,36 @@ Class Transaction extends MY_Controller
         //lay id cua đơn hàng ma ta muon kích hoạt
         $id = $this->uri->rsegment('3');
         //lay thong tin cua giao dịch
-        $info = $this->order_model->get_info($id);
+        $info = $this->transaction_model->get_info($id);
         if(!$info)
         {
-            $this->session->set_flashdata('message', 'Không tồn tại đơn hàng này');
+            $this->session->set_flashdata('message', 'Không tồn tại giao dịch này');
             redirect(admin_url('transaction'));
         }
     
         //Cập nhật trạng thái giao hàng
         $data = array();
         $data['status'] = 1;//đã gửi hàng
-        $this->order_model->update($id, $data);
+        // $this->transaction_model->update($id, $data);
     
         //tru di so luong san pham da chuyen cho khach
         //va cong so luong san pham da ban
-        $this->load->model('product_model');
+        $input = array();
+        $input['where'] = array('transaction_id'=>$id);
+        $orders = $this->order_model->get_list($input);
         //lay thong san pham trong cai don hang nay
-        $product = $this->product_model->get_info($info->product_id);
-        $data = array();
-        $data['buyed'] = $product->buyed + $info->qty; //cap nhat so luong da mua
-        $this->product_model->update($product->id, $data);
+        foreach($orders as $order) {
+            //lay thong san pham trong cai don hang nay
+            $product = $this->product_model->get_info($order->product_id);
+            $data = array();
+            $data['available_quantity'] = $product->available_quantity - $order->qty;
+            $data['buyed'] = $product->buyed + $order->qty; //cap nhat so luong da mua
+            $this->product_model->update($product->id, $data);
+        }
         	
         //gui thong bao
-        $this->session->set_flashdata('message', 'Đã cập nhật trạng thái đơn hàng thành công');
-        redirect(admin_url('order'));
+        $this->session->set_flashdata('message', 'Đã cập nhật trạng thái giao dịch thành công');
+        redirect(admin_url('transaction'));
     }
     
     /**
@@ -259,25 +267,27 @@ Class Transaction extends MY_Controller
         //lay id cua đơn hàng ma ta muon hủy
         $id = $this->uri->rsegment('3');
         //lay thong tin cua giao dịch
-        $info = $this->order_model->get_info($id);
+        $info = $this->transaction_model->get_info($id);
         if(!$info)
         {
             $this->session->set_flashdata('message', 'Không tồn tại đơn hàng này');
-            redirect(admin_url('order'));
+            redirect(admin_url('transaction'));
         }
     
         $data = array();
         $data['status'] = 2;//Hủy giao dịch
-        $this->transaction_model->update($info->transaction_id, $data);
+        
+        $this->transaction_model->update($info->id, $data);
     
         //Cập nhật trạng thái hủy đơn hàng
         $data = array();
         $data['status'] = 2;//Hủy đơn hàng
-        $this->order_model->update($id, $data);
+        $where = array('transaction_id' => $id);
+        $this->order_model->update_rule($where, $data);
     
         //gui thong bao
-        $this->session->set_flashdata('message', 'Đã hủy đơn hàng thành công');
-        redirect(admin_url('order'));
+        $this->session->set_flashdata('message', 'Đã hủy giao dịch thành công');
+        redirect(admin_url('transaction'));
     }
     
     /*

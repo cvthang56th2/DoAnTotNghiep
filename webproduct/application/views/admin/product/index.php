@@ -4,6 +4,8 @@
 <div class="line"></div>
 
 <div id="main_product" class="wrapper">
+<?php $this->load->view('admin/message'); ?>
+
     <div class="widget">
 
         <div class="title">
@@ -99,7 +101,7 @@
                                 <div class="clear"></div>
                             </div>
 
-                            <a target="_blank" title="" class="tipS" href="">
+                            <a target="_blank" title="" class="tipS" href="<?php echo base_url('/product/view/'.$row->id);?>">
                                 <b><?php echo $row->name ?></b>
                             </a>
 

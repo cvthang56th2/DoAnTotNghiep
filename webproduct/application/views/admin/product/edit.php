@@ -97,6 +97,21 @@
                             <div class="clear"></div>
                         </div>
 
+                        <div class="formRow">
+                            <label for="param_available_quantity" class="formLeft">
+                                Số lượng: 
+                                <span class="req">*</span>
+                            </label>
+                            <div class="formRight">
+                                <span>
+                                    <input type="text" value="<?php echo $product->available_quantity ?>"  class="format_number" id="param_available_quantity" style="width:100px" name="available_quantity">
+                                </span>
+                                <span class="autocheck" name="available_quantity_autocheck"></span>
+                                <div class="clear error" name="available_quantity_error"></div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
 
                         <div class="formRow">
                             <label for="param_cat" class="formLeft">Thể loại:<span class="req">*</span></label>

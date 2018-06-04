@@ -4,7 +4,7 @@
 
 <!-- Main content wrapper -->
 <div class="wrapper">
-
+<?php $this->load->view('admin/message'); ?>
 	<div class="widget">
 		<div class="title">
 			<span class="titleIcon"><img src="<?php echo public_url('admin/images/icons/tableArrows.png'); ?>" /></span>
@@ -142,9 +142,12 @@
 					<td class="textC"><?php echo mdate('%d-%m-%Y',$row->created)?></td>
 					
 					<td class="textC">
-							<a href="<?php echo admin_url('transaction/view/'.$row->transaction_id) ?>" class="lightbox">
+							<a href="<?php echo admin_url('order/view/'.$row->transaction_id) ?>" class="lightbox">
 								<img src="<?php echo public_url('admin') ?>/images/icons/color/view.png" />
 							</a>
+							<a class="tipS verify_action" title="Xóa" href="<?php echo admin_url('order/del/'.$row->id)?>">
+						    <img src="<?php echo public_url('admin/images')?>/icons/color/delete.png">
+						</a>
 					</td>
 				</tr>
 			<?php endforeach;?>	

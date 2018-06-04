@@ -264,8 +264,10 @@
 
                                         <div class="box-info-detail">
                                             <p class="availability in-stock">
-                                                <span class="label">Availability:</span>
-                                                <span class="value">In stock</span>
+                                                <span class="label">Availability: <?php 
+                                                    if ($product->available_quantity == 0) echo '<strong style="color:red;">Hết hàng</strong>';
+                                                    else echo '<strong style="color:green;">Còn hàng</strong>';
+                                                ?></span>
                                             </p>
                                             <div class="price-info">
                                                 <div class="price-box" style="text-align:left">

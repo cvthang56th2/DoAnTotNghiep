@@ -87,15 +87,13 @@
 				</ul>
 			</div>
 			<div class='action'>
-							<a href="<?php echo admin_url('transaction/active/'.$info->id); ?>" class="button blueB mr5">
+							<a href="<?php echo admin_url('order/active/'.$info->id); ?>" class="button blueB mr5">
 							<span><?php echo lang('active'); ?></span>
 							</a>
-					   
-						<a href="<?php echo admin_url('transaction/cancel/'.$info->id); ?>"  class="button redB mr5"><span>
+						<a href="<?php echo admin_url('order/cancel/'.$info->id); ?>"  class="button redB mr5"><span>
 						<?php echo lang('cancel'); ?></span></a>
 					
 				</div>
-			
 			
 		     <div class="clear"></div>
 			<!-- Thong tin don hang -->

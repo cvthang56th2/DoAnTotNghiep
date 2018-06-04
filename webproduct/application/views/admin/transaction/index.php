@@ -4,6 +4,8 @@
 <div class="line"></div>
 
 <div id="main_transaction" class="wrapper">
+<?php $this->load->view('admin/message'); ?>
+
 	<div class="widget">
 	
 		<div class="title">
