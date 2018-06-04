@@ -76,6 +76,10 @@ Class MY_Controller extends CI_Controller {
                     $carts = $this->cart->contents();
                     $this->data['carts'] = $carts;
 
+                    $this->load->model('advertment_model');
+                    $advertment = $this->advertment_model->get_list();
+                    $this->data['advertment'] = $advertment;
+
                 }
         }
     }

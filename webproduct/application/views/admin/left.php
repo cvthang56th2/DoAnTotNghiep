@@ -118,6 +118,12 @@
 						</li>
 						
 						<li>
+							<a href="<?php echo admin_url('advertment')?>">
+								Quảng cáo
+								</a>
+						</li>
+
+						<li>
 							<a href="<?php echo admin_url('news')?>">
 								Tin tức	
 								</a>

@@ -74,39 +74,34 @@ $price_to_select = isset($price_to) ? intval($price_to) : 0;
     </div>
 
     <div class="block box-banner">	
-        <div id="box-banner" class="carousel slide" data-ride="carousel" data-interval="1500"><ol class="carousel-indicators">
-                <li class="" data-target="#box-banner" data-slide-to="0"></li>
-                <li data-target="#box-banner" data-slide-to="1" class=""></li>
-                <li data-target="#box-banner" data-slide-to="2" class="active"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="item"><a href="detail.html"><img src="<?php echo public_url(); ?>/mello_theme/images/banner13.png" alt="banner"></a>
-                    <div class="std">
-                        <span class="t1">up to 45%</span>
-                        <span class="t2">Nokia Lumia 920</span>
-                        <span class="t3">At verov eos et accusamus et iusto ods un dignissimos ducimus qui blan ditiis prasixer esentium</span>
-                    </div>
-                    <a class="gt-shop" href="#">Shop Now</a>
-                </div>
-                <div class="item"><a href="detail.html"><img src="<?php echo public_url(); ?>/mello_theme/images/banner14.png" alt="banner"></a>
-                    <div class="std">
-                        <span class="t1">up to 50%</span>
-                        <span class="t2">Nokia Lumia 920</span>
-                        <span class="t3">At verov eos et accusamus et iusto ods un dignissimos ducimus qui blan ditiis prasixer esentium</span>
-                    </div>
-                    <a class="gt-shop" href="#">Shop Now</a>
-
-                </div>
-                <div class="item active"><a href="detail.html"><img src="<?php echo public_url(); ?>/mello_theme/images/banner15.png" alt="banner"></a>
-                    <div class="std">
-                        <span class="t1">up to 80%</span>
-                        <span class="t2">Nokia Lumia 920</span>
-                        <span class="t3">At verov eos et accusamus et iusto ods un dignissimos ducimus qui blan ditiis prasixer esentium</span>
-                    </div>
-                    <a class="gt-shop" href="#">Shop Now</a>
-
-                </div>
-            </div>
+        <div id="box-banner" class="carousel slide" data-ride="carousel" data-interval="1500">
+                        <div style="padding-left: 20px; background: #fafafa; width: 100%;border-bottom: 1px solid #ccc;">
+                            <span style="line-height: 48px; font-size: 128.57%; text-transform: uppercase; color: #444; font-weight: 700;">Quảng cáo</span>
+                        </div>
+                        <div class="wrap-banner-07" style="margin-top: 0">
+                            <?php foreach($advertment as $row): ?>
+                            <div style="background: rgb(232, 233, 230)">
+                                <img width="100%" src="<?php echo base_url('upload/advertment/'.$row->image_link); ?>" alt="" class="img-responsive" />
+                                <div style="position: absolute;width: 100%;top: 0;padding-left: 30px;padding-top: 31px;">
+                                    <h2 style="color: rgb(121, 87, 14)">
+                                        <?php echo $row->name; ?>
+                                    </h2>
+                                    <a style="background: #fff;color: #666;top: 118px;left: 30px;padding: 7px 32px 7px 20px;" href="<?php echo $row->link; ?>">
+                                        <span>Xem chi tiết</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <script>
+                        $('document').ready(function () {
+                            $('.wrap-banner-07').slick({
+                                autoplay: true,
+                                autoplaySpeed: 4000,
+                                dots: true
+                            });
+                        })
+                    </script>
         </div>
     </div>
 </div>
