@@ -16,6 +16,8 @@ class Order extends MY_Controller {
 		$this->load->model('order_model');
 		$this->load->model('transaction_model');
 		$this->lang->load('admin/common');
+		$this->load->model('product_model');
+
 	}
 	
     
@@ -216,7 +218,6 @@ class Order extends MY_Controller {
             return false;
         }
         //load model sản phẩm product_model
-        $this->load->model('product_model');
         foreach ($orders as $row)
         {
             //thông tin sản phẩm
@@ -272,7 +273,21 @@ class Order extends MY_Controller {
 		$data = array();
 		$where = array('transaction_id'=> $id);
         $data['status'] = 1;//đã gửi hàng
-        $this->order_model->update_rule($where, $data);
+		$this->order_model->update_rule($where, $data);
+		//tru di so luong san pham da chuyen cho khach
+        //va cong so luong san pham da ban
+        $input = array();
+        $input['where'] = array('transaction_id'=>$id);
+        $orders = $this->order_model->get_list($input);
+        //lay thong san pham trong cai don hang nay
+        foreach($orders as $order) {
+            //lay thong san pham trong cai don hang nay
+            $product = $this->product_model->get_info($order->product_id);
+            $data = array();
+            $data['available_quantity'] = $product->available_quantity - $order->qty;
+            $data['buyed'] = $product->buyed + $order->qty; //cap nhat so luong da mua
+            $this->product_model->update($product->id, $data);
+        }
         	
         //gui thong bao
         $this->session->set_flashdata('message', 'Đã cập nhật trạng thái đơn hàng thành công');
@@ -305,6 +320,18 @@ class Order extends MY_Controller {
         $data['status'] = 2;//Hủy đơn hàng
         $this->order_model->update($id, $data);
 
+		$input = array();
+        $input['where'] = array('transaction_id'=>$id);
+        $orders = $this->order_model->get_list($input);
+        //lay thong san pham trong cai don hang nay
+        foreach($orders as $order) {
+            //lay thong san pham trong cai don hang nay
+            $product = $this->product_model->get_info($order->product_id);
+            $data = array();
+            $data['available_quantity'] = $product->available_quantity + $order->qty;
+            $data['buyed'] = $product->buyed - $order->qty; //cap nhat so luong da mua
+            $this->product_model->update($product->id, $data);
+        }
         //gui thong bao
         $this->session->set_flashdata('message', 'Đã hủy đơn hàng thành công');
         redirect(admin_url('order'));

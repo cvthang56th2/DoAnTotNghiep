@@ -6,6 +6,8 @@ Class Product extends MY_Controller {
         parent::__construct();
         //load model san pham
         $this->load->model('product_model');
+        $this->load->helper('form');
+       $this->load->library('form_validation');
     }
 
     /*
@@ -153,6 +155,25 @@ Class Product extends MY_Controller {
         $input['where_not_in'] = array('id' => array($id));
         $relative_products = $this->product_model->get_list($input);
         $this->data['relative_products'] = $relative_products;
+        $this->load->model('comment_model');
+
+        $this->form_validation->set_rules('user_name', 'Tên', 'required');
+        $this->form_validation->set_rules('content', 'Nội dung bình luận', 'required');
+        if($this->form_validation->run()) {
+            $data = array();
+            $data['product_id'] = $id;
+			$data['user_name']			= $this->input->post('user_name');
+			$data['content']			= $this->input->post('content');
+            $data['created'] 		= now();
+            $this->comment_model->create($data);
+			$this->session->set_flashdata('message', 'Bình luận thành công');
+        }
+
+        $input = array();
+        $input['where'] = array('product_id' => $id);
+        $list_comment = $this->comment_model->get_list($input);
+        $this->data['list_comment'] = $list_comment;
+        
 
         //hiển thị ra view
         $this->data['temp'] = 'site/product/view';

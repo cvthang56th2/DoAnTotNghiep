@@ -150,7 +150,16 @@
 		<div class="clear error" name="sale_error"></div>
 	</div>
 	<div class="clear"></div>
-</div>					         <div class="formRow hide"></div>
+</div>					         
+<div class="formRow">
+                            	<label class="formLeft">Chi tiết sản phẩm: <span class="req">*</span></label>
+                            	<div class="formRight">
+                            		<textarea class="editor" id="param_detail" name="detail"></textarea>
+                            		<div class="clear error" name="detail_error"></div>
+                            	</div>
+                            	<div class="clear"></div>
+                            </div>
+<div class="formRow hide"></div>
 						 </div>
 						 
 						 <div class="tab_content pd0" id="tab2" style="display: none;">
@@ -189,7 +198,7 @@
 						 
 						 <div class="tab_content pd0" id="tab3" style="display: none;">
 						      <div class="formRow">
-                            	<label class="formLeft">Nội dung:</label>
+                            	<label class="formLeft">Bài viết:</label>
                             	<div class="formRight">
                             		<textarea class="editor" id="param_content" name="content"></textarea>
                             		<div class="clear error" name="content_error"></div>

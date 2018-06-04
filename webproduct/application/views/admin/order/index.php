@@ -71,6 +71,7 @@
 			<thead>
 				<tr>
 					<td style="width:60px;"><?php echo lang('no.'); ?></td>
+					<td style="width:60px;">Mã giao dịch</td>
 					<td><?php echo lang('product'); ?></td>
 					<td style="width:80px;"><?php echo lang('price'); ?></td>
 					<td style="width:50px;"><?php echo lang('quantity'); ?></td>
@@ -99,6 +100,8 @@
 					
 					<td class="textC"><?php echo $row->id?></td>
 					
+					<td class="textC"><?php echo $row->transaction_id?></td>
+
 					<td>
 					<div class="image_thumb">
 						<img src="<?php echo base_url('upload/product/'.$row->image_link)?>" height="50">

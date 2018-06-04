@@ -62,7 +62,7 @@
 
                                         </tbody>
                                     </table>
-                                    <button type="submit" class="btn btn-primary">Cập nhât</button>
+                                    <button type="submit" class="btn btn-primary">Cập nhật giỏ hàng</button>
 
                                     <a class="btn-primary" href="<?php echo site_url('order/checkout') ?>" class="button">Mua hàng</a>
                                 </form>

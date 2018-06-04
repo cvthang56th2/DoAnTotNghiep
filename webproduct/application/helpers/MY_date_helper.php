@@ -15,7 +15,15 @@
 		
 		return $date;
 	}
-	
+	function get_date_time($time = '')
+	{
+		$time = (!$time) ? now() : $time;
+		
+		$format = " %H:%i:%s - ngày %d-%m-%Y";
+		$date 	= mdate($format, $time);
+		
+		return $date;
+	}
 	/**
 	 * Lay thong tin cua thoi gian
 	 * @param int	$time	Timestamp
