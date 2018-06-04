@@ -17,24 +17,28 @@ class News extends MY_Controller
     */
    public function index()
    {
-   	  //Buoc 1:load thu vien phan trang
-   	  $this->load->library('pagination');
-   	  //Buoc 2:Cau hinh cho phan trang
-   	  //lay tong so luong bai viet tu trong csdl
-   	  $total_rows = $this->news_model->get_total();
-   	  $config = array();
-   	  $config['base_url']    = base_url('news/index');
-   	  $config['total_rows']  = $total_rows;
-   	  $config['per_page']    = 3;
-   	  $config['uri_segment'] = 3;
-   	  $config['next_link']   = "Trang kế tiếp";
-   	  $config['prev_link']   = "Trang trước";
-   	  
-   	  //Khoi tao phan trang
-   	  $this->pagination->initialize($config);
-   	  
-   	  $input = array();
-   	  $input['limit'] = array($config['per_page'], $this->uri->segment(3));
+	   
+   	  //load ra thu vien phan trang
+		 $this->load->library('pagination');
+		 $config = array();
+		 $total_news= $this->news_model->get_total();
+		 $config['total_rows'] = $total_news; //tong tat ca cac san pham tren website
+		 $config['base_url'] = base_url('news/index'); //link hien thi ra danh sach san pham
+		 $config['per_page'] = 8; //so luong san pham hien thi tren 1 trang
+		 $config['uri_segment'] = 3; //phan doan hien thi ra so trang tren url
+		 $config['next_link'] = 'Trang kế tiếp';
+		 $config['prev_link'] = 'Trang trước';
+		 $config['first_link'] = 'Trang đầu';
+		 $config['last_link'] = 'Trang cuối';
+
+		 //khoi tao cac cau hinh phan trang
+		 $this->pagination->initialize($config);
+ 
+		 $segment = $this->uri->segment(3);
+		 $segment = intval($segment);
+ 
+		 $input = array();
+		 $input['limit'] = array($config['per_page'], $segment);
    	  //lay danh sach bai viet trong csdl,moi lan lay limit 3 bai viet
    	  //$this->uri->segment(n): lay ra phan doan thu n tren link url
       $newss = $this->news_model->get_list($input);

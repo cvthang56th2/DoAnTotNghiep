@@ -76,7 +76,7 @@
 						<div class="clear"></div>
 					</div>
 					
-					<a target="_blank" title="" class="tipS" href="">
+					<a target="_blank" title="" class="tipS" href="<?php echo base_url('news/view/'.$row->id)?>">
 					    <b><?php echo $row->title?></b>
 					</a>
 					
@@ -89,7 +89,7 @@
 					<td class="textC"><?php echo get_date($row->created)?></td>
 					
 					<td class="option textC">
-						 <a title="Xem chi tiết bài viết" class="tipS" target="_blank" href="news/view/9.html">
+						 <a title="Xem chi tiết bài viết" class="tipS" target="_blank" href="<?php echo base_url('news/view/'.$row->id)?>">
 								<img src="<?php echo public_url('admin/images')?>/icons/color/view.png">
 						 </a>
 						 
