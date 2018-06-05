@@ -1,0 +1,7 @@
+.wrap-noti ul {
+    display: none; color: #000
+}
+
+.wrap-noti div:hover ul {
+    display: block;
+}

@@ -2,10 +2,24 @@
 	<div class="wrapper">
 		<div class="welcome">
 			<span>Xin chào: <b>admin!</b></span>
+			<span class="wrap-noti">
+			<!-- <div>Noti
+
+			<ul>
+			
+			<li>sdfsdfsdfsdf</li>
+			<li>sdfsdfsdfsdf</li>
+			<li>sdfsdfsdfsdf</li>
+			</ul>
+			</div>
+			 -->
+</span>
 		</div>
+		
 		
 		<div class="userNav">
 			<ul>
+
 				<li><a target="_blank" href="<?php echo base_url()?>">
 					<img src="<?php echo public_url('admin')?>/images/icons/light/home.png" style="margin-top:7px;">
 					<span>Trang chủ</span>

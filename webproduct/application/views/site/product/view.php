@@ -320,7 +320,7 @@
                                                     <div class="add-to-cart">
                                                         <div class="add-to-cart-buttons">
                                                             
-                                                                <button type="button" title="Add to Cart" class="button btn-cart">
+                                                                <button type="button" title="Add to Cart" class="button btn-cart" style="width: auto;">
                                                                     <span>
                                                                         <span>Thêm vào giỏ hàng</span>
                                                                     </span>

@@ -7,7 +7,7 @@
 <link rel="shortcut icon" href="<?php echo public_url('admin')?>/images/icon.png" type="image/x-icon"/>
 <link rel="stylesheet" type="text/css" href="<?php echo public_url('admin/crown') ?>/css/main.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo public_url('admin')?>/css/css.css" media="screen" />
-
+<link rel="stylesheet" type="text/css" href="<?php echo public_url('admin')?>/css/config.css" media="screen" />
 
 <script type="text/javascript">
 	var admin_url 	= '';
