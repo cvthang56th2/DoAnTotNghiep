@@ -52,9 +52,6 @@ Class Cart extends MY_Controller
         print_r(json_encode($data));
         $this->cart->insert($data);
         
-        $this->session->set_flashdata('message_type', 'success');
-        $this->session->set_flashdata('message', 'Thêm vào giỏ hành thành công!');
-        //chuyen sang trang danh sach san pham trong gio hang
     }
 
     function add()

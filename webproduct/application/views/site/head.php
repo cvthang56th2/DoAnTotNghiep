@@ -33,5 +33,5 @@
 <script type="text/javascript" src="<?php echo public_url() ?>/site/slick/slick.min.js"></script>
 <link rel="stylesheet" href="<?php echo public_url() ?>/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 <!--End raty -->
-<link rel="shortcut icon" type="image/x-icon" href="<?php echo public_url(); ?>site/images/YoloBlack.png" />
+<link rel="shortcut icon" type="image/x-icon" href="<?php echo public_url(); ?>mello_theme/images/titleLogo.png" />
 <title>Yolo Shop | Technology for Life</title>

@@ -260,7 +260,7 @@
                                             <p class="availability in-stock">
                                                 <span class="label">Availability:
                                                     <?php 
-                                                    if ($product->available_quantity == 0) echo '<strong style="color:red;">Hết hàng</strong>';
+                                                    if ($product->available_quantity <= 0) echo '<strong style="color:red;">Hết hàng</strong>';
                                                     else echo '<strong style="color:green;">Còn hàng</strong>';
                                                 ?>
                                                 </span>

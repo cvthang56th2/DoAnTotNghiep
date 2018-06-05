@@ -314,9 +314,12 @@
                         <div class="account-and-cart" style="float: right; margin-right: 50px;">
                             <div class="box-cart">
                                 <div class="cart-mini">
+                                    <a href="<?php echo base_url('cart') ?>">
                                     <div class="title">
                                         <span class="item" id="count_carts"><?php echo count($carts) ?></span>
                                     </div>
+                                    </a>
+                                    
                                     <div class="block-content">
                                         <div class="inner">
                                             <p class="block-subtitle">Thêm gần đây</p>

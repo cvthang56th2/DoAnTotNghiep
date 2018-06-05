@@ -60,3 +60,38 @@
     <a id="gototop" style="display: block;">Top</a>
     <!--js-->
 </div>
+<script>
+    function addCart(id) {
+    $.ajax({
+                    url: "<?php echo base_url('cart/add_ajax/') ?>"+ id,
+                }).done(function(res) {
+                    if (res === "DA_CO_TRONG_GIO_HANG") {
+                        alert("Mặt hàng đã có trong giỏ hàng!");
+                    } else if (res === "KHONG_DU") {
+                        alert("Đã hết hàng!")
+                    } else {
+                            var count_carts = parseInt($('#count_carts').html()) + 1;
+                        $('#count_carts').html(count_carts)
+                        var respon = JSON.parse(res);
+                        var html = '<li class="item row">'
+                        +'<a href="<?php echo base_url("product/view/") ?>'+respon.id+'" title="'+respon.name+'" class="product-image" style="width: 40%">'
+    +'<img width="100%" src="<?php echo base_url("upload/product/"); ?>'+respon.image_link+'" alt="'+respon.name+'"></a>'
+    + '<a href="<?php echo base_url("cart/del/") ?>'+respon.id+'" class="btn-remove">Remove This Item</a><div class="product-details"><p class="product-name">'
+    +'<a title="'+respon.name+'" href="<?php echo base_url("product/view/") ?>'+respon.id+'">'+respon.name+'</a></p><span class="price"><span class="regular-price">'
+            +'<span class="price">'+respon.price+' đ</span></span></span><div class="qty-abc"><label>Số lượng: </label>'
+        +'<input value="'+respon.qty+'" type="text" name="qty_'+respon.id+'"></div></div>'
+                        +'</li>';
+
+                        $('#cart-sidebar').append(html);
+                        var total_carts = $('#total_carts').html();
+                        var number = Number(total_carts.replace(/[^0-9\.-]+/g,""));
+                        total_carts = number + respon.price*respon.qty;
+                        total_carts = total_carts.toFixed(0).replace(/./g, function(c, i, a) {
+                            return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+                        });
+                        $('#total_carts').html(total_carts + " đ");
+                        alert("Thêm vào giỏ hàng thành công!");
+                    }
+                })
+} 
+</script>
