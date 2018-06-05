@@ -4,7 +4,7 @@
 
 <meta name="robots" content="noindex, nofollow" />
 
-<link rel="shortcut icon" href="<?php echo public_url('admin')?>/images/icon.png" type="image/x-icon"/>
+<link rel="shortcut icon" href="<?php echo public_url(); ?>mello_theme/images/titleLogo.png" type="image/x-icon"/>
 <link rel="stylesheet" type="text/css" href="<?php echo public_url('admin/crown') ?>/css/main.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo public_url('admin')?>/css/css.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="<?php echo public_url('admin')?>/css/config.css" media="screen" />
@@ -53,3 +53,4 @@
 <link rel="stylesheet" type="text/css" href="<?php echo public_url()?>/js/jquery/colorbox/colorbox.css" media="screen" />
 
 <script type="text/javascript" src="<?php echo public_url()?>/js/custom_admin.js" type="text/javascript"></script>
+<link rel="stylesheet" href="<?php echo public_url() ?>/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">

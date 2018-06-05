@@ -1,7 +1,31 @@
-.wrap-noti ul {
-    display: none; color: #000
+#noti-icon {
+    cursor: pointer;
+    font-size: 25px;
 }
 
-.wrap-noti div:hover ul {
-    display: block;
+#noti-content {
+    display: none;
+    max-height: 500px;
+    overflow-y: scroll;
+    border-bottom: 1px solid #ccc;
+}
+
+#noti-count {
+    border: 1px solid #fff;
+    border-radius: 50%;
+    padding: 0 7px;
+}
+
+.show {
+    display: block !important;
+}
+
+.hide {
+    display: none;
+}
+
+.noti {
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    background: rgb(133, 91, 120);
 }

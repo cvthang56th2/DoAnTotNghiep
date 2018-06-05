@@ -146,6 +146,17 @@ class Order extends MY_Controller {
 		$this->load->view('admin/main', $this->data);
 	}
 	
+	function get_list_order() {
+		$input = array();
+		$input['where'] = array("order.status" => 0, "order.seen" => 0);
+		$list = $this->order_model->get_list($input);
+		$count = $this->order_model->get_total($input);
+		$data = array();
+		$data['list'] = $list;
+		$data['count'] = $count;
+		print_r(json_encode($data));
+	}
+
 	/**
 	 * Export du lieu ra file excel = cach don gian nhat
 	 */
@@ -350,5 +361,12 @@ class Order extends MY_Controller {
         //thuc hien xoa san pham
         $this->order_model->delete($id);
 		redirect(admin_url('order'));
-    }
+	}
+	
+	function update_seen() {
+		$transaction_id = $this->input->get('transaction_id');
+		$data['seen'] = 1;
+		$where = array('transaction_id' => $transaction_id);
+		$this->order_model->update_rule($where, $data);
+	}
 }
