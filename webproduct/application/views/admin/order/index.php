@@ -137,9 +137,11 @@
 					</td>
 					
 					<td class="status textC">
-						<span class="<?php echo $row->_transaction_status; ?>">
-						<?php echo lang('tran_status_'.$row->_transaction_status); ?>
-						</span>
+						<a href="<?php echo admin_url('transaction'); ?>">
+							<span class="<?php echo $row->_transaction_status; ?>" style="text-decoration: underline;">
+								<?php echo lang('tran_status_'.$row->_transaction_status); ?>
+							</span>
+						</a>
 					</td>
 					
 					<td class="textC"><?php echo mdate('%d-%m-%Y',$row->created)?></td>

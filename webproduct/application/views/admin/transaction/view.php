@@ -88,7 +88,7 @@
 			</div>
 			<div class='action'>
 							<a href="<?php echo admin_url('transaction/active/'.$info->id); ?>" class="button blueB mr5">
-							<span><?php echo lang('active'); ?></span>
+							<span>Xác nhận thanh toán</span>
 							</a>
 					   
 						<a href="<?php echo admin_url('transaction/cancel/'.$info->id); ?>"  class="button redB mr5"><span>

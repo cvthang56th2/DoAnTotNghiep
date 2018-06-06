@@ -28,19 +28,19 @@
 
 	<div class="title">
 		<img src="<?php echo public_url('admin'); ?>/images/icons/dark/cart.png" alt="" class="titleIcon" />
-		<h6><?php echo lang('title_tran_view'); ?></h6>
+		<h6>Chi tiết đơn hàng</h6>
 	</div>
 	
 	<div class="body">
 	
 			
 			<div class="left tran_info" style="width:280px;">
-				<div class="left fontB f13 mb5 blue"><?php echo lang('title_tran_info'); ?>:</div>
+				<div class="left fontB f13 mb5 blue">Thông tin thanh toán:</div>
 				<div class="clear"></div>
 			
 				<ul class="list2 valueB link">
 					<li>
-						<span><?php echo lang('tran_id'); ?>:</span>
+						<span>Mã giao dịch:</span>
 						<font class="red"><?php echo $info->id; ?></font>
 						<div class="clear"></div>
 					</li>
@@ -52,14 +52,14 @@
 					</li>
 					
 					<li>
-						<span><?php echo lang('tran_amount'); ?>:</span>
+						<span>Số tiền:</span>
 						<font class="red"><?php echo $info->_amount; ?></font>
 						<div class="clear"></div>
 					</li>
 				
 					
 					<li>
-						<span><?php echo lang('tran_payment'); ?>:</span>
+						<span>Hình thức:</span>
 						<?php echo $info->payment; ?>
 						<div class="clear"></div>
 					</li>
@@ -88,7 +88,7 @@
 			</div>
 			<div class='action'>
 							<a href="<?php echo admin_url('order/active/'.$info->id); ?>" class="button blueB mr5">
-							<span><?php echo lang('active'); ?></span>
+							<span>Xác nhận chuyển hàng</span>
 							</a>
 						<a href="<?php echo admin_url('order/cancel/'.$info->id); ?>"  class="button redB mr5"><span>
 						<?php echo lang('cancel'); ?></span></a>
@@ -97,7 +97,7 @@
 			
 		     <div class="clear"></div>
 			<!-- Thong tin don hang -->
-			<div class="fontB f13 mb5 blue"><?php echo lang('title_order_info'); ?>:</div>
+			<div class="fontB f13 mb5 blue">Thông tin đơn hàng:</div>
 			<div class="clear"></div>
 			<?php foreach ($orders as $row):?>
 			<div class="left mt5 "  style='margin-left:5px;'>

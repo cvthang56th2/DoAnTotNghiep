@@ -89,6 +89,6 @@
 		});
 	}
 	function gotoOrder(){
-		window.location.replace("<?php echo admin_url('order'); ?>");
+		window.location.replace("<?php echo admin_url('order?id=&status=0&created=&user=&transaction_status=&created_to='); ?>");
 	}
 </script>
