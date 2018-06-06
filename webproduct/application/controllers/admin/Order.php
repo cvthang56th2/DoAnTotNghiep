@@ -359,7 +359,8 @@ class Order extends MY_Controller {
             redirect(admin_url('order'));
         }
         //thuc hien xoa san pham
-        $this->order_model->delete($id);
+		$this->order_model->delete($id);
+		$this->transaction_model->delete($order->transaction_id);
 		redirect(admin_url('order'));
 	}
 	
