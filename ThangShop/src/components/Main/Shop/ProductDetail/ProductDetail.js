@@ -29,7 +29,7 @@ export default class ProductDetail extends Component {
             descContainer, productImageStyle, descStyle, txtMaterial, txtColor,
             addToCartBtn, backBtn
         } = styles;
-        const { name, discount, price, content, image_link, image_list } = this.props.product;
+        const { name, discount, price, detail, image_link, image_list } = this.props.product;
         var imageList;
         if (image_list == "")
             imageList = [];
@@ -83,8 +83,8 @@ export default class ProductDetail extends Component {
                             }
                         </View>
                         <View style={descContainer}>
-                            <Text style={{borderBottomColor: "#ccc", borderBottomWidth: 1, paddingBottom: 5, marginBottom: 5}}>Bài viết về <Text style={{fontWeight:'bold'}}>{name}</Text></Text>
-                            <HTML html={content ? content : "Chưa có bài viết"} style={descStyle}></HTML>
+                            <Text style={{borderBottomColor: "#ccc", borderBottomWidth: 1, paddingBottom: 5, marginBottom: 5}}>Chi tiết về <Text style={{fontWeight:'bold'}}>{name}</Text></Text>
+                            <HTML html={detail ? detail : "Chưa có bài viết"} style={descStyle}></HTML>
 
                         </View>
                     </View>
@@ -101,7 +101,7 @@ const swiperHeight = (swiperWidth * 452) / 361;
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
-        backgroundColor: '#D6D6D6',
+        backgroundColor: '#FFFFFF',
     },
     cardStyle: {
         flex: 1,

@@ -17,22 +17,22 @@
                             <div class="content">
                                 <?php foreach ($list_phone_offer as $row): ?>
                                     <div class="item">
-                                        <div class="item-wrap">
+                                        <div class="item-wrap" style="height: 350px;">
                                             <div class="item-image">
                                                 <a class="product-image" href="<?php echo base_url('product/view/' . $row->id) ?>" title="<?php echo $row->name; ?>">
                                                     <img width="100%" class="first_image img-responsive" src="<?php echo base_url('upload/product/' . $row->image_link) ?>" alt="<?php echo $row->name; ?>"> 
                                                 </a>
 
                                             </div>
-                                            <div class="pro-info">
-                                                <div class="pro-inner">
+                                            <div class="pro-info" style="height: 155px; display: flex; align-items: flex-end;">
+                                                <div class="pro-inner" style="width: 100%;">
                                                     <div class="product-name"><a href="<?php echo base_url('product/view/' . $row->id) ?>"><?php echo $row->name; ?></a></div>
                                                     <div class="pro-content">
                                                         <center>
                                                             <div class='raty' style='margin:10px 0px' id='<?php echo $row->id ?>' data-score='<?php echo ($row->rate_count > 0) ? $row->rate_total / $row->rate_count : 0 ?>'></div>
                                                         </center>
                                                     </div>
-                                                    <p style="float:left;margin-left:10px">Lượt mua: <b><?php echo $row->buyed ?></b></p>
+                                                    <center><p>Lượt mua: <b><?php echo $row->buyed ?></b></p><center>
                                                     <button class="btn-cart" onclick="addCart(<?php echo $row->id; ?>)"><i class="fas fa-cart-plus"></i> Thêm</button>
                                                     <!-- <div class="wrap-cart"><a title="Xem chi tiết" class="btn-cart" href="<?php echo base_url('product/view/' . $row->id) ?>">Chi tiết <i class="fas fa-info-circle"></i></a></div> -->
                                                     <script>
@@ -120,7 +120,7 @@
                                                             <img width="100%" class="first_image img-responsive" src="<?php echo base_url('upload/product/' . $row->image_link) ?>" alt="<?php echo $row->name; ?>"> 
                                                         </a>
                                                     </div>
-                                                    <div class="pro-info">
+                                                    <div class="pro-info" style="height: 155px; display: flex; align-items: flex-end;">
                                                         <div class="pro-inner">
                                                             <div class="product-name"><a href="<?php echo base_url('product/view/' . $row->id) ?>"><?php echo $row->name; ?></a></div>
                                                             <div class="pro-content">
@@ -445,7 +445,7 @@
                                         </div>
                                         <div class="pro-info">
                                             <div class="pro-inner">
-                                                <div class="pro-title product-name"><a href="<?php echo base_url('product/view/' . $row->id) ?>"><?php echo $row->name; ?></a></div>
+                                            <center><div class="pro-title product-name"><a href="<?php echo base_url('product/view/' . $row->id) ?>"><?php echo $row->name; ?></a></div></center>
                                                 <div class="pro-content">
                                                     <div class="wrap-price">
                                                         <div class="price-box">
@@ -561,7 +561,7 @@
                                                 </div>
                                                 <div class="pro-info">
                                                     <div class="pro-inner">
-                                                        <div class="pro-title product-name"><a href="<?php echo base_url('product/view/' . $product_buy[$i]->id) ?>"><?php echo $product_buy[$i]->name; ?></a></div>
+                                                    <center><div class="pro-title product-name"><a href="<?php echo base_url('product/view/' . $product_buy[$i]->id) ?>"><?php echo $product_buy[$i]->name; ?></a></div></center>
                                                         <div class="pro-content">
                                                             <div class="wrap-price">
                                                                 <div class="price-box">

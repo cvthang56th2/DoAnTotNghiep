@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
         height: imageHeight,
         width: imageWidth,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        resizeMode: 'center'
     },
     cateTitle: {
         fontSize: 20,
