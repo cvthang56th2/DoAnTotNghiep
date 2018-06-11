@@ -3,7 +3,7 @@ import {
     View, Text, Image, StyleSheet, Dimensions, TouchableOpacity, ListView
 } from 'react-native';
 
-const url = 'http://10.130.50.43/DoAnTotNghiep/webproduct/upload/product/';
+const url = 'http://yoloshopvn.000webhostapp.com/upload/product/';
 
 export default class DealProduct extends Component {
     gotoDetail(product) {

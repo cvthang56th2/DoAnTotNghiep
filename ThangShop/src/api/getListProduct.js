@@ -1,9 +1,9 @@
 const getListProduct = (idType, page) => {
     let url;
     if (idType == null) {
-        url = `http://10.5.8.155/DoAnTotNghiep/webproduct/api/product/index/${page}`;
+        url = `http://yoloshopvn.000webhostapp.com/api/product/index/${page}`;
     } else {
-        url = `http://10.5.8.155/DoAnTotNghiep/webproduct/api/product/catalog/${idType}/${page}`;
+        url = `http://yoloshopvn.000webhostapp.com/api/product/catalog/${idType}/${page}`;
     }
     
     return fetch(url)

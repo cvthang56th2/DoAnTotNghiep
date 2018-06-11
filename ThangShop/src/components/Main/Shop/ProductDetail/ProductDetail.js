@@ -9,7 +9,7 @@ import global from '../../../global';
 const back = require('../../../../media/appIcon/back.png');
 const cart = require('../../../../media/appIcon/cartfull.png');
 
-const url = 'http://10.130.50.43/DoAnTotNghiep/webproduct/upload/product/';
+const url = 'http://yoloshopvn.000webhostapp.com/upload/product/';
 
 export default class ProductDetail extends Component {
     goBack() {

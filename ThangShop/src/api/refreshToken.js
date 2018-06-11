@@ -2,7 +2,7 @@ import saveToken from './saveToken';
 import getToken from './getToken';
 
 const getNewToken = (token) => (
-    fetch('http://10.5.8.155/DoAnTotNghiep/webproduct/api/user/refresh_token',
+    fetch('http://yoloshopvn.000webhostapp.com/api/user/refresh_token',
     {   
         method: 'POST',
         headers: {

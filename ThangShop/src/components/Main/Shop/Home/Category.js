@@ -4,7 +4,7 @@ import Swiper from 'react-native-swiper';
 import global from '../../../global';
 
 const { width } = Dimensions.get('window');
-const url = 'http://10.130.50.43/DoAnTotNghiep/webproduct/upload/slide/';
+const url = 'http://yoloshopvn.000webhostapp.com/upload/slide/';
 
 export default class Category extends Component {
     gotoListProduct(category) {
