@@ -87,14 +87,14 @@
 			<li class="support">
 		
 			<a href="" class="exp inactive">
-				<span>Hỗ trợ và liên hệ</span>
+				<span>Phản hồi</span>
 				<strong>2</strong>
 			</a>
 			
 							<ul style="display: none;"  class="sub">
 											<li>
-							<a href="<?php echo admin_url('support')?>">
-								Hỗ trợ							</a>
+							<a href="<?php echo admin_url('comment')?>">
+								Bình luận							</a>
 						</li>
 											<li>
 							<a href="<?php echo admin_url('contact')?>">
