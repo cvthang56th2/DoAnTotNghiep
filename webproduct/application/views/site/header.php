@@ -91,7 +91,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="logo">
-                            <a href="<?php echo base_url(''); ?>"><img src="<?php echo public_url(); ?>mello_theme/images/yoloLogo1.png" alt=""></a>
+                            <a href="<?php echo base_url(''); ?>"><img src="<?php echo public_url(); ?>mello_theme/images/yoloLogo1.png" alt="Logo YoloShop"></a>
                         </div>
                         <div id="mobile-nav">
                             <button class="btn-sidebar" type="button"><span>menu</span></button> 
@@ -130,7 +130,7 @@
                                                         <div class="title"><span><a href="<?php echo base_url('product'); ?>">Danh mục sản phẩm</a></span></div>
                                                         <ul class="content-col">
                                                             <?php foreach ($catalog_list as $row): ?>
-                                                                <li><a class="<?php echo $row->icon; ?>" href="<?php echo base_url('product/catalog/' . $row->id) ?>"><span><?php echo $row->name ?></span></a></li>
+                                                                <li><a class="<?php echo $row->icon; ?>" href="<?php echo base_url('product/catalog/' . $row->id.'/'.changeName($row->name)) ?>"><span><?php echo $row->name ?></span></a></li>
 
                                                             <?php endforeach; ?>
                                                         </ul>
@@ -143,14 +143,14 @@
                                                                 <div class="item <?php if ($i == 0) echo " active"; ?> ">
                                                                     <div class="item-wrap">
                                                                         <div class="item-image">
-                                                                            <a title="<?php echo $row->name ?>" href="<?php echo base_url('product/view/' . $row->id) ?>" class="product-image no-touch">
+                                                                            <a title="<?php echo $row->name ?>" href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>" class="product-image no-touch">
                                                                                 <img width="100%" alt="<?php echo $row->name ?>" src="<?php echo base_url('upload/product/' . $row->image_link) ?>" class="first_image"> 
                                                                             </a>
 
                                                                         </div>
                                                                         <div class="pro-info">
                                                                             <div class="pro-inner">
-                                                                                <div class="pro-title product-name"><a href="<?php echo base_url('product/view/' . $row->id) ?>"><?php echo $row->name ?></a></div>
+                                                                                <div class="pro-title product-name"><a href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>"><?php echo $row->name ?></a></div>
                                                                                 <div class="pro-content">
                                                                                     <div class="wrap-price">
                                                                                         <div class="price-box">
@@ -223,14 +223,14 @@
                                                                 <div class="item <?php if ($i == 0) echo " active"; ?> ">
                                                                     <div class="item-wrap">
                                                                         <div class="item-image">
-                                                                            <a title="<?php echo $row->name ?>" href="<?php echo base_url('product/view/' . $row->id) ?>" class="product-image no-touch">
+                                                                            <a title="<?php echo $row->name ?>" href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>" class="product-image no-touch">
                                                                                 <img width="100%" alt="<?php echo $row->name ?>" src="<?php echo base_url('upload/product/' . $row->image_link) ?>" class="first_image"> 
                                                                             </a>
 
                                                                         </div>
                                                                         <div class="pro-info">
                                                                             <div class="pro-inner">
-                                                                                <div class="pro-title product-name"><a href="<?php echo base_url('product/view/' . $row->id) ?>"><?php echo $row->name ?></a></div>
+                                                                                <div class="pro-title product-name"><a href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>"><?php echo $row->name ?></a></div>
                                                                                 <div class="pro-content">
                                                                                     <div class="wrap-price">
                                                                                         <div class="price-box">
@@ -300,12 +300,12 @@
                                             </div>
                                         </li>
                                         <li class="item3 megamenu-parent">
-                                            <a href="<?php echo site_url('news') ?>">Tin tức</a>
+                                            <a href="<?php echo base_url('news') ?>">Tin tức</a>
                                             <img class="stick-07" src="<?php echo public_url(); ?>mello_theme/images/stick/new07.png" alt="">
 
                                         </li>
                                         <li class="item4">
-                                            <a href="<?php echo site_url('contact') ?>">Liên hệ</a>
+                                            <a href="<?php echo base_url('contact') ?>">Liên hệ</a>
                                         </li>
                                     </ul>
                                 </div>

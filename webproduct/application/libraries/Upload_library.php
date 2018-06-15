@@ -17,12 +17,13 @@ Class Upload_library
         $config = $this->config($upload_path);
         $this->CI->load->library('upload', $config);
         //thuc hien upload
+        $data = '';
         if($this->CI->upload->do_upload($file_name))
         {
             $data = $this->CI->upload->data();
         }else{
             //khong upload thanh cong
-            $data = $this->CI->upload->display_errors();
+            //$data = $this->CI->upload->display_errors()
         }
         return $data;
     }
@@ -73,11 +74,11 @@ Class Upload_library
         //thuc mục chứa file
         $config['upload_path']   = $upload_path;
         //Định dạng file được phép tải
-        $config['allowed_types'] = 'jpg|png|gif|jpeg|webp';
+        $config['allowed_types'] = 'jpg|png|gif';
         //Dung lượng tối đa
-        $config['max_size']      = '10240';
+        $config['max_size']      = '1200';
         //Chiều rộng tối đa
-        $config['max_width']     = '1360';
+        $config['max_width']     = '1028';
         //Chiều cao tối đa
         $config['max_height']    = '1028';
         

@@ -61,7 +61,7 @@
                                 <div class="item-wrap">
                                     <div class="item-image">
                                         <a title="<?php echo $row->name; ?>" href="<?php echo base_url('product/view/' . $row->id) ?>" class="product-image no-touch">
-                                            <img width="100%" alt="Product demo" src="<?php echo base_url('upload/product/' . $row->image_link) ?>" class="first_image img-responsive">
+                                            <img width="100%" alt="<?php echo $row->name; ?>" src="<?php echo base_url('upload/product/' . $row->image_link) ?>" class="first_image img-responsive">
                                         </a>
                                         <div class="item-btn">
                                             <div class="box-inner">
@@ -218,7 +218,7 @@
                                 </div>
                                 <div class="product-img-box">
                                     <div class="image-main">
-                                        <img src="<?php echo base_url('upload/product/' . $product->image_link) ?>" alt="Product demo">
+                                        <img src="<?php echo base_url('upload/product/' . $product->image_link) ?>" alt="<?php echo $product->name; ?>">
                                     </div>
                                     <div class="click-quick-view">&nbsp;</div>
                                     <div id="galary-image" class="carousel slide" data-ride="carousel">
@@ -226,12 +226,12 @@
                                         <div role="listbox">
                                             <div class="item active">
                                                 <div class="sub-item">
-                                                    <img src="<?php echo base_url('upload/product/' . $product->image_link) ?>" alt="product demo">
+                                                    <img src="<?php echo base_url('upload/product/' . $product->image_link) ?>" alt="<?php echo $product->name; ?>">
                                                 </div>
                                                 <?php if (is_array($image_list)): ?>
                                                 <?php foreach ($image_list as $img): ?>
                                                 <div class="sub-item">
-                                                    <img src="<?php echo base_url('upload/product/' . $img) ?>" alt="product demo">
+                                                    <img src="<?php echo base_url('upload/product/' . $img) ?>" alt="<?php echo $product->name; ?>">
                                                 </div>
                                                 <?php endforeach; ?>
                                                 <?php endif; ?>

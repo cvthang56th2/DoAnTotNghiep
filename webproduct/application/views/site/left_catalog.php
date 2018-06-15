@@ -58,7 +58,7 @@ $price_to_select = isset($price_to) ? intval($price_to) : 0;
                             <ol>
                                 <?php foreach ($row->subs as $sub): ?>    					                    
                                     <li>
-                                        <a href="<?php echo base_url('product/catalog/' . $sub->id) ?>" title="<?php echo $sub->name ?>"> 
+                                        <a href="<?php echo base_url('product/catalog/' . $sub->id.'/'.changeName($row->name).'/'.changeName($sub->name)) ?>" title="<?php echo $sub->name ?>"> 
                                             <?php echo $sub->name ?></a>
                                     </li>
                                 <?php endforeach; ?>		 			                    
@@ -81,7 +81,7 @@ $price_to_select = isset($price_to) ? intval($price_to) : 0;
                         <div class="wrap-banner-07" style="margin-top: 0">
                             <?php foreach($advertment as $row): ?>
                             <div style="background: rgb(232, 233, 230)">
-                                <img width="100%" src="<?php echo base_url('upload/advertment/'.$row->image_link); ?>" alt="" class="img-responsive" />
+                                <img width="100%" src="<?php echo base_url('upload/advertment/'.$row->image_link); ?>" alt="<?php echo $row->name; ?>" class="img-responsive" />
                                 <div style="position: absolute;width: 100%;top: 0;padding-left: 30px;padding-top: 31px;">
                                     <h2 style="color: rgb(121, 87, 14)">
                                         <?php echo $row->name; ?>

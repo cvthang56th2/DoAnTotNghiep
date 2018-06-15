@@ -11,7 +11,7 @@
                     <?php foreach ($catalog_list as $row): ?>
                     <li class="catalog-main-li">
                         <span>
-                            <a href="<?php echo base_url('product/catalog/' . $row->id) ?>" title="<?php echo $row->name ?>">
+                            <a href="<?php echo base_url('product/catalog/' . $row->id.'/'.changeName($row->name)) ?>" title="<?php echo $row->name ?>">
                                 <?php echo $row->name ?>
                             </a>
                         </span>
@@ -20,7 +20,7 @@
                         <ul class="catalog-sub">
                             <?php foreach ($row->subs as $sub): ?>
                             <li>
-                                <a href="<?php echo base_url('product/catalog/' . $sub->id) ?>" title="<?php echo $sub->name ?>">
+                                <a href="<?php echo base_url('product/catalog/' . $sub->id.'/'.changeName($row->name).'/'.changeName($sub->name)) ?>" title="<?php echo $sub->name ?>">
                                     <?php echo $sub->name ?>
                                 </a>
                             </li>
@@ -40,12 +40,12 @@
         <div class="wrap-banner-07" style="margin-top: 0">
             <?php foreach($advertment as $row): ?>
             <div style="background: rgb(232, 233, 230)">
-                <img width="100%" src="<?php echo base_url('upload/advertment/'.$row->image_link); ?>" alt="" class="img-responsive" />
+                <img width="100%" src="<?php echo base_url('upload/advertment/'.$row->image_link); ?>" alt="<?php echo $row->name; ?>" class="img-responsive" />
                 <div class="info">
                     <h2 style="color: rgb(121, 87, 14)">
                         <?php echo $row->name; ?>
                     </h2>
-                    <a class="btn-shopnow" href="<?php echo $row->link; ?>">
+                    <a class="btn-shopnow" href="<?php echo $row->link; ?>" target="_blank">
                         <span>Xem chi tiết</span>
                     </a>
                 </div>
@@ -72,7 +72,7 @@
             <div class="item">
                 <div class="item-wrap">
                     <div class="item-image">
-                        <a title="<?php echo $row->name ?>" href="<?php echo base_url('product/view/' . $row->id) ?>" class="product-image no-touch">
+                        <a title="<?php echo $row->name ?>" href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>" class="product-image no-touch">
                             <img width="100%" alt="<?php echo $row->name ?>" src="<?php echo base_url('upload/product/' . $row->image_link) ?>" class="first_image">
                         </a>
 
@@ -80,7 +80,7 @@
                     <div class="pro-info">
                         <div class="pro-inner">
                             <div class="pro-title product-name">
-                                <a href="<?php echo base_url('product/view/' . $row->id) ?>">
+                                <a href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>">
                                     <?php echo $row->name ?>
                                 </a>
                             </div>

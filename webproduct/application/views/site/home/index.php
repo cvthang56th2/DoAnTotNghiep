@@ -19,14 +19,14 @@
                                     <div class="item">
                                         <div class="item-wrap" style="height: 350px;">
                                             <div class="item-image">
-                                                <a class="product-image" href="<?php echo base_url('product/view/' . $row->id) ?>" title="<?php echo $row->name; ?>">
+                                                <a class="product-image" href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>" title="<?php echo $row->name; ?>">
                                                     <img width="100%" class="first_image img-responsive" src="<?php echo base_url('upload/product/' . $row->image_link) ?>" alt="<?php echo $row->name; ?>"> 
                                                 </a>
 
                                             </div>
                                             <div class="pro-info" style="height: 155px; display: flex; align-items: flex-end;">
                                                 <div class="pro-inner" style="width: 100%;">
-                                                    <div class="product-name"><a href="<?php echo base_url('product/view/' . $row->id) ?>"><?php echo $row->name; ?></a></div>
+                                                    <div class="product-name"><a href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>"><?php echo $row->name; ?></a></div>
                                                     <div class="pro-content">
                                                         <center>
                                                             <div class='raty' style='margin:10px 0px' id='<?php echo $row->id ?>' data-score='<?php echo ($row->rate_count > 0) ? $row->rate_total / $row->rate_count : 0 ?>'></div>
@@ -34,7 +34,7 @@
                                                     </div>
                                                     <center><p>Lượt mua: <b><?php echo $row->buyed ?></b></p><center>
                                                     <button class="btn-cart" onclick="addCart(<?php echo $row->id; ?>)"><i class="fas fa-cart-plus"></i> Thêm</button>
-                                                    <!-- <div class="wrap-cart"><a title="Xem chi tiết" class="btn-cart" href="<?php echo base_url('product/view/' . $row->id) ?>">Chi tiết <i class="fas fa-info-circle"></i></a></div> -->
+                                                    <!-- <div class="wrap-cart"><a title="Xem chi tiết" class="btn-cart" href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>">Chi tiết <i class="fas fa-info-circle"></i></a></div> -->
                                                     <script>
                                                         
                                                     </script>
@@ -116,13 +116,13 @@
                                             <div class="item">
                                                 <div class="item-wrap">
                                                     <div class="item-image">
-                                                        <a class="product-image" href="<?php echo base_url('product/view/' . $row->id) ?>" title="<?php echo $row->name; ?>">
+                                                        <a class="product-image" href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>" title="<?php echo $row->name; ?>">
                                                             <img width="100%" class="first_image img-responsive" src="<?php echo base_url('upload/product/' . $row->image_link) ?>" alt="<?php echo $row->name; ?>"> 
                                                         </a>
                                                     </div>
                                                     <div class="pro-info" style="height: 155px; display: flex; align-items: flex-end;">
                                                         <div class="pro-inner">
-                                                            <div class="product-name"><a href="<?php echo base_url('product/view/' . $row->id) ?>"><?php echo $row->name; ?></a></div>
+                                                            <div class="product-name"><a href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>"><?php echo $row->name; ?></a></div>
                                                             <div class="pro-content">
                                                                 <div class="wrap-price">
                                                                     <div class="price-box">
@@ -168,13 +168,13 @@
                                             <div class="item">
                                                 <div class="item-wrap">
                                                     <div class="item-image">
-                                                        <a class="product-image" href="<?php echo base_url('product/view/' . $row->id) ?>" title="<?php echo $row->name; ?>">
+                                                        <a class="product-image" href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>" title="<?php echo $row->name; ?>">
                                                             <img width="100%" class="first_image img-responsive" src="<?php echo base_url('upload/product/' . $row->image_link) ?>" alt="<?php echo $row->name; ?>"> 
                                                         </a>
                                                     </div>
                                                     <div class="pro-info">
                                                         <div class="pro-inner">
-                                                            <div class="product-name"><a href="<?php echo base_url('product/view/' . $row->id) ?>"><?php echo $row->name; ?></a></div>
+                                                            <div class="product-name"><a href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>"><?php echo $row->name; ?></a></div>
                                                             <div class="pro-content">
                                                                 <div class="wrap-price">
                                                                     <div class="price-box">
@@ -220,13 +220,13 @@
                                             <div class="item">
                                                 <div class="item-wrap">
                                                     <div class="item-image">
-                                                        <a class="product-image" href="<?php echo base_url('product/view/' . $row->id) ?>" title="<?php echo $row->name; ?>">
+                                                        <a class="product-image" href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>" title="<?php echo $row->name; ?>">
                                                             <img width="100%" class="first_image img-responsive" src="<?php echo base_url('upload/product/' . $row->image_link) ?>" alt="<?php echo $row->name; ?>"> 
                                                         </a>
                                                     </div>
                                                     <div class="pro-info">
                                                         <div class="pro-inner">
-                                                            <div class="product-name"><a href="<?php echo base_url('product/view/' . $row->id) ?>"><?php echo $row->name; ?></a></div>
+                                                            <div class="product-name"><a href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>"><?php echo $row->name; ?></a></div>
                                                             <div class="pro-content">
                                                                 <div class="wrap-price">
                                                                     <div class="price-box">
@@ -272,13 +272,13 @@
                                             <div class="item">
                                                 <div class="item-wrap">
                                                     <div class="item-image">
-                                                        <a class="product-image" href="<?php echo base_url('product/view/' . $row->id) ?>" title="<?php echo $row->name; ?>">
+                                                        <a class="product-image" href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>" title="<?php echo $row->name; ?>">
                                                             <img width="100%" class="first_image img-responsive" src="<?php echo base_url('upload/product/' . $row->image_link) ?>" alt="<?php echo $row->name; ?>"> 
                                                         </a>
                                                     </div>
                                                     <div class="pro-info">
                                                         <div class="pro-inner">
-                                                            <div class="product-name"><a href="<?php echo base_url('product/view/' . $row->id) ?>"><?php echo $row->name; ?></a></div>
+                                                            <div class="product-name"><a href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>"><?php echo $row->name; ?></a></div>
                                                             <div class="pro-content">
                                                                 <div class="wrap-price">
                                                                     <div class="price-box">
@@ -371,14 +371,14 @@
                                 <div class="item col-md-6">
                                     <div class="item-wrap">
                                         <div class="item-image" style="border: 1px solid #ccc; width: 50%">
-                                            <a title="<?php echo $row->name; ?>" href="<?php echo base_url('product/view/' . $row->id) ?>" class="product-image no-touch" style="text-align: center">
-                                                <img width="100%" alt="Product demo" src="<?php echo base_url('upload/product/' . $row->image_link) ?>" class="first_image img-responsive"> 
+                                            <a title="<?php echo $row->name; ?>" href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>" class="product-image no-touch" style="text-align: center">
+                                                <img width="100%" alt="<?php echo $row->name; ?>" src="<?php echo base_url('upload/product/' . $row->image_link) ?>" class="first_image img-responsive"> 
                                             </a>
 
                                         </div>
                                         <div class="pro-info">
                                             <div class="pro-inner">
-                                                <div class="pro-title product-name"><a href="<?php echo base_url('product/view/' . $row->id) ?>"><?php echo $row->name; ?></a></div>
+                                                <div class="pro-title product-name"><a href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>"><?php echo $row->name; ?></a></div>
                                                 <div class="pro-content">
                                                     <div class="wrap-price">
                                                         <div class="price-box">
@@ -431,8 +431,8 @@
                                 <div class="item">
                                     <div class="item-wrap">
                                         <div class="item-image">
-                                            <a title="<?php echo $row->name; ?>" href="<?php echo base_url('product/view/' . $row->id) ?>" class="product-image no-touch">
-                                                <img width="100%" alt="Product demo" src="<?php echo base_url('upload/product/' . $row->image_link) ?>" class="first_image img-responsive"> 
+                                            <a title="<?php echo $row->name; ?>" href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>" class="product-image no-touch">
+                                                <img width="100%" alt="<?php echo $row->name; ?>" src="<?php echo base_url('upload/product/' . $row->image_link) ?>" class="first_image img-responsive"> 
                                             </a>
                                             <div class="item-btn">
                                                 <div class="box-inner">
@@ -445,7 +445,7 @@
                                         </div>
                                         <div class="pro-info">
                                             <div class="pro-inner">
-                                            <center><div class="pro-title product-name"><a href="<?php echo base_url('product/view/' . $row->id) ?>"><?php echo $row->name; ?></a></div></center>
+                                            <center><div class="pro-title product-name"><a href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>"><?php echo $row->name; ?></a></div></center>
                                                 <div class="pro-content">
                                                     <div class="wrap-price">
                                                         <div class="price-box">
@@ -546,8 +546,8 @@
                                         <div class="item">
                                             <div class="item-wrap">
                                                 <div class="item-image">
-                                                    <a title="<?php echo $product_buy[$i]->name; ?>" href="<?php echo base_url('product/view/' . $product_buy[$i]->id) ?>" class="product-image no-touch">
-                                                        <img width="100%" alt="Product demo" src="<?php echo base_url('upload/product/' . $product_buy[$i]->image_link) ?>" class="first_image img-responsive"> 
+                                                    <a title="<?php echo $product_buy[$i]->name; ?>" href="<?php echo base_url('product/view/' . $product_buy[$i]->id.'/'.changeName($product_buy[$i]->name)) ?>" class="product-image no-touch">
+                                                        <img width="100%" alt="<?php echo $product_buy[$i]->name; ?>" src="<?php echo base_url('upload/product/' . $product_buy[$i]->image_link) ?>" class="first_image img-responsive"> 
                                                     </a>
                                                     <div class="item-btn">
                                                         <div class="box-inner">
@@ -561,7 +561,7 @@
                                                 </div>
                                                 <div class="pro-info">
                                                     <div class="pro-inner">
-                                                    <center><div class="pro-title product-name"><a href="<?php echo base_url('product/view/' . $product_buy[$i]->id) ?>"><?php echo $product_buy[$i]->name; ?></a></div></center>
+                                                    <center><div class="pro-title product-name"><a href="<?php echo base_url('product/view/' . $product_buy[$i]->id.'/'.changeName($product_buy[$i]->name)) ?>"><?php echo $product_buy[$i]->name; ?></a></div></center>
                                                         <div class="pro-content">
                                                             <div class="wrap-price">
                                                                 <div class="price-box">
@@ -618,12 +618,12 @@
                             <?php foreach ($news_list as $i => $row): ?>
                                 <div class="row">
                                     <div class="col-md-4" <?php if ($i == 0) echo 'style="margin-top: 10px"'; ?>>
-                                        <a title="<?php echo $row->title ?>" href="<?php echo base_url('news/view/' . $row->id) ?>" class="product-image no-touch">
-                                            <img width="100%" alt="Product demo" src="<?php echo base_url('upload/news/' . $row->image_link) ?>" class="first_image img-responsive"> 
+                                        <a title="<?php echo $row->title ?>" href="<?php echo base_url('news/view/' . $row->id.'/'.changeName($row->title)) ?>" class="product-image no-touch">
+                                            <img width="100%" alt="<?php echo $row->title; ?>" src="<?php echo base_url('upload/news/' . $row->image_link) ?>" class="first_image img-responsive"> 
                                         </a>
                                     </div>
                                     <div class="col-md-8">
-                                        <a title="<?php echo $row->title ?>" href="<?php echo base_url('news/view/' . $row->id) ?>" class="product-image no-touch"><?php echo $row->title ?></a>
+                                        <a title="<?php echo $row->title ?>" href="<?php echo base_url('news/view/' . $row->id.'/'.changeName($row->title)) ?>" class="product-image no-touch"><?php echo $row->title ?></a>
                                         <p><?php echo substr($row->intro, 0, 60) . "..." ?></p>
                                     </div>
                                     <!--end item wrap -->

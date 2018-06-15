@@ -47,7 +47,7 @@
                                     <div class="item-wrap">
                                         <div class="item-image">
                                             <a title="<?php echo $row->name; ?>" href="<?php echo base_url('product/view/' . $row->id) ?>" class="product-image no-touch">
-                                                <img width="100%" alt="Product demo" src="<?php echo base_url('upload/product/' . $row->image_link) ?>" class="first_image img-responsive"> 
+                                                <img width="100%" alt="<?php echo $row->name; ?>" src="<?php echo base_url('upload/product/' . $row->image_link) ?>" class="first_image img-responsive"> 
                                             </a>
                                             <div class="item-btn">
                                                 <div class="box-inner">
@@ -153,7 +153,7 @@
                                 <div class="row">
                                     <div class="col-md-4" <?php if ($i == 0) echo 'style="margin-top: 10px"'; ?>>
                                         <a title="<?php echo $row->title ?>" href="<?php echo base_url('news/view/' . $row->id) ?>" class="product-image no-touch">
-                                            <img width="100%" alt="Product demo" src="<?php echo base_url('upload/news/' . $row->image_link) ?>" class="first_image img-responsive"> 
+                                            <img width="100%" alt="<?php echo $row->title; ?>" src="<?php echo base_url('upload/news/' . $row->image_link) ?>" class="first_image img-responsive"> 
                                         </a>
                                     </div>
                                     <div class="col-md-8">

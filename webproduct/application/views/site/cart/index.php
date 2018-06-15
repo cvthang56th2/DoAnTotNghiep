@@ -32,7 +32,7 @@
                                                     <td>
                                             <center>
                                                 <a href="<?php echo base_url('product/view/' . $row['id']) ?>">
-                                                    <img width="20%" alt="Product demo" src="<?php echo base_url('upload/product/' . $row['image_link']) ?>" class="first_image img-responsive" />
+                                                    <img width="20%" alt="<?php echo $row['name']; ?>" src="<?php echo base_url('upload/product/' . $row['image_link']) ?>" class="first_image img-responsive" />
                                                 </a>
                                                 <strong>
                                                     <a href="<?php echo base_url('product/view/' . $row['id']) ?>"><?php echo $row['name']; ?></a>

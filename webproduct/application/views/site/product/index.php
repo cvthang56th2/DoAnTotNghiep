@@ -41,14 +41,14 @@
                                     <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12 item">
                                         <div class="item-wrap">
                                             <div class="item-image">
-                                                <a class="product-image" href="<?php echo base_url('product/view/' . $row->id) ?>" title="<?php echo $row->name; ?>">
+                                                <a class="product-image" href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>" title="<?php echo $row->name; ?>">
                                                     <img width="100%" class="first_image img-responsive" src="<?php echo base_url('upload/product/' . $row->image_link) ?>" alt="<?php echo $row->name; ?>"> 
                                                 </a>
 
                                             </div>
                                             <div class="pro-info">
                                                 <div class="pro-inner">
-                                                    <div class="product-name"><a href="<?php echo base_url('product/view/' . $row->id) ?>"><?php echo $row->name; ?></a></div>
+                                                    <div class="product-name"><a href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>"><?php echo $row->name; ?></a></div>
                                                     <div class="price-box">
                                                         <?php if ($row->discount > 0): ?>
                                                             <?php $price_new = $row->price - $row->discount; ?>

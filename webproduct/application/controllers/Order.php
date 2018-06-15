@@ -93,7 +93,7 @@ Class Order extends MY_Controller {
                     //load thu vien thanh toán
                     $this->load->library('payment/' . $payment . '_payment');
                     //chuyen sang cong thanh toán
-                    $this->{$payment . '_payment'}->payment($transaction_id, $total_amount);
+                    $this->{$payment . '_payment'}->payment($transaction_id, $total_amount, base_url());
                 }
             }
         }
@@ -107,29 +107,33 @@ Class Order extends MY_Controller {
      * Nhan ket qua tra ve tu cong thanh toan
      */
 
-    function result() {
+    function result()
+    {
         //load thu vien thanh toán
         $this->load->library('payment/baokim_payment');
         $this->load->model('transaction_model');
-
+        
         //id cua cua giao dich
         $transaction_id = $this->input->post('order_id');
         //lay thong tin cua giao dich
         $transaction = $this->transaction_model->get_info($transaction_id);
-        if (!$transaction) {
-            redirect();
+        if(!$transaction)
+        {
+           redirect();
         }
         //goi toi ham kiem tra da trang thai thanh toan ben bao kim
         $status = $this->baokim_payment->result($transaction_id, $transaction->amount);
-        if ($status == true) {
+        if($status == true)
+        {
             //cap nhat lai trang thai don hang la da thanh toan
             $data = array();
-            $data['status'] = 1;
+            $data['status']  = 1;
             $this->transaction_model->update($transaction_id, $data);
-        } elseif ($status == false) {
+        }elseif ($status == false)
+        {
             //cap nhat lai trang thai don hang la khong thanh toan
             $data = array();
-            $data['status'] = 2;
+            $data['status']  = 2;
             $this->transaction_model->update($transaction_id, $data);
         }
     }

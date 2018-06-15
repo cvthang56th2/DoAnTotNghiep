@@ -17,13 +17,13 @@
                                     <?php foreach ($list as $i=>$row): ?>
                                         <div class="row">
                                             <div class="col-md-4" style="margin-top: 10px;">
-                                                <a href="<?php echo site_url('news/view/' . $row->id); ?>" title="<?php echo $row->title ?>">
+                                                <a href="<?php echo base_url('news/view/' . $row->id.'/'.changeName($row->title)); ?>" title="<?php echo $row->title ?>">
                                                     <img class="item_img" src="<?php echo base_url('upload/news/' . $row->image_link) ?>" alt="<?php echo $row->title; ?>" width="140" height="90">
                                                 </a>
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="item_name link" style="border-bottom: 1px solid #ccc;">
-                                                    <a href="<?php echo site_url('news/view/' . $row->id); ?>" title="<?php echo $row->title; ?>">
+                                                    <a href="<?php echo base_url('news/view/' . $row->id.'/'.changeName($row->title)); ?>" title="<?php echo $row->title; ?>">
                                                         <b><?php echo $row->title; ?></b>
                                                     </a>
                                                 </div>
@@ -64,8 +64,8 @@
                                 <div class="item">
                                     <div class="item-wrap">
                                         <div class="item-image">
-                                            <a title="<?php echo $row->name; ?>" href="<?php echo base_url('product/view/' . $row->id) ?>" class="product-image no-touch">
-                                                <img width="100%" alt="Product demo" src="<?php echo base_url('upload/product/' . $row->image_link) ?>" class="first_image img-responsive"> 
+                                            <a title="<?php echo $row->name; ?>" href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>" class="product-image no-touch">
+                                                <img width="100%" alt="<?php echo $row->name; ?>" src="<?php echo base_url('upload/product/' . $row->image_link) ?>" class="first_image img-responsive"> 
                                             </a>
                                             <div class="item-btn">
                                                 <div class="box-inner">
@@ -79,7 +79,7 @@
                                         </div>
                                         <div class="pro-info">
                                             <div class="pro-inner">
-                                                <div class="pro-title product-name"><a href="<?php echo base_url('product/view/' . $row->id) ?>"><?php echo $row->name; ?></a></div>
+                                                <div class="pro-title product-name"><a href="<?php echo base_url('product/view/' . $row->id.'/'.changeName($row->name)) ?>"><?php echo $row->name; ?></a></div>
                                                 <div class="pro-content">
                                                     <div class="wrap-price">
                                                         <div class="price-box">
@@ -170,12 +170,12 @@
                             <?php foreach ($news_list as $i => $row): ?>
                                 <div class="row">
                                     <div class="col-md-4" <?php if ($i == 0) echo 'style="margin-top: 10px"'; ?>>
-                                        <a title="<?php echo $row->title ?>" href="<?php echo base_url('news/view/' . $row->id) ?>" class="product-image no-touch">
-                                            <img width="100%" alt="Product demo" src="<?php echo base_url('upload/news/' . $row->image_link) ?>" class="first_image img-responsive"> 
+                                        <a title="<?php echo $row->title ?>" href="<?php echo base_url('news/view/' . $row->id.'/'.changeName($row->title)) ?>" class="product-image no-touch">
+                                            <img width="100%" alt="<?php echo $row->title; ?>" src="<?php echo base_url('upload/news/' . $row->image_link) ?>" class="first_image img-responsive"> 
                                         </a>
                                     </div>
                                     <div class="col-md-8">
-                                        <a title="<?php echo $row->title ?>" href="<?php echo base_url('news/view/' . $row->id) ?>" class="product-image no-touch"><?php echo $row->title ?></a>
+                                        <a title="<?php echo $row->title ?>" href="<?php echo base_url('news/view/' . $row->id.'/'.changeName($row->title)) ?>" class="product-image no-touch"><?php echo $row->title ?></a>
                                         <p><?php echo substr($row->intro, 0, 60) . "..." ?></p>
                                     </div>
                                     <!--end item wrap -->

@@ -13,3 +13,33 @@ function pre($list, $exit = true)
         die();
     }
 }
+
+function changeName($str) {
+    $s = str_replace("/", " ", $str);
+    $s = str_replace("(", "", $s);
+    $s = str_replace(")", "", $s);
+    $s = str_replace(" ", "-", $s);
+    $s = str_replace("@", "", $s);
+    $s = str_replace("!", "", $s);
+    $s = str_replace("#", "", $s);
+    $s = str_replace("$", "", $s);
+    $s = str_replace("%", "", $s);
+    $s = str_replace("^", "", $s);
+    $s = str_replace("&", "", $s);
+    $s = str_replace("*", "", $s);
+    $s = str_replace("=", "", $s);
+    $s = str_replace("+", "", $s);
+    $s = str_replace("[", "", $s);
+    $s = str_replace("]", "", $s);
+    $s = str_replace("|", "", $s);
+    $s = str_replace("{", "", $s);
+    $s = str_replace("}", "", $s);
+    $s = str_replace("/", "", $s);
+    $s = str_replace("?", "", $s);
+    $s = str_replace(",", "", $s);
+    $s = str_replace("<", "", $s);
+    $s = str_replace(">", "", $s);
+    $s = str_replace("?", "", $s);
+    $s = str_replace("'", "", $s);
+    return $s;
+}
