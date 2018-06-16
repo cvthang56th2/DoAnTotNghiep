@@ -104,6 +104,8 @@ Class Product extends MY_Controller
         $this->load->helper('form');
         
         //neu ma co du lieu post len thi kiem tra
+		
+
         if($this->input->post())
         {
             $this->form_validation->set_rules('name', 'Tên', 'required');
@@ -127,6 +129,9 @@ Class Product extends MY_Controller
                 $discount = str_replace(',', '', $discount);
                 $detail       = $this->input->post('detail');
 
+                $date_discount = new DateTime($this->input->post('date_discount'));
+                sscanf($date_discount->format('j-n-Y G:i:s'), '%d-%d-%d %d:%d:%d', $day, $month, $year, $hour, $minute, $second);
+                $date_discount = mktime($hour, $minute, $second, $month, $day, $year);
                 
                 //lay ten file anh minh hoa duoc update len
                 $this->load->library('upload_library');
@@ -157,6 +162,7 @@ Class Product extends MY_Controller
                     'meta_key'   => $this->input->post('meta_key'),
                     'content'    => $this->input->post('content'),
                     'available_quantity' => $available_quantity,
+                    'date_discount' => $date_discount,
                     'created'    => now(),
                     'detail' => $detail
                 ); 
@@ -234,6 +240,10 @@ Class Product extends MY_Controller
                 $available_quantity       = $this->input->post('available_quantity');
                 $detail       = $this->input->post('detail');
 
+                $date_discount = new DateTime($this->input->post('date_discount'));
+                sscanf($date_discount->format('j-n-Y G:i:s'), '%d-%d-%d %d:%d:%d', $day, $month, $year, $hour, $minute, $second);
+                $date_discount = mktime($hour, $minute, $second, $month, $day, $year);
+
                 //lay ten file anh minh hoa duoc update len
                 $this->load->library('upload_library');
                 $upload_path = './upload/product';
@@ -262,6 +272,7 @@ Class Product extends MY_Controller
                     'meta_key'   => $this->input->post('meta_key'),
                     'content'    => $this->input->post('content'),
                     'available_quantity' => $available_quantity,
+                    'date_discount' => $date_discount,
                     'detail' => $detail
                 );
                 if($image_link != '')

@@ -1,5 +1,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="Thương mại điện tử, YoloShop, YoloShopVN, web bán hàng điện tử, ứng dụng bán hàng điện tử, điện thoại, máy tính, tivi, phụ kiện, thuong mai dien tu, yoloshopvn.com, web yoloshopvn" />
+<meta name="description" content="Web yoloshopvn.com là một trang web thương mại điện tử, sản phẩm được bán là các sản phẩm điện tử như laptop, tivi, điện thoại, các phụ kiện khác... Ngoài hệ thống website, chúng tôi còn có app bán hàng, các bạn có thể vào cửa hàng ứng dụng để tải ứng dụng YoloShop về để nhận được những ưu đãi từ chúng tôi." />
+<meta name="author" content="Cao Viết Thắng">
 <link rel="stylesheet" type="text/css" href="<?php echo public_url() ?>/mello_theme/style/css/style-main07.css">
 <link rel="stylesheet" type="text/css" href="<?php echo public_url() ?>/mello_theme/config/css/style.css">
 <link rel="stylesheet" type="text/css" href="<?php echo public_url() ?>/site/css/opensansfont.css" media="all">

@@ -74,7 +74,7 @@ class News extends MY_Controller
         
 		// Hien thi view
 	    $this->data['temp'] = 'site/news/view';
-	    $this->load->view('site/layout', $this->data);
+	    $this->load->view('site/layout_news', $this->data);
    }
    
   

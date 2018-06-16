@@ -98,6 +98,22 @@
                         </div>
 
                         <div class="formRow">
+                            <label for="param_date_discount" class="formLeft">
+                                Giảm giá tới ngày 
+                                <span></span>:
+                            </label>
+                            <div class="formRight">
+                                <span>
+                                    <input id="param_date_discount" type="text" class="datepicker" style="width:100px" name="date_discount" value="<?php echo get_date($product->date_discount) ?>"/>
+                                    <img src="<?php echo public_url('admin')?>/crown/images/icons/notifications/information.png" style="margin-bottom:-8px" class="tipS" original-title="Hạn cuối giảm giá">
+                                </span>
+                                <span class="autocheck" name="date_discount_autocheck"></span>
+                                <div class="clear error" name="date_discount_error"></div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                        <div class="formRow">
                             <label for="param_available_quantity" class="formLeft">
                                 Số lượng: 
                                 <span class="req">*</span>
