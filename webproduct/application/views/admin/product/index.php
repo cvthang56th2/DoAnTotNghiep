@@ -27,7 +27,7 @@
                                         <td style="width:40px;" class="label"><label for="filter_id">Mã số</label></td>
                                         <td class="item"><input type="text" style="width:55px;" id="filter_id" value="<?php echo $this->input->get('id') ?>" name="id"></td>
 
-                                        <td style="width:40px;" class="label"><label for="filter_id">Tên</label></td>
+                                        <td style="width:40px;" class="label"><label for="filter_iname">Tên</label></td>
                                         <td style="width:155px;" class="item"><input type="text" style="width:155px;" id="filter_iname" value="<?php echo $this->input->get('name') ?>" name="name"></td>
 
                                         <td style="width:60px;" class="label"><label for="filter_status">Thể loại</label></td>

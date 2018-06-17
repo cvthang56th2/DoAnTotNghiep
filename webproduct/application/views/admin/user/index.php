@@ -9,11 +9,33 @@
 		<div class="title">
 			<span class="titleIcon"><input type="checkbox" id="titleCheck" name="titleCheck" /></span>
 			<h6><?php echo lang('list'); ?> <?php echo lang('mod_user'); ?></h6>
-		 	<div class="num f12"><?php echo lang('total'); ?>: <b>0</b></div>
+		 	<div class="num f12"><?php echo lang('total'); ?>: <b><?php echo $total_rows; ?></b></div>
 		</div>
 		
 		<form action="<?php echo $action; ?>" method="get" class="form" name="filter">
 		<table cellpadding="0" cellspacing="0" width="100%" class="sTable mTable myTable withCheck" id="checkAll">
+		<thead class="filter"><tr><td colspan="6">
+                        <form method="get" action="<?php echo admin_url('discount') ?>" class="list_filter form">
+                            <table width="80%" cellspacing="0" cellpadding="0"><tbody>
+
+                                    <tr>
+                                        <td style="width:40px;" class="label"><label for="filter_id">Mã số</label></td>
+                                        <td class="item"><input type="text" style="width:55px;" id="filter_id" value="<?php echo $this->input->get('id') ?>" name="id"></td>
+
+                                        <td style="width:40px;" class="label"><label for="filter_iname">Tên</label></td>
+                                        <td style="width:155px;" class="item"><input type="text" style="width:155px;" id="filter_iname" value="<?php echo $this->input->get('name') ?>" name="name"></td>
+
+
+                                        <td style="width:150px">
+                                            <input type="submit" value="Lọc" class="button blueB">
+                                            <input type="reset" onclick="window.location.href = '<?php echo admin_url('discount') ?>';" value="Reset" class="basic">
+                                        </td>
+
+                                    </tr>
+                                </tbody></table>
+                        </form>
+                    </td></tr></thead>
+
 			<thead>
 				<tr>
 					<td style="width:10px;"><img src="<?php echo public_url('admin'); ?>/images/icons/tableArrows.png" /></td>

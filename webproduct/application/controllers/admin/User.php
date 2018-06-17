@@ -226,7 +226,8 @@ class User extends MY_Controller {
    	    $this->load->library('pagination');
    	    //Buoc 2:Cau hinh cho phan trang
    	    //lay tong so luong thanh vien tu trong csdl
-   	    $total_rows = $this->user_model->get_total();
+		   $total_rows = $this->user_model->get_total();
+		   $this->data['total_rows'] = $total_rows;
    	    $config = array();
    	    $config['base_url']    = base_url('admin/user/index');
    	    $config['total_rows']  = $total_rows;
@@ -240,6 +241,20 @@ class User extends MY_Controller {
    	    $input = array();
    	    $input['limit'] = array($config['per_page'], $this->uri->rsegment(3));
 		//lay toan bo bài viết
+		//kiem tra co thuc hien loc du lieu hay khong
+        $id = $this->input->get('id');
+        $id = intval($id);
+        $input['where'] = array();
+        if($id > 0)
+        {
+            $input['where']['id'] = $id;
+        }
+        $name = $this->input->get('name');
+        if($name)
+        {
+            $input['like'] = array('name', $name);
+		}
+		
 		$list = array();
 		$list = $this->user_model->get_list($input);
 		$this->data['list'] = $list;

@@ -46,7 +46,7 @@
 		
 			<a href="" class="exp inactive">
 				<span>Sản phẩm</span>
-				<strong>2</strong>
+				<strong>4</strong>
 			</a>
 			    <ul style="display: none;" class="sub">
 						<li>
@@ -60,6 +60,17 @@
 							</a>
 						</li>
 											
+						<li>
+							<a href="<?php echo admin_url('discount')?>">
+								Khuyến mãi							
+							</a>
+						</li>
+
+						<li>
+							<a href="<?php echo admin_url('specifications')?>">
+								Thông số kĩ thuật							
+							</a>
+						</li>
 									</ul>
 						
 		</li>
