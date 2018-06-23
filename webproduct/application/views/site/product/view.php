@@ -432,7 +432,7 @@
                             </div>
                             <div>
                                 <h3 style="font-size: 18px; color: #333; text-transform: uppercase; padding-bottom: 5px; border-bottom: 1px solid #ccc">Bình luận về sản phẩm:</h3>
-                                <form class="t-form form_action" method="POST" action="">
+                                <form class="t-form form_action" method="POST" action="<?php echo base_url() ?>product/add_comment/<?php echo $product->id ?>">
                                     <div class="form-group">
                                         <label for="param_user_name" class="form-label">Họ và tên:
                                             <span class="req">*</span>
@@ -448,6 +448,36 @@
                                         <div class="clear error" name="content_error"><?php echo form_error('content')?></div>
                                     </div>
 
+                                    <div class="form-group">
+                                        <label for="param_user_name" class="form-label">Nhập captcha
+                                            <span class="req">*</span>
+                                        </label>
+                                        <div style="margin-bottom: 10px">
+                                            <div class="image" style="display: inline">
+                                                <?php echo $captcha; ?>
+                                            </div>
+
+                                            <a class="refresh" href="javascript:;"><i class="fas fa-sync-alt"></i></a>
+                                        </div>
+                                        
+                                        <input type="text" class="form-control" id="captcha" name="captcha" style="width: 25%">
+                		                <div class="clear error" name="captcha_error"><?php echo form_error('captcha')?></div>
+                                    </div>
+                                    <script>
+                                        $(function(){
+                                            $('.refresh').click(function(){
+                                                $.ajax({
+                                                    type: 'POST',
+                                                    url: '<?php echo base_url() ?>/product/refresh_captcha',
+                                                    success: function(res){
+                                                        if(res){
+                                                            $('.image').html(res);
+                                                        }
+                                                    }
+                                                })
+                                            });
+                                        });
+                                    </script>
 
                                     <div class="form-group">
                                         <label class="form-label">&nbsp;</label>

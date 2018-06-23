@@ -126,6 +126,20 @@ Class Product extends MY_Controller {
      */
 
     function view() {
+        $this->load->helper('captcha');
+
+		$vals = array(
+			'img_path' => './captcha/',
+			'img_url' => base_url().'captcha/',
+			'expiration' => 7200,
+			'word_lenght' => 8,
+			'font_size' => 22
+		);
+
+		$cap = create_captcha($vals);
+		$this->data['captcha'] = $cap['image'];
+		$this->session->set_userdata('captchaWord', $cap['word']);
+
         //lay id san pham muon xem
         $id = $this->uri->rsegment(3);
         $product = $this->product_model->get_info($id);
@@ -157,19 +171,6 @@ Class Product extends MY_Controller {
         $this->data['relative_products'] = $relative_products;
         $this->load->model('comment_model');
 
-        $this->form_validation->set_rules('user_name', 'Tên', 'required');
-        $this->form_validation->set_rules('content', 'Nội dung bình luận', 'required');
-        if($this->form_validation->run()) {
-            $data = array();
-            $data['product_id'] = $id;
-			$data['user_name']			= $this->input->post('user_name');
-			$data['content']			= $this->input->post('content');
-            $data['created'] 		= now();
-            $this->comment_model->create($data);
-			$this->session->set_flashdata('message', 'Bình luận thành công');
-        }
-
-
         //load ra thu vien phan trang
         $this->load->library('pagination');
         $config = array();
@@ -192,15 +193,61 @@ Class Product extends MY_Controller {
 
         $input = array();
         $input['limit'] = array($config['per_page'], $segment);
-        $input['where'] = array('product_id' => $id);
+        $input['where'] = array('product_id' => $id, 'publish' => 1);
         $list_comment = $this->comment_model->get_list($input);
         $this->data['list_comment'] = $list_comment;
-        
 
         //hiển thị ra view
         $this->data['temp'] = 'site/product/view';
         $this->load->view('site/layout_product', $this->data);
     }
+
+    function add_comment() {
+        $id = $this->uri->rsegment(3);
+        $this->load->model('comment_model');
+
+        $this->form_validation->set_rules('user_name', 'Tên', 'required');
+        $this->form_validation->set_rules('content', 'Nội dung bình luận', 'required');
+        $this->form_validation->set_rules('captcha', 'Captcha', 'trim|required|callback_matching_captcha');
+
+        if($this->form_validation->run()) {
+            $data = array();
+            $data['product_id'] = $id;
+            $data['user_name']			= $this->input->post('user_name');
+            $data['content']			= $this->input->post('content');
+            $data['created'] 		= now();
+            $this->comment_model->create($data);
+            $this->session->set_flashdata('message', 'Bình luận thành công');
+            redirect(base_url().'product/view/'.$id);
+        } else {
+            $this->session->set_flashdata('message', 'Bình luận không thành công thành công');
+            redirect(base_url().'product/view/'.$id);
+        }
+    }
+
+    public function matching_captcha($str){
+		if(strtolower($str) != strtolower($this->session->userdata('captchaWord'))){
+			$this->form_validation->set_message('matching_captcha', '{field} không đúng');
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+    public function refresh_captcha(){
+		$this->load->helper('captcha');
+		$vals = array(
+				'img_path' => './captcha/',
+				'img_url' => base_url().'captcha/',
+				'expiration' => 7200,
+				'word_lenght' => 8,
+				'font_size' => 22
+		);
+
+		$cap = create_captcha($vals);
+		$this->session->set_userdata('captchaWord', $cap['word']);
+		echo $cap['image'];
+	}
 
     /*
      * Tim kiem theo ten san pham

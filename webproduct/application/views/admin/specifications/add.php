@@ -38,7 +38,7 @@
 	<div class="clear"></div>
 </div>
 
-<center><div id="addField" style="width: 150px; padding: 5px; background-color: rgb(126, 209, 83); border: 2px solid #dfa; cursor: pointer;">Thêm thuộc tính</div></center>
+
 
 <div class="formRow">
 	<label for="param_field1" class="formLeft">
@@ -88,7 +88,7 @@
 
 
 	        		</div><!-- End tab_container-->
-	        		
+	        		<center><div id="addField" style="width: 150px; padding: 5px; background-color: rgb(126, 209, 83); border: 2px solid #dfa; cursor: pointer;">Thêm thuộc tính</div></center>
 	        		<div class="formSubmit">
 	           			<input type="submit" class="redB" value="Thêm mới">
 	           			<input type="reset" class="basic" value="Hủy bỏ">

@@ -19,9 +19,7 @@
 
             <div id="container">
                 <div class="content">
-                    <?php if (isset($message)): ?>
-                        <h3 style="color:red"><?php echo $message ?></h3>
-                    <?php endif; ?>
+                    <?php $this->load->view('site/site_message'); ?>
                     <?php $this->load->view($temp, $this->data); ?>
                 </div>
             </div>

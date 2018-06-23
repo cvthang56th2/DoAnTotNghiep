@@ -172,7 +172,9 @@ Class Specifications extends MY_Controller
             if($this->form_validation->run())
             {
                 $catalog_id  = $this->input->post('catalog');
+                $catalog = $this->catalog_model->get_info($catalog_id);
                 $catalog_name = $catalog->name;
+
                 $list_spec = "[";
 
                 for ($i = 1; $i<=$n; $i++) {
@@ -186,22 +188,26 @@ Class Specifications extends MY_Controller
                     'catalog_id' => $catalog_id,
                     'list_specifications' => $list_spec
                 ); 
-                //luu du lieu can them
-                //them moi vao csdl
-                if($this->specifications_model->update($catalog_id, $data))
+
+                // luu du lieu can them
+                // them moi vao csdl
+                if($this->specifications_model->update($id, $data))
                 {
                     //tạo ra nội dung thông báo
                     $this->session->set_flashdata('message', 'Cập nhật dữ liệu thành công');
-                    
-                    // $str_sql_field = "";
+                    $res = array();
+                    for ($i = 1; $i<=$n; $i++) {
+                        $queryCheck = 'SHOW COLUMNS FROM `'.delete_space(convert_vi_to_en($catalog_name)).'_detail` LIKE "'.delete_space(convert_vi_to_en($inp['field'.$i])).'"';
+                        $exists = $this->specifications_model->query($queryCheck);
+                        // $res[$i] = $exists->result_id->num_rows;
+                        if($exists->result_id->num_rows == 0) {
+                            $queryAdd = 'ALTER TABLE `'.delete_space(convert_vi_to_en($catalog_name)).'_detail` ADD COLUMN `'.delete_space(convert_vi_to_en($inp['field'.$i])).'` TEXT NULL; ';
+                            $this->specifications_model->query($queryAdd);
+                        } else continue;
+                    }
+                    // pre($res);
 
-                    // for ($i = 1; $i<=$n; $i++) {
-                    //     $list_spec = $list_spec.'{"stt":"'.$i.'","name":"'.$inp['field'.$i].'"}';
-                    //     $str_sql_field = $str_sql_field.delete_space(convert_vi_to_en($inp['field'.$i])).' TEXT';
-                    //     if ($i != $n)
-                    //         $str_sql_field = $str_sql_field.',';
-                    // }
-
+                   
                     // $sql = 'CREATE TABLE '.delete_space(convert_vi_to_en($catalog_name)).'_Detail (
                     //     id INT(11) AUTO_INCREMENT PRIMARY KEY,
                     //     product_id INT(11) NOT NULL,'.$str_sql_field.')';
@@ -220,6 +226,19 @@ Class Specifications extends MY_Controller
         $this->load->view('admin/main', $this->data);
     }
     
+
+    function deleteColumn() {
+        $deleteArray = json_decode($this->input->get('deleteArray'));
+        $catalog_id = $this->input->get('catalog_id');
+        $catalog = $this->catalog_model->get_info($catalog_id);
+        $catalog_name = $catalog->name;
+
+        foreach($deleteArray as $item) {
+            $sql = 'ALTER TABLE `'.delete_space(convert_vi_to_en($catalog_name)).'_detail` DROP `'.delete_space(convert_vi_to_en($item)).'`';
+            $this->catalog_model->query($sql);
+        }
+    }
+
     /*
      * Xoa du lieu
      */
@@ -230,7 +249,7 @@ Class Specifications extends MY_Controller
         
         //tạo ra nội dung thông báo
         $this->session->set_flashdata('message', 'không tồn tại sản phẩm này');
-        redirect(admin_url('product'));
+        redirect(admin_url('specifications'));
     }
     
     /*
@@ -250,34 +269,21 @@ Class Specifications extends MY_Controller
      */
     private function _del($id)
     {
-        $product = $this->product_model->get_info($id);
-        if(!$product)
+        $spec = $this->specifications_model->get_info($id);
+        if(!$spec)
         {
             //tạo ra nội dung thông báo
             $this->session->set_flashdata('message', 'không tồn tại sản phẩm này');
-            redirect(admin_url('product'));
+            redirect(admin_url('specifications'));
         }
-        //thuc hien xoa san pham
-        $this->product_model->delete($id);
-        //xoa cac anh cua san pham
-        $image_link = './upload/product/'.$product->image_link;
-        if(file_exists($image_link))
-        {
-            unlink($image_link);
-        }
-        //xoa cac anh kem theo cua san pham
-        $image_list = json_decode($product->image_list);
-        if(is_array($image_list))
-        {
-            foreach ($image_list as $img)
-            {
-                $image_link = './upload/product/'.$img;
-                if(file_exists($image_link))
-                {
-                    unlink($image_link);
-                }
-            }
-        }
+
+        $catalog = $this->catalog_model->get_info($spec->catalog_id);
+        $catalog_name = $catalog->name;
+
+        $this->specifications_model->delete($id);
+
+        $sql = 'DROP TABLE `'.delete_space(convert_vi_to_en($catalog_name)).'_detail`';
+        $this->catalog_model->query($sql);
     }
 
 }
