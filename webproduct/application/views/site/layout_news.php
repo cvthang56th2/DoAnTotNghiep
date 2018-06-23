@@ -3,6 +3,11 @@
         <title>YoloShop | <?php echo $info->title ?></title>
         <meta name="keywords" content="<?php echo $info->title.','.$info->meta_key; ?>"/>
         <meta name="description" content="<?php echo $info->meta_desc; ?>"/>
+        <meta property='og:url' content='/news/view/<?php echo $info->id.'/'.changeName($info->title); ?>' />
+        <meta property='og:type' content='news' />
+        <meta property='og:title' content='<?php echo $info->title ?>'/>
+        <meta property='og:description' content='<?php echo $info->meta_desc; ?>'/>
+        <meta property='og:image' content='/upload/news/<?php echo $info->image_link; ?>'/>
         <?php $this->load->view('site/head'); ?>
     </head>
     <body class="home07">

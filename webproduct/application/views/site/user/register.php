@@ -62,7 +62,37 @@
                                             <textarea class="form-control" id="address" name="address"><?php echo set_value('address') ?></textarea>
                                             <div class="error" id="address_error"><?php echo form_error('address') ?></div>
                                         </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="param_user_name" class="form-label">Nhập captcha
+                                                <span class="req">*</span>
+                                            </label>
+                                            <div style="margin-bottom: 10px">
+                                                <div class="image" style="display: inline">
+                                                    <?php echo $captcha; ?>
+                                                </div>
 
+                                                <a class="refresh" href="javascript:;"><i class="fas fa-sync-alt"></i></a>
+                                            </div>
+                                            
+                                            <input type="text" class="form-control" id="captcha" name="captcha" style="width: 25%">
+                                            <div class="clear error" name="captcha_error"><?php echo form_error('captcha')?></div>
+                                        </div>
+                                        <script>
+                                            $(function(){
+                                                $('.refresh').click(function(){
+                                                    $.ajax({
+                                                        type: 'POST',
+                                                        url: '<?php echo base_url() ?>/product/refresh_captcha',
+                                                        success: function(res){
+                                                            if(res){
+                                                                $('.image').html(res);
+                                                            }
+                                                        }
+                                                    })
+                                                });
+                                            });
+                                        </script>
                                         <div class="form-group">
                                             <label class="form-label">&nbsp;</label>
                                             <input type="submit" class="btn-primary" value="Đăng ký ngay" name="submit">

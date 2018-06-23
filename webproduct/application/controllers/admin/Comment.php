@@ -101,5 +101,48 @@ class Comment extends MY_Controller {
 		$this->data['temp'] = 'admin/comment/index';
 		$this->load->view('admin/main', $this->data);
 	}
+
+	function edit()
+    {
+        //load thư viện validate dữ liệu
+        $this->load->library('form_validation');
+        $this->load->helper('form');
+    
+        //lay id danh mục
+        $id = $this->uri->rsegment(3);
+        $info = $this->comment_model->get_info($id);
+        if(!$info)
+        {
+            //tạo ra nội dung thông báo
+            $this->session->set_flashdata('message', 'không tồn tại bình luận này');
+            redirect(admin_url('comment'));
+        }
+        $this->data['info'] = $info;
+        
+        //neu ma co du lieu post len thi kiem tra
+        if($this->input->post())
+        {
+						//them vao csdl
+						$publish = $this->input->post('publish');
+
+						//luu du lieu can them
+						$data = array(
+								'publish'      => $publish,
+						);
+						//them moi vao csdl
+						if($this->comment_model->update($id, $data))
+						{
+						//     //tạo ra nội dung thông báo
+						    $this->session->set_flashdata('message', 'Cập nhật dữ liệu thành công');
+						}else{
+						    $this->session->set_flashdata('message', 'Không thêm được');
+						}
+						// //chuyen tới trang danh sách
+						redirect(admin_url('comment'));
+        }
+    
+        $this->data['temp'] = 'admin/comment/edit';
+        $this->load->view('admin/main', $this->data);
+    }
 	
 }

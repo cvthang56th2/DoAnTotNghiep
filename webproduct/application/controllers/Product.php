@@ -216,6 +216,7 @@ Class Product extends MY_Controller {
             $data['user_name']			= $this->input->post('user_name');
             $data['content']			= $this->input->post('content');
             $data['created'] 		= now();
+            $data['publish'] = 0;
             $this->comment_model->create($data);
             $this->session->set_flashdata('message', 'Bình luận thành công');
             redirect(base_url().'product/view/'.$id);

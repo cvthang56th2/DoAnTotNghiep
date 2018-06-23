@@ -28,6 +28,21 @@ Class User extends MY_Controller {
      */
 
     function register() {
+
+        $this->load->helper('captcha');
+
+		$vals = array(
+			'img_path' => './captcha/',
+			'img_url' => base_url().'captcha/',
+			'expiration' => 7200,
+			'word_lenght' => 8,
+			'font_size' => 22
+		);
+
+		$cap = create_captcha($vals);
+		$this->data['captcha'] = $cap['image'];
+		$this->session->set_userdata('captchaWord', $cap['word']);
+
         //neu dang dang nhap thi chuyen ve trang thong tin thanh vien
         if ($this->session->userdata('user_id_login')) {
             redirect(site_url('user'));
@@ -44,6 +59,7 @@ Class User extends MY_Controller {
             $this->form_validation->set_rules('re_password', 'Nhập lại mật khẩu', 'matches[password]');
             $this->form_validation->set_rules('phone', 'Số điện thoại', 'required');
             $this->form_validation->set_rules('address', 'Địa chỉ', 'required');
+            // $this->form_validation->set_rules('captcha', 'Captcha', 'trim|required|callback_matching_captcha');
 
             //nhập liệu chính xác
             if ($this->form_validation->run()) {
@@ -84,6 +100,15 @@ Class User extends MY_Controller {
         $this->data['temp'] = 'site/user/register';
         $this->load->view('site/layout', $this->data);
     }
+
+    public function matching_captcha($str){
+		if(strtolower($str) != strtolower($this->session->userdata('captchaWord'))){
+			$this->form_validation->set_message('matching_captcha', '{field} không đúng');
+			return false;
+		}else{
+			return true;
+		}
+	}
 
     /*
      * Kiem tra đăng nhập
