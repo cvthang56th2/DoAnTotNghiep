@@ -79,6 +79,24 @@ class Comment extends MY_Controller {
         $input = array();
         $input['limit'] = array($config['per_page'], $segment);
 
+		//kiem tra co thuc hien loc du lieu hay khong
+        $id = $this->input->get('id');
+        $id = intval($id);
+        $input['where'] = array();
+        if($id > 0)
+        {
+            $input['where']['id'] = $id;
+        }
+        $name = $this->input->get('name');
+        if($name)
+        {
+            $input['like'] = array('user_name', $name);
+        }
+		$publish = $this->input->get('publish');
+		if ($publish != null) {
+			$input['where']['publish'] = $publish;
+		}
+
 		//lay danh sach ho tro
 		$list = array();
 		$list = $this->comment_model->get_list($input);
@@ -145,4 +163,27 @@ class Comment extends MY_Controller {
         $this->load->view('admin/main', $this->data);
     }
 	
+	function get_list_comment() {
+		$input = array();
+		$input['where'] = array("seen" => 0);
+		$list = $this->comment_model->get_list($input);
+		$count = $this->comment_model->get_total($input);
+		$this->load->model('product_model');
+		foreach ($list as $key => $val) {
+			$product = $this->product_model->get_info($val->product_id);
+			$list[$key]->product = $product;
+		}
+		// pre($list);
+		$data = array();
+		$data['list'] = $list;
+		$data['count'] = $count;
+		print_r(json_encode($data));
+	}
+
+	function update_seen() {
+		$comment_id = $this->input->get('comment_id');
+		$data['seen'] = 1;
+		$where = array('id' => $comment_id);
+		$this->comment_model->update_rule($where, $data);
+	}
 }

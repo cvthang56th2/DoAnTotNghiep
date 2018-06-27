@@ -247,7 +247,6 @@
 
                                         <div class="content">
                                             <span class="close">x</span>
-                                            <img src="<?php echo public_url(); ?>/mello_theme/images/product/larg/demo6.jpg" alt="">
                                         </div>
                                     </div>
                                 </div>

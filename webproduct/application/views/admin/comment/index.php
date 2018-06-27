@@ -35,7 +35,7 @@
 
                                         <td style="width:150px">
                                             <input type="submit" value="Lọc" class="button blueB">
-                                            <input type="reset" onclick="window.location.href = '<?php echo admin_url('product') ?>';" value="Reset" class="basic">
+                                            <input type="reset" onclick="window.location.href = '<?php echo admin_url('comment') ?>';" value="Reset" class="basic">
                                         </td>
 
                                     </tr>

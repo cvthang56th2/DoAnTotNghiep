@@ -47,9 +47,10 @@
 				method:"POST",
 				dataType:"json",
 				success:function(res) {
+					var count = res.count;
 					if (res.count) {
-						$('#noti-count').html(res.count);
 						$('#noti-content').html('');
+						$('#noti-content').append('<div class="noti" style="background: #42e8f4"><strong>Đơn đặt hàng</strong></div>');
 						res.list.map(function(e) {
 							var html = '<div class="noti"><div onclick="gotoOrder();" style="cursor: pointer;"><p>Đơn hàng: <strong>'+e.transaction_id+'</strong> - Mặt hàng: <strong>' 
 							+e.product_name+'</strong><br />Số lượng: <strong>'+e.qty+'</strong> - Tổng cộng: <strong>'
@@ -63,6 +64,29 @@
 						$('#noti-content').append('<div class="noti"><p>Không có thông báo mới!</p></div>');
 					}
 					
+					$.ajax({
+						url:"<?php echo admin_url('comment/get_list_comment'); ?>",
+						method:"POST",
+						dataType:"json",
+						success:function(res1) {
+							$('#noti-content').append('<div class="noti" style="background: #42e8f4"><strong>Bình luận</strong></div>');
+							if (res1.count) {
+								count += res1.count
+								res1.list.map(function(e) {
+									var html = '<div class="noti"><div onclick="gotoComment();" style="cursor: pointer;">Sản phẩm: <strong>'+e.product.name+
+									'</strong><br />Người bình luận: ' +e.user_name+'<br />Nội dung: '
+									+e.content.substring(0, 100)+'...<br /><input type="checkbox" onclick="seenComment('
+									+e.id+')" /> - Đánh dấu là đã đọc</div>';
+									$('#noti-content').append(html);
+								})
+							} else {
+								$('#noti-count').html('0');
+								$('#noti-content').append('<div class="noti"><p>Không có thông báo mới!</p></div>');
+							}
+							$('#noti-count').html(count);
+						}
+					});
+
 				}
 			});
 		}
@@ -88,7 +112,22 @@
 			}
 		});
 	}
+
+	function seenComment(data) {
+		$.ajax({
+			url: "<?php echo admin_url('comment/update_seen');?>",
+			data: {comment_id: data},
+			success: function() {
+				load_unseen_notification();
+			}
+		});
+	}
+
 	function gotoOrder(){
 		window.location.replace("<?php echo admin_url('order?id=&status=0&created=&user=&transaction_status=&created_to='); ?>");
+	}
+
+	function gotoComment(){
+		window.location.replace("<?php echo admin_url('comment?id=&name=&publish=0'); ?>");
 	}
 </script>
