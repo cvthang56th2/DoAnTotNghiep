@@ -124,75 +124,75 @@ Class Product extends MY_Controller
         {
             
 
-            // $this->form_validation->set_rules('name', 'Tên', 'required');
-            // $this->form_validation->set_rules('catalog', 'Thể loại', 'required');
-            // $this->form_validation->set_rules('price', 'Giá', 'required');
-            // $this->form_validation->set_rules('available_quantity', 'Giá', 'required');
-            // $this->form_validation->set_rules('detail', 'Chi tiết sản phẩm', 'required');
+            $this->form_validation->set_rules('name', 'Tên', 'required');
+            $this->form_validation->set_rules('catalog', 'Thể loại', 'required');
+            $this->form_validation->set_rules('price', 'Giá', 'required');
+            $this->form_validation->set_rules('available_quantity', 'Giá', 'required');
+            $this->form_validation->set_rules('detail', 'Chi tiết sản phẩm', 'required');
 
             //nhập liệu chính xác
             if($this->form_validation->run())
             {
-                pre($this->input->post('catalog'));
-                //them vao csdl
-                // $name        = $this->input->post('name');
-                // $catalog_id  = $this->input->post('catalog');
-                // $price       = $this->input->post('price');
-                // $available_quantity       = $this->input->post('available_quantity');
-                // $price       = str_replace(',', '', $price);
+                // pre($this->input->post('catalog'));
+                // them vao csdl
+                $name        = $this->input->post('name');
+                $catalog_id  = $this->input->post('catalog');
+                $price       = $this->input->post('price');
+                $available_quantity       = $this->input->post('available_quantity');
+                $price       = str_replace(',', '', $price);
                 
 
-                // $discount = $this->input->post('discount');
-                // $discount = str_replace(',', '', $discount);
-                // $detail       = $this->input->post('detail');
+                $discount = $this->input->post('discount');
+                $discount = str_replace(',', '', $discount);
+                $detail       = $this->input->post('detail');
 
-                // $date_discount = new DateTime($this->input->post('date_discount'));
-                // sscanf($date_discount->format('j-n-Y G:i:s'), '%d-%d-%d %d:%d:%d', $day, $month, $year, $hour, $minute, $second);
-                // $date_discount = mktime($hour, $minute, $second, $month, $day, $year);
+                $date_discount = new DateTime($this->input->post('date_discount'));
+                sscanf($date_discount->format('j-n-Y G:i:s'), '%d-%d-%d %d:%d:%d', $day, $month, $year, $hour, $minute, $second);
+                $date_discount = mktime($hour, $minute, $second, $month, $day, $year);
                 
-                // //lay ten file anh minh hoa duoc update len
-                // $this->load->library('upload_library');
-                // $upload_path = './upload/product';
-                // $upload_data = $this->upload_library->upload($upload_path, 'image');  
-                // $image_link = '';
-                // if(isset($upload_data['file_name']))
-                // {
-                //     $image_link = $upload_data['file_name'];
-                // }
-                // //upload cac anh kem theo
-                // $image_list = array();
-                // $image_list = $this->upload_library->upload_file($upload_path, 'image_list');
-                // $image_list = json_encode($image_list);
+                //lay ten file anh minh hoa duoc update len
+                $this->load->library('upload_library');
+                $upload_path = './upload/product';
+                $upload_data = $this->upload_library->upload($upload_path, 'image');  
+                $image_link = '';
+                if(isset($upload_data['file_name']))
+                {
+                    $image_link = $upload_data['file_name'];
+                }
+                //upload cac anh kem theo
+                $image_list = array();
+                $image_list = $this->upload_library->upload_file($upload_path, 'image_list');
+                $image_list = json_encode($image_list);
                 
-                // //luu du lieu can them
-                // $data = array(
-                //     'name'       => $name,
-                //     'catalog_id' => $catalog_id,
-                //     'price'      => $price,
-                //     'image_link' => $image_link,
-                //     'image_list' => $image_list,
-                //     'discount'   => $discount,
-                //     'warranty'   => $this->input->post('warranty'),
-                //     'gifts'      => $this->input->post('gifts'),
-                //     'site_title' => $this->input->post('site_title'),
-                //     'meta_desc'  => $this->input->post('meta_desc'),
-                //     'meta_key'   => $this->input->post('meta_key'),
-                //     'content'    => $this->input->post('content'),
-                //     'available_quantity' => $available_quantity,
-                //     'date_discount' => $date_discount,
-                //     'created'    => now(),
-                //     'detail' => $detail
-                // ); 
-                // //them moi vao csdl
-                // if($this->product_model->create($data))
-                // {
-                //     //tạo ra nội dung thông báo
-                //     $this->session->set_flashdata('message', 'Thêm mới dữ liệu thành công');
-                // }else{
-                //     $this->session->set_flashdata('message', 'Không thêm được');
-                // }
-                // //chuyen tới trang danh sách
-                // redirect(admin_url('product'));
+                //luu du lieu can them
+                $data = array(
+                    'name'       => $name,
+                    'catalog_id' => $catalog_id,
+                    'price'      => $price,
+                    'image_link' => $image_link,
+                    'image_list' => $image_list,
+                    'discount'   => $discount,
+                    'warranty'   => $this->input->post('warranty'),
+                    'gifts'      => $this->input->post('gifts'),
+                    'site_title' => $this->input->post('site_title'),
+                    'meta_desc'  => $this->input->post('meta_desc'),
+                    'meta_key'   => $this->input->post('meta_key'),
+                    'content'    => $this->input->post('content'),
+                    'available_quantity' => $available_quantity,
+                    'date_discount' => $date_discount,
+                    'created'    => now(),
+                    'detail' => $detail
+                ); 
+                //them moi vao csdl
+                if($this->product_model->create($data))
+                {
+                    //tạo ra nội dung thông báo
+                    $this->session->set_flashdata('message', 'Thêm mới dữ liệu thành công');
+                }else{
+                    $this->session->set_flashdata('message', 'Không thêm được');
+                }
+                //chuyen tới trang danh sách
+                redirect(admin_url('product'));
             }
         }
         
@@ -239,7 +239,6 @@ Class Product extends MY_Controller
             $this->form_validation->set_rules('name', 'Tên', 'required');
             $this->form_validation->set_rules('catalog', 'Thể loại', 'required');
             $this->form_validation->set_rules('price', 'Giá', 'required');
-            $this->form_validation->set_rules('available_quantity', 'Số lượng', 'required');
             $this->form_validation->set_rules('detail', 'Chi tiết sản phẩm', 'required');
 
             //nhập liệu chính xác
@@ -253,12 +252,14 @@ Class Product extends MY_Controller
                
                 $discount = $this->input->post('discount');
                 $discount = str_replace(',', '', $discount);
-                $available_quantity       = $this->input->post('available_quantity');
+                $add_quantity       = $this->input->post('add_quantity');
                 $detail       = $this->input->post('detail');
 
                 $date_discount = new DateTime($this->input->post('date_discount'));
                 sscanf($date_discount->format('j-n-Y G:i:s'), '%d-%d-%d %d:%d:%d', $day, $month, $year, $hour, $minute, $second);
                 $date_discount = mktime($hour, $minute, $second, $month, $day, $year);
+
+                $available_quantity = $product->available_quantity + $add_quantity;
 
                 //lay ten file anh minh hoa duoc update len
                 $this->load->library('upload_library');
