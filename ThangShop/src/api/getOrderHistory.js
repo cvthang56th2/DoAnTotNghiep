@@ -1,5 +1,5 @@
 const getOrderHistory = (token) => (
-    fetch('http://yoloshopvn.000webhostapp.com/api/user/order_history',
+    fetch('http://10.9.10.231/DoAnTotNghiep/webproduct/api/user/order_history',
     {   
         method: 'POST',
         headers: {

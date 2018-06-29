@@ -146,6 +146,7 @@ class Comment extends MY_Controller {
 						//luu du lieu can them
 						$data = array(
 								'publish'      => $publish,
+								'seen' => 1
 						);
 						//them moi vao csdl
 						if($this->comment_model->update($id, $data))

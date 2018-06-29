@@ -1,5 +1,5 @@
 const changeInfo = (token, name, phone, address, password) => (
-    fetch('http://yoloshopvn.000webhostapp.com/api/user/change_info',
+    fetch('http://10.9.10.231/DoAnTotNghiep/webproduct/api/user/change_info',
     {   
         method: 'POST',
         headers: {

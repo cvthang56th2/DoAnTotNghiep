@@ -73,7 +73,7 @@
 							if (res1.count) {
 								count += res1.count
 								res1.list.map(function(e) {
-									var html = '<div class="noti"><div onclick="gotoComment();" style="cursor: pointer;">Sản phẩm: <strong>'+e.product.name+
+									var html = '<div class="noti"><div onclick="gotoComment('+e.id+');" style="cursor: pointer;">Sản phẩm: <strong>'+e.product.name+
 									'</strong><br />Người bình luận: ' +e.user_name+'<br />Nội dung: '
 									+e.content.substring(0, 100)+'...<br /><input type="checkbox" onclick="seenComment('
 									+e.id+')" /> - Đánh dấu là đã đọc</div>';
@@ -127,7 +127,7 @@
 		window.location.replace("<?php echo admin_url('order?id=&status=0&created=&user=&transaction_status=&created_to='); ?>");
 	}
 
-	function gotoComment(){
-		window.location.replace("<?php echo admin_url('comment?id=&name=&publish=0'); ?>");
+	function gotoComment(id){
+		window.location.replace("<?php echo admin_url('comment?name=&publish=&id='); ?>"+id);
 	}
 </script>

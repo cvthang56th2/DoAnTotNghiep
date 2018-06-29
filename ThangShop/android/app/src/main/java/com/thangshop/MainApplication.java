@@ -1,4 +1,4 @@
-package com.thangshop;
+package com.YoloShop;
 
 import android.app.Application;
 

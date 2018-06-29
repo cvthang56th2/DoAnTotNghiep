@@ -1,5 +1,5 @@
 const checkLogin = (token) => (
-    fetch('http://yoloshopvn.000webhostapp.com/api/user/check_login',
+    fetch('http://10.9.10.231/DoAnTotNghiep/webproduct/api/user/check_login',
     {   
         method: 'POST',
         headers: {
