@@ -69,4 +69,17 @@ Class Order extends MY_Controller {
             echo 'THEM_THAT_BAI';
     }
 
+    function get_list_order() {
+        $this->load->model('order_model');
+
+		$input = array();
+		$input['where'] = array("order.status" => 0, "order.seen" => 0);
+		$list = $this->order_model->get_list($input);
+		$count = $this->order_model->get_total($input);
+		$data = array();
+		$data['list'] = $list;
+		$data['count'] = $count;
+		print_r(json_encode($data));
+	}
+
 }
