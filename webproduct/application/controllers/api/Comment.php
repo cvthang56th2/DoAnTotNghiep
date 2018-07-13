@@ -20,6 +20,7 @@ class Comment extends MY_Controller {
 		foreach ($list as $key => $val) {
 			$product = $this->product_model->get_info($val->product_id);
 			$list[$key]->product = $product;
+			$val->created = get_date_time($val->created);
 		}
 		// pre($list);
 		$data = array();

@@ -1,6 +1,6 @@
 const sendOrder = (token, arrayDetail, name, email, address, phone) => {
     const data = { token, arrayDetail, name, email, address, phone };
-    return fetch('http://10.9.10.231/DoAnTotNghiep/webproduct/api/order',
+    return fetch('http://yoloshopvn.com/api/order',
     {   
         method: 'POST',
         headers: {

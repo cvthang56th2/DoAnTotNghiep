@@ -1,5 +1,5 @@
 const register = (email, name, password, address, phone) => (
-    fetch('http://10.9.10.231/DoAnTotNghiep/webproduct/api/user/register',
+    fetch('http://yoloshopvn.com/api/user/register',
     {   
         method: 'POST',
         headers: {

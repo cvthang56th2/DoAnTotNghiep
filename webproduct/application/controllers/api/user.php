@@ -148,7 +148,9 @@ Class User extends MY_Controller {
                 $input['where'] = array('user_email' => $email);
                 $input['order'] = array('created', 'desc');
                 $bill = $this->transaction_model->get_list($input);
-
+                foreach ($bill as $key => $val) {
+                    $val->created = get_date_time($val->created);
+                }
                 print_r(json_encode($bill));
             }
         }
