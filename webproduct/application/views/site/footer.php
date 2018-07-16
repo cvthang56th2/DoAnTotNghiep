@@ -4,7 +4,12 @@
             <div class="row">
                 <div class="row" style=" padding-top: 30px">
                     <div class="block block-info col-lg-3 col-md-3 col-sm-3 col-xs-6" style="display: flex; align-items: center; justify-content: center;">
-                        <img src="<?php echo public_url(); ?>site/images/YoloBlack.png" alt="Logo Yolo Shop" width="50%" />
+                        <a href="<?php echo public_url(); ?>YoloShop.apk">
+                            <div style="text-align: center; color: #fff">
+                                <img src="<?php echo public_url(); ?>site/images/YoloBlack.png" alt="Logo Yolo Shop" width="50%" />
+                                <h5>Nhấn vào Logo hoặc tại đây để tải về ứng dụng điện thoại</h5>
+                            </div>
+                        </a>
                     </div>
                     <div class="block block-customer col-lg-3 col-md-3 col-sm-3 col-xs-6">
                         <div class="block-title">

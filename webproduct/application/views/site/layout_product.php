@@ -1,13 +1,13 @@
 <html>
     <head>
-        <title>YoloShop | <?php echo $product->name ?></title>
-        <meta name="keywords" content="<?php echo $product->name.','.$product->meta_key; ?>"/>
-        <meta name="description" content="<?php echo $product->meta_desc; ?>"/>
-        <meta property='og:url' content='/product/view/<?php echo $product->id.'/'.changeName($product->name); ?>' />
+        <title>YoloShop</title>
+        <meta name="keywords" content=""/>
+        <meta name="description" content=""/>
+        <meta property='og:url' content='' />
         <meta property='og:type' content='product' />
-        <meta property='og:title' content='<?php echo $product->name ?>'/>
-        <meta property='og:description' content='<?php echo $product->meta_desc; ?>'/>
-        <meta property='og:image' content='/upload/product/<?php echo $product->image_link; ?>'/>
+        <meta property='og:title' content=''/>
+        <meta property='og:description' content=''/>
+        <meta property='og:image' content=''/>
 
         <?php $this->load->view('site/head'); ?>
         <?php $this->load->view('site/head_product'); ?>
